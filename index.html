@@ -26,7 +26,8 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
       background: var(--bg);
       color: var(--text-main);
       line-height: 1.6;
@@ -76,7 +77,7 @@
       font-weight: 700;
     }
 
-    /* Showpllyロゴを少し強調 */
+    /* Showplly ロゴを少し目立たせる */
     .nav-left span {
       font-size: 20px;
       letter-spacing: 0.04em;
@@ -266,12 +267,6 @@
       gap: 12px;
     }
 
-    @media (min-width: 840px) {
-      .charts-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
     /* 画像ソース表記用 */
     .chart-source {
       font-size: 11px;
@@ -282,7 +277,12 @@
     /* HERO */
 
     .hero {
-      background: radial-gradient(circle at top left, #e6f0ff 0, #f5f7fb 40%, #ffffff 100%);
+      background: radial-gradient(
+          circle at top left,
+          #e6f0ff 0,
+          #f5f7fb 40%,
+          #ffffff 100%
+        );
       border-bottom: 1px solid var(--border);
     }
 
@@ -345,44 +345,6 @@
       margin-left: auto;
     }
 
-    /* PROBLEM SECTION LAYOUT */
-
-    .problem-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 32px;
-      align-items: flex-start;
-    }
-
-    .problem-text {
-      /* 左側テキスト */
-    }
-
-    .problem-why-card {
-      margin-top: 18px;
-      padding: 18px 18px 16px;
-    }
-
-    .problem-charts-card {
-      background: var(--bg-alt);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      padding: 16px 18px 14px;
-      margin-top: -8px; /* 見出しの高さに寄せて上げる */
-    }
-
-    .charts-vertical {
-      margin-top: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .charts-vertical img {
-      max-width: 260px; /* 大きさを約2/3に抑える */
-    }
-
     /* TABLE GRID SECTIONS */
 
     .columns-3 {
@@ -406,6 +368,52 @@
     .muted {
       color: var(--text-muted);
       font-size: 13px;
+    }
+
+    /* PROBLEM SECTION LAYOUT */
+
+    .problem-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .problem-text {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .problem-stats-card {
+      padding: 18px 18px 16px;
+    }
+
+    .problem-stats-card .small-heading {
+      margin-bottom: 6px;
+    }
+
+    .problem-charts-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .problem-charts-card img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .chart-block {
+      margin-bottom: 4px;
+    }
+
+    .problem-charts-card .small-heading {
+      margin-bottom: 4px;
     }
 
     /* FOOTER */
@@ -454,45 +462,31 @@
       .hero-grid,
       .two-col,
       .columns-3,
-      .columns-2 {
+      .columns-2,
+      .problem-layout {
         grid-template-columns: minmax(0, 1fr);
       }
-
       .hero-inner {
         padding-top: 40px;
       }
-
       .hero-grid {
         gap: 32px;
       }
-
       .hero-illustration {
         max-width: 360px;
         margin: 0 auto;
       }
-
       .nav-links {
         display: none;
       }
-
       .stats-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-
       .charts-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-
       .problem-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .problem-charts-card {
-        margin-top: 16px; /* モバイルでは自然な余白に戻す */
-      }
-
-      .charts-vertical img {
-        max-width: 100%;
+        gap: 24px;
       }
     }
 
@@ -529,8 +523,13 @@
         <a href="#founder">Founder</a>
       </nav>
       <div class="nav-cta">
-        <a href="mailto:founder@showplly.com" class="btn btn-outline">Talk with the founder</a>
-        <a href="mailto:founder@showplly.com?subject=Showplly%20–%20technical%20deck%20request" class="btn btn-primary">Request technical deck</a>
+        <!-- Googleフォームにリンク -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScPeLB7-hy_Sdb92WSJihvDsMVOqvbVciXMSNehiiR8VqSoVg/viewform?usp=header"
+           target="_blank" rel="noopener"
+           class="btn btn-outline">Talk with the founder</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScPeLB7-hy_Sdb92WSJihvDsMVOqvbVciXMSNehiiR8VqSoVg/viewform?usp=header"
+           target="_blank" rel="noopener"
+           class="btn btn-primary">Request technical deck</a>
       </div>
     </div>
   </header>
@@ -552,8 +551,8 @@
             Powering authenticity, smart customs, and borderless commerce.
           </p>
           <p class="hero-lead">
-            Every physical product receives a unique NFT-based Digital Product ID (DPID) — 
-            the world’s first identification layer that enables provable authenticity, 
+            Every physical product receives a unique NFT-based Digital Product ID (DPID) —
+            the world’s first identification layer that enables provable authenticity,
             correct customs duties, and a world where anyone can become a seller simply by posting a photo.
           </p>
           <div class="hero-badges">
@@ -562,7 +561,9 @@
             <div class="tag">PCT patent filed</div>
           </div>
           <div class="hero-buttons">
-            <a href="mailto:founder@showplly.com?subject=Showplly%20×%20Oracle%20discussion" class="btn btn-primary">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScPeLB7-hy_Sdb92WSJihvDsMVOqvbVciXMSNehiiR8VqSoVg/viewform?usp=header"
+               target="_blank" rel="noopener"
+               class="btn btn-primary">
               Schedule a call
             </a>
             <a href="#problem" class="btn btn-outline">
@@ -575,8 +576,11 @@
         </div>
 
         <div class="hero-illustration">
-          <img src="hero-larry-showplly.png" alt="Showplly founder inviting Oracle to build the authenticity layer together" />
-          <p class="chart-source">Conceptual illustration by Showplly (founder × Oracle collaboration motif).</p>
+          <img src="hero-larry-showplly.png"
+               alt="Showplly founder inviting Oracle to build the authenticity layer together" />
+          <p class="chart-source">
+            Conceptual illustration by Showplly (founder × Oracle collaboration motif).
+          </p>
         </div>
       </div>
     </div>
@@ -584,10 +588,11 @@
 
   <!-- PROBLEM SECTION -->
   <section id="problem">
-    <div class="section-inner">
-      <div class="problem-layout">
-        <!-- LEFT: TEXT + WHY CARD -->
-        <div class="problem-text">
+    <div class="section-inner problem-layout">
+
+      <!-- LEFT: PROBLEM + WHY THIS MATTERS -->
+      <div class="problem-text">
+        <div>
           <div class="section-kicker">Why this layer is missing</div>
           <h2 class="section-title">The internet was never designed to prove what’s real.</h2>
           <p class="section-lead">
@@ -599,60 +604,57 @@
             <li>Each marketplace keeps its own siloed logs — there is no global authenticity log.</li>
             <li>Consumers and regulators see only a “front-end store,” not the truth of the product.</li>
           </ul>
-
-          <!-- WHY THIS MATTERS CARD（横長） -->
-          <div class="card problem-why-card">
-            <div class="section-kicker" style="margin-bottom:4px;">Why this matters now</div>
-            <div class="small-heading">Global impact of mis-declared and counterfeit goods</div>
-            <p class="muted" style="margin-top:6px;">
-              Customs, tax authorities, and industry bodies estimate hundreds of billions of dollars lost each year to under-invoicing, tariff misclassification, and counterfeit trade. The problem is systemic — not just a few bad actors.
-            </p>
-
-            <div class="stats-grid">
-              <div class="stat-card">
-                <div class="stat-label">Global counterfeit trade</div>
-                <div class="stat-value">US$500B+</div>
-                <div class="stat-note">Estimated annual value of counterfeit and pirated goods worldwide.</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-label">Customs revenue gap</div>
-                <div class="stat-value">10–20%</div>
-                <div class="stat-note">Share of potential duties lost to mis-declaration in some markets.</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-label">Regulatory pressure</div>
-                <div class="stat-value">Rising</div>
-                <div class="stat-note">Tighter KYC, supply-chain and product-origin rules across the US, EU, and Asia.</div>
-              </div>
-            </div>
-
-            <p class="muted" style="margin-top:10px;">
-              Showplly’s role is to give each physical item an unforgeable, audit-ready identity that can be shared across logistics, marketplaces, and regulators — without forcing end-users into Web3 complexity.
-            </p>
-          </div>
         </div>
 
-        <!-- RIGHT: CHARTS CARD（縦に2つの画像） -->
-        <div class="problem-charts-card">
-          <div class="small-heading" style="margin-bottom:8px;">
-            Counterfeit vs. mis-declared goods in global trade
-          </div>
-          <div class="charts-vertical">
-            <div>
-              <img src="chart-counterfeit-vs-misdeclared.png"
-                   alt="Share of counterfeit goods and mis-declared goods in global trade" />
-              <p class="chart-source">
-                Source: Illustrative split based on estimates from OECD, WCO and industry reports (indicative, not official statistics).
-              </p>
+        <div class="card problem-stats-card">
+          <div class="section-kicker" style="margin-bottom:4px;">Why this matters now</div>
+          <div class="small-heading">Global impact of mis-declared and counterfeit goods</div>
+          <p class="muted" style="margin-top:6px;">
+            Customs, tax authorities, and industry bodies estimate hundreds of billions of dollars lost each year to under-invoicing, tariff misclassification, and counterfeit trade. The problem is systemic — not just a few bad actors.
+          </p>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">Global counterfeit trade</div>
+              <div class="stat-value">US$500B+</div>
+              <div class="stat-note">Estimated annual value of counterfeit and pirated goods worldwide.</div>
             </div>
-            <div>
-              <img src="chart-customs-loss-by-region.png"
-                   alt="Illustrative chart of customs revenue losses by region due to mis-declaration" />
-              <p class="chart-source">
-                Source: Illustrative customs revenue loss ranges adapted from Global Financial Integrity and OECD trade mis-invoicing studies (indicative only).
-              </p>
+            <div class="stat-card">
+              <div class="stat-label">Customs revenue gap</div>
+              <div class="stat-value">10–20%</div>
+              <div class="stat-note">Share of potential duties lost to mis-declaration in some markets.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Regulatory pressure</div>
+              <div class="stat-value">Rising</div>
+              <div class="stat-note">Tighter KYC, supply-chain and product-origin rules across the US, EU, and Asia.</div>
             </div>
           </div>
+
+          <p class="muted" style="margin-top:10px;margin-bottom:0;">
+            Showplly’s role is to give each physical item an unforgeable, audit-ready identity that can be shared across logistics, marketplaces, and regulators — without forcing end-users into Web3 complexity.
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT: CHARTS STACK -->
+      <div class="problem-charts-card">
+        <div class="small-heading">Counterfeit vs. mis-declared scale</div>
+        <div class="chart-block">
+          <img src="chart-counterfeit-vs-misdeclared.png"
+               alt="Counterfeit vs. mis-declared goods scale comparison" />
+          <p class="chart-source">
+            Source: Illustrative split based on estimates from OECD, WCO and industry reports (indicative, not official statistics).
+          </p>
+        </div>
+
+        <div class="small-heading" style="margin-top:4px;">Customs revenue losses by region</div>
+        <div class="chart-block">
+          <img src="chart-customs-loss-by-region.png"
+               alt="Illustrative chart of customs revenue losses by region due to mis-declaration" />
+          <p class="chart-source">
+            Source: Illustrative customs revenue loss ranges adapted from Global Financial Integrity and OECD trade mis-invoicing studies (indicative only).
+          </p>
         </div>
       </div>
     </div>
@@ -683,7 +685,8 @@
         <p class="muted" style="margin:6px 0 14px;">
           Showplly and Oracle set the foundation to lead. Each uploaded photo instantly generates an NFT-based Digital Product ID and expands global authenticity data in Oracle ADB, while every transaction is immutably recorded on Oracle OBP.
         </p>
-        <img src="showplly-oracle-3steps.png" alt="Three-step diagram of Showplly × Oracle: NFT ID, global data, and verification" />
+        <img src="showplly-oracle-3steps.png"
+             alt="Three-step diagram of Showplly × Oracle: NFT ID, global data, and verification" />
         <p class="chart-source">
           Conceptual architecture sketch for Showplly × Oracle PoC (for discussion, not an official Oracle system diagram).
         </p>
@@ -897,7 +900,11 @@
           The underlying technology has been granted patent protection in Japan, with PCT filed for international coverage. A detailed technical whitepaper and architecture deck are available under NDA.
         </p>
         <p class="muted" style="margin-top:8px;font-size:12px;">
-          Contact: <a href="mailto:founder@showplly.com">founder@showplly.com</a>
+          Contact:
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScPeLB7-hy_Sdb92WSJihvDsMVOqvbVciXMSNehiiR8VqSoVg/viewform?usp=header"
+             target="_blank" rel="noopener">
+            founder@showplly.com
+          </a>
         </p>
       </div>
     </div>
@@ -913,8 +920,12 @@
         If you are Oracle, an infrastructure partner, a marketplace, a logistics provider, a customs-related organization, or an investor looking for the next fundamental internet layer — we’d be honored to speak.
       </div>
       <div class="footer-cta">
-        <a href="mailto:founder@showplly.com?subject=Showplly%20–%20technical%20deck%20request" class="btn btn-outline">Request technical deck</a>
-        <a href="mailto:founder@showplly.com?subject=Showplly%20×%20Oracle%20intro%20call" class="btn btn-primary">Schedule a call</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScPeLB7-hy_Sdb92WSJihvDsMVOqvbVciXMSNehiiR8VqSoVg/viewform?usp=header"
+           target="_blank" rel="noopener"
+           class="btn btn-outline">Request technical deck</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScPeLB7-hy_Sdb92WSJihvDsMVOqvbVciXMSNehiiR8VqSoVg/viewform?usp=header"
+           target="_blank" rel="noopener"
+           class="btn btn-primary">Schedule a call</a>
       </div>
       <div class="footer-meta">
         © Showplly. Patent granted in Japan. PCT filed for international protection.
