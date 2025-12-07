@@ -9,38 +9,35 @@
       --bg: #f5f7fb;
       --bg-alt: #ffffff;
       --primary: #1b4de4;
-      --accent: #ff5a5f;
-      --text-main: #102034;
-      --text-muted: #5b6b84;
-      --border: #dde3f0;
-      --radius-lg: 16px;
-      --radius-md: 10px;
-      --shadow-soft: 0 18px 45px rgba(15, 35, 52, 0.08);
+      --accent: #ff5a59;
+      --accent-soft: #ffe7e5;
+      --primary-soft: #e4ebff;
+      --text: #101827;
+      --text-muted: #6b7280;
+      --border: #e2e5f0;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.06);
+      --shadow-card: 0 15px 35px rgba(15, 23, 42, 0.08);
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
       --max-width: 1120px;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      line-height: 1.6;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top left, #e9f0ff 0, #f5f7fb 50%);
     }
 
     a {
       color: inherit;
       text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
     }
 
     .page {
@@ -49,70 +46,77 @@
       flex-direction: column;
     }
 
-    /* NAV */
-    header {
-      background: #ffffffcc;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(221, 227, 240, 0.7);
+    .header {
       position: sticky;
       top: 0;
       z-index: 20;
+      background: rgba(245, 247, 251, 0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 229, 240, 0.6);
     }
 
-    .nav {
+    .header-inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 12px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      padding: 14px 18px;
     }
 
-    .nav-left {
+    .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-weight: 700;
-    }
-
-    /* Showplly ロゴを少し目立たせる */
-    .nav-left span {
-      font-size: 20px;
-      letter-spacing: 0.04em;
-      color: var(--primary);
+      font-size: 18px;
+      letter-spacing: 0.02em;
     }
 
     .logo-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
       background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(255, 90, 89, 0.15);
     }
 
     .nav-links {
       display: flex;
-      gap: 20px;
-      font-size: 14px;
+      gap: 16px;
+      font-size: 13px;
       color: var(--text-muted);
+      align-items: center;
+    }
+
+    .nav-links a span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      display: block;
+    }
+
+    .nav-links a {
+      padding: 4px 0;
     }
 
     .nav-links a:hover {
-      color: var(--primary);
+      color: var(--text);
     }
 
     .nav-cta {
       display: flex;
-      gap: 10px;
+      gap: 8px;
+      align-items: center;
     }
 
     .btn {
-      border-radius: 999px;
-      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: none;
       font-size: 13px;
-      font-weight: 500;
+      padding: 9px 16px;
+      font-weight: 600;
       cursor: pointer;
-      border: 1px solid transparent;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -120,22 +124,241 @@
       white-space: nowrap;
     }
 
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: var(--shadow-soft);
-    }
-
     .btn-outline {
-      background: #fff;
-      color: var(--text-main);
-      border-color: var(--border);
+      background: transparent;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: #0f172a;
     }
 
-    /* LAYOUT UTILITIES */
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.8);
+    }
 
-    section {
-      padding: 64px 16px;
+    .btn-primary {
+      background: linear-gradient(135deg, #1b4de4, #2563eb);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
+      border: 1px solid rgba(37, 99, 235, 0.9);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      border: 1px solid var(--border);
+      color: #111827;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+    }
+
+    .btn-secondary:hover {
+      background: #f9fafb;
+    }
+
+    .btn-sm {
+      font-size: 12px;
+      padding: 7px 14px;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      padding: 40px 18px;
+    }
+
+    .hero {
+      padding-top: 36px;
+      padding-bottom: 28px;
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-kicker span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      line-height: 1.22;
+      font-weight: 750;
+      letter-spacing: 0.01em;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .hero-tagline {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      max-width: 480px;
+    }
+
+    .hero-body {
+      font-size: 13px;
+      color: #4b5563;
+      margin-bottom: 16px;
+      max-width: 520px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 11px;
+      color: #374151;
+      margin-bottom: 16px;
+    }
+
+    .hero-badge {
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-note span {
+      font-weight: 600;
+      color: #4b5563;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #fdfbff, #edf2ff);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 18px 16px;
+      border: 1px solid rgba(209, 213, 219, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(219, 234, 254, 0.9);
+      margin-bottom: 8px;
+    }
+
+    .hero-card-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #1d4ed8;
+    }
+
+    .hero-card-title {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .hero-card-body {
+      font-size: 12px;
+      color: #374151;
+      max-width: 230px;
+    }
+
+    .hero-card-avatars {
+      position: absolute;
+      right: 14px;
+      bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #fed7aa;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar-circle:nth-child(2) {
+      background: #bfdbfe;
+      margin-left: -10px;
+    }
+
+    .avatar-face {
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      background: radial-gradient(circle at 30% 30%, #fef3c7 0, #f97316 50%);
+    }
+
+    .avatar-suit {
+      position: absolute;
+      left: -2px;
+      right: -2px;
+      bottom: -6px;
+      height: 20px;
+      background: linear-gradient(135deg, #1f2937, #0f172a);
+      border-radius: 50% 50% 6px 6px;
+    }
+
+    .hero-card-caption {
+      position: absolute;
+      right: 18px;
+      top: 16px;
+      font-size: 10px;
+      color: #4b5563;
+      max-width: 130px;
+      line-height: 1.4;
+      text-align: right;
     }
 
     .section-inner {
@@ -143,88 +366,104 @@
       margin: 0 auto;
     }
 
-    .section-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
     .section-kicker {
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--primary);
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
       margin-bottom: 8px;
+      color: #0f172a;
     }
 
     .section-lead {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 24px;
-      max-width: 640px;
+      font-size: 13px;
+      color: #4b5563;
+      margin-bottom: 10px;
+      max-width: 520px;
     }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 40px;
-      align-items: center;
+    .check-list {
+      margin: 0 0 10px;
+      padding-left: 18px;
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    .check-list li {
+      margin-bottom: 4px;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 12px;
     }
 
     .card {
-      background: var(--bg-alt);
+      background: #ffffff;
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-soft);
-      padding: 24px 24px 22px;
+      padding: 16px 14px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
     }
 
-    .pill {
+    .small-heading {
+      font-size: 13px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .pill-label {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      padding: 4px 10px;
       font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(255, 255, 255, 0.95);
+      color: #4b5563;
     }
 
-    .pill span {
-      font-weight: 600;
-      color: var(--primary);
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4f46e5;
     }
 
-    .tag {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: #e9f0ff;
-      color: var(--primary);
-      display: inline-block;
+    .problem-section {
+      background: #f5f7fb;
     }
 
-    ul {
-      list-style: none;
+    .problem-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: flex-start;
     }
 
-    ul.check-list li {
-      position: relative;
-      padding-left: 18px;
-      margin-bottom: 6px;
-      font-size: 14px;
-      color: var(--text-muted);
+    .problem-text {
     }
 
-    ul.check-list li::before {
-      content: "•";
-      position: absolute;
-      left: 4px;
-      top: 0;
-      color: var(--accent);
-      font-size: 18px;
-      line-height: 1;
+    .problem-why-card {
+      margin-top: 18px;
+      padding: 18px 18px 16px;
+    }
+
+    .problem-charts-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 18px 14px;
+      margin-top: -8px;
     }
 
     .stats-grid {
@@ -260,611 +499,1202 @@
       color: var(--text-muted);
     }
 
-    .charts-grid {
-      margin-top: 12px;
-      display: grid;
-      gap: 16px;
+    .charts-vertical {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
     }
 
-    /* 画像ソース表記用 */
+    .charts-vertical img {
+      max-width: 260px;
+    }
+
     .chart-source {
       font-size: 11px;
       color: var(--text-muted);
       margin-top: 4px;
     }
 
-    /* HERO */
-
-    .hero {
-      background: radial-gradient(circle at top left, #e6f0ff 0, #f5f7fb 40%, #ffffff 100%);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 56px 16px 40px;
-    }
-
-    .hero-grid {
+    .two-column-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 40px;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 30px;
       align-items: center;
     }
 
-    .hero-title {
-      font-size: 30px;
-      line-height: 1.25;
-      margin-bottom: 10px;
+    .highlight-card {
+      border-radius: var(--radius-lg);
+      background: #ffffff;
+      padding: 18px 16px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.9);
     }
 
-    .hero-subtitle {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 10px;
-      max-width: 480px;
-    }
-
-    .hero-lead {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 16px;
-      max-width: 520px;
-    }
-
-    .hero-badges {
+    .tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
+    }
+
+    .tag-pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(249, 250, 251, 0.9);
+      border: 1px solid rgba(209, 213, 219, 0.8);
+      color: #4b5563;
+    }
+
+    .triple-card-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .triple-card {
+      border-radius: var(--radius-md);
+      background: #fff;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      padding: 12px 12px 10px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+    }
+
+    .triple-card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .triple-card-main {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .triple-card-note {
       font-size: 11px;
       color: var(--text-muted);
     }
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .hero-meta {
+    .subtle {
       font-size: 11px;
       color: var(--text-muted);
+      margin-top: 8px;
     }
 
-    .hero-illustration {
-      max-width: 520px;
-      margin-left: auto;
+    .mini-section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 4px;
     }
 
-    /* TABLE GRID SECTIONS */
-
-    .columns-3 {
+    .why-oracle-row {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
 
-    .columns-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+    .why-oracle-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 14px 13px 13px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.9);
     }
 
-    .small-heading {
-      font-size: 14px;
-      font-weight: 600;
+    .why-oracle-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.16em;
       margin-bottom: 4px;
     }
 
-    .muted {
-      color: var(--text-muted);
-      font-size: 13px;
+    .why-oracle-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #111827;
     }
 
-    /* FOOTER */
+    .why-oracle-body {
+      font-size: 12px;
+      color: #4b5563;
+    }
 
-    footer {
-      background: #061225;
-      color: #e5ecff;
-      padding: 40px 16px 28px;
-      margin-top: 40px;
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .use-case-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .use-case-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 13px 12px 11px;
+      font-size: 12px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .use-case-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .use-case-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .use-case-body {
+      font-size: 11.5px;
+      color: #4b5563;
+    }
+
+    .ux-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .ux-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 13px 12px 11px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .ux-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .ux-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+
+    .ux-body {
+      font-size: 11.5px;
+      color: #4b5563;
+    }
+
+    .roi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .roi-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 13px 12px 11px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .pre-rwa-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .pre-rwa-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .pre-rwa-stack {
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .pre-rwa-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(156, 163, 175, 0.6);
+      background: rgba(249, 250, 251, 0.95);
+      color: #4b5563;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .pre-rwa-box {
+      border-radius: 14px;
+      padding: 9px 12px;
+      margin: 0 auto 8px;
+      max-width: 240px;
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.35);
+    }
+
+    .pre-rwa-box.secondary {
+      background: #ffffff;
+      color: #111827;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      box-shadow: 0 12px 25px rgba(15, 23, 42, 0.07);
+    }
+
+    .pre-rwa-caption {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .inclusion-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .inclusion-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .inclusion-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .inclusion-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #1d4ed8;
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.2);
+    }
+
+    .inclusion-icon:nth-child(2) {
+      background: linear-gradient(135deg, #ecfdf3, #bbf7d0);
+      color: #15803d;
+    }
+
+    .inclusion-icon:nth-child(3) {
+      background: linear-gradient(135deg, #fef3c7, #fed7aa);
+      color: #b45309;
+    }
+
+    .inclusion-label {
+      font-size: 11px;
+      text-align: center;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .tech-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 14px 13px 12px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .tech-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .tech-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+
+    .tech-body {
+      font-size: 11.5px;
+      color: #4b5563;
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 22px;
+      align-items: flex-start;
+    }
+
+    .founder-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 14px 13px 12px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .founder-name {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+
+    .founder-role {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .founder-body {
+      font-size: 11.5px;
+      color: #4b5563;
+    }
+
+    .hero-badge.blue-badge {
+      background: rgba(219, 234, 254, 0.9);
+      border-color: rgba(191, 219, 254, 0.9);
+    }
+
+    .hero-badge.blue-badge .badge-dot {
+      background: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+    }
+
+    .footer {
+      border-top: 1px solid rgba(226, 229, 240, 0.7);
+      background: linear-gradient(to bottom, #f8fafc, #e5edff);
+      padding: 22px 18px 26px;
+      margin-top: 20px;
     }
 
     .footer-inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      text-align: center;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
     }
 
     .footer-title {
-      font-size: 18px;
-      margin-bottom: 10px;
+      font-size: 17px;
+      font-weight: 650;
+      margin-bottom: 6px;
+      color: #0f172a;
     }
 
-    .footer-sub {
-      color: #b8c4e5;
-      font-size: 13px;
-      margin-bottom: 18px;
+    .footer-body {
+      font-size: 12px;
+      color: #4b5563;
+      max-width: 520px;
     }
 
-    .footer-cta {
+    .footer-cta-row {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
+      align-items: center;
     }
 
     .footer-meta {
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 11px;
-      color: #7f8bb1;
-      margin-top: 4px;
+      color: var(--text-muted);
     }
 
-    /* RESPONSIVE */
+    .footer-meta a {
+      text-decoration: underline;
+    }
 
-    @media (max-width: 960px) {
-      .hero-grid,
-      .two-col,
-      .columns-3,
-      .columns-2 {
+    @media (max-width: 1024px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      }
+
+      .two-column-layout,
+      .pre-rwa-layout,
+      .inclusion-layout,
+      .founder-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-      .hero-inner {
-        padding-top: 40px;
+
+      .footer-inner {
+        grid-template-columns: minmax(0, 1fr);
       }
-      .hero-grid {
-        gap: 32px;
+
+      .footer-cta-row {
+        justify-content: flex-start;
       }
-      .hero-illustration {
-        max-width: 360px;
-        margin: 0 auto;
-      }
+    }
+
+    @media (max-width: 880px) {
       .nav-links {
         display: none;
       }
-      .stats-grid {
+
+      .hero-inner {
         grid-template-columns: minmax(0, 1fr);
       }
-      .charts-grid {
+
+      .hero-card {
+        margin-top: 8px;
+      }
+
+      .problem-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .problem-charts-card {
+        margin-top: 16px;
+      }
+
+      .two-column-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .pre-rwa-layout,
+      .inclusion-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .use-case-grid,
+      .ux-grid,
+      .roi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .why-oracle-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .charts-vertical img {
+        max-width: 100%;
+      }
+
+      .footer-inner {
         grid-template-columns: minmax(0, 1fr);
       }
     }
 
     @media (max-width: 640px) {
-      section {
-        padding: 48px 16px;
+      .section {
+        padding: 28px 16px;
       }
+
+      .hero {
+        padding-top: 24px;
+      }
+
       .hero-title {
-        font-size: 24px;
+        font-size: 26px;
       }
-      .hero-buttons {
+
+      .hero-card {
+        padding-right: 14px;
+      }
+
+      .hero-card-caption {
+        position: static;
+        text-align: left;
+        margin-top: 10px;
+      }
+
+      .hero-card-avatars {
+        position: static;
+        margin-top: 12px;
+        justify-content: flex-start;
+      }
+
+      .triple-card-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .use-case-grid,
+      .ux-grid,
+      .roi-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .tech-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .inclusion-icons {
         flex-direction: column;
-        align-items: stretch;
+      }
+
+      .footer-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
       }
     }
   </style>
 </head>
 <body>
-<div class="page">
-
-  <!-- HEADER -->
-  <header>
-    <div class="nav">
-      <div class="nav-left">
-        <div class="logo-dot"></div>
-        <span>Showplly</span>
+  <div class="page">
+    <header class="header">
+      <div class="header-inner">
+        <a href="#top" class="logo">
+          <div class="logo-dot"></div>
+          <span>Showplly</span>
+        </a>
+        <nav class="nav-links">
+          <a href="#problem">
+            <span>Why this matters</span>
+          </a>
+          <a href="#what">
+            <span>How it works</span>
+          </a>
+          <a href="#oracle">
+            <span>Why Oracle</span>
+          </a>
+          <a href="#use-cases">
+            <span>Use cases</span>
+          </a>
+          <a href="#technology">
+            <span>Technology</span>
+          </a>
+          <a href="#founder">
+            <span>Founder</span>
+          </a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJJE5NoC8wW7AGkmzj8v9YY6cvj1u3zuf-Kyockh8ndz-wig/viewform"
+            target="_blank" rel="noopener noreferrer">
+            <span>Contact</span>
+          </a>
+        </nav>
+        <div class="nav-cta">
+          <a href="mailto:founder@showplly.com" class="btn btn-outline btn-sm">Talk with the founder</a>
+          <a href="mailto:founder@showplly.com?subject=Request%20for%20technical%20deck"
+            class="btn btn-primary btn-sm">Request technical deck</a>
+        </div>
       </div>
-      <nav class="nav-links">
-        <a href="#problem">Why this matters</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#oracle">Why Oracle</a>
-        <a href="#use-cases">Use cases</a>
-        <a href="#tech">Technology</a>
-        <a href="#founder">Founder</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScPeLB7-hy_Sdb92WSJihvDsMVOqvbVciXMSNehiiR8VqSoVg/viewform?usp=header"
-           target="_blank" rel="noopener noreferrer">Contact</a>
-      </nav>
-      <div class="nav-cta">
-        <a href="mailto:founder@showplly.com" class="btn btn-outline">Talk with the founder</a>
-        <a href="mailto:founder@showplly.com?subject=Showplly%20–%20technical%20deck%20request" class="btn btn-primary">Request technical deck</a>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="hero-inner">
-      <div class="hero-grid">
+    <main id="top">
+      <section class="section hero">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-kicker">
+              Showplly × Oracle preview concept
+            </div>
+            <h1 class="hero-title">
+              The world’s first NFT-based<br />
+              Digital Product Identity Layer for Global Commerce
+            </h1>
+            <p class="hero-tagline">
+              Powering authenticity, smart customs, and borderless commerce.
+            </p>
+            <p class="hero-body">
+              Every physical product receives a unique NFT-based Digital Product ID (DPID) — the world’s first
+              identification layer that enables provable authenticity, correct customs duties, and a world where
+              anyone can become a seller simply by posting a photo.
+            </p>
+            <div class="hero-badges">
+              <div class="hero-badge blue-badge">
+                <span class="badge-dot"></span>
+                <span>The world’s first NFT-based Digital Product ID</span>
+              </div>
+              <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Oracle ADB + OBP</span>
+              </div>
+              <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Patent granted in Japan, PCT filed</span>
+              </div>
+            </div>
+            <div class="hero-cta-row">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJJE5NoC8wW7AGkmzj8v9YY6cvj1u3zuf-Kyockh8ndz-wig/viewform"
+                target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                Schedule a call
+              </a>
+              <a href="#problem" class="btn btn-secondary">
+                See why this matters
+              </a>
+            </div>
+            <p class="hero-note">
+              Currently in PoC discussions with <span>Oracle Japan (OCI / ADB / OBP)</span>. Patent granted in Japan,
+              PCT filed internationally.
+            </p>
+          </div>
+
+          <div class="hero-card">
+            <div class="hero-card-pill">
+              <span class="hero-card-pill-dot"></span>
+              <span>Showplly × Oracle concept visual</span>
+            </div>
+            <div class="hero-card-title">
+              The world’s first NFT-based Digital Product Identity Layer for Global Commerce
+            </div>
+            <div class="hero-card-body">
+              Conceptual illustration of Showplly inviting Oracle to build the world’s first global authenticity &
+              customs integrity layer on OCI, ADB, and OBP.
+            </div>
+            <div class="hero-card-caption">
+              Concept visual created by Showplly — not an official Oracle marketing asset, but a preview concept for
+              collaboration.
+            </div>
+            <div class="hero-card-avatars">
+              <div class="avatar-circle">
+                <div class="avatar-face"></div>
+                <div class="avatar-suit"></div>
+              </div>
+              <div class="avatar-circle">
+                <div class="avatar-face"></div>
+                <div class="avatar-suit"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROBLEM SECTION -->
+      <section id="problem" class="section problem-section">
+        <div class="section-inner">
+          <div class="problem-layout">
+            <!-- LEFT: TEXT + WHY CARD -->
+            <div class="problem-text">
+              <div class="section-kicker">Why this layer is missing</div>
+              <h2 class="section-title">The internet was never designed to prove what’s real.</h2>
+              <p class="section-lead">
+                E-commerce made global trade frictionless — and just as frictionless for fraud. No shared, verifiable
+                layer exists to prove that a physical product is genuine, fairly declared at customs, and traded along a
+                clean supply chain.
+              </p>
+              <ul class="check-list">
+                <li>Counterfeit goods cross borders at scale, with little shared intelligence.</li>
+                <li>Under-valuation and false declarations erode customs revenues.</li>
+                <li>Each marketplace keeps its own siloed logs — there is no global authenticity log.</li>
+                <li>Consumers and regulators see only a “front-end store,” not the truth of the product.</li>
+              </ul>
+
+              <!-- WHY THIS MATTERS CARD -->
+              <div class="card problem-why-card">
+                <div class="section-kicker" style="margin-bottom: 4px;">Why this matters now</div>
+                <div class="small-heading">Global impact of mis-declared and counterfeit goods</div>
+                <p class="muted" style="margin-top: 6px;">
+                  Customs, tax authorities, and industry bodies estimate hundreds of billions of dollars lost each year
+                  to under-invoicing, tariff misclassification, and counterfeit trade. The problem is systemic — not
+                  just a few bad actors.
+                </p>
+
+                <div class="stats-grid">
+                  <div class="stat-card">
+                    <div class="stat-label">Global counterfeit trade</div>
+                    <div class="stat-value">US$500B+</div>
+                    <div class="stat-note">Estimated annual value of counterfeit and pirated goods worldwide.</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-label">Customs revenue gap</div>
+                    <div class="stat-value">10–20%</div>
+                    <div class="stat-note">Share of potential duties lost to mis-declaration in some markets.</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-label">Regulatory pressure</div>
+                    <div class="stat-value">Rising</div>
+                    <div class="stat-note">Tighter KYC, supply-chain and product-origin rules across the US, EU, and
+                      Asia.</div>
+                  </div>
+                </div>
+
+                <p class="muted" style="margin-top: 10px;">
+                  Showplly’s role is to give each physical item an unforgeable, audit-ready identity that can be shared
+                  across logistics, marketplaces, and regulators — without forcing end-users into Web3 complexity.
+                </p>
+              </div>
+            </div>
+
+            <!-- RIGHT: CHARTS CARD -->
+            <div class="problem-charts-card card">
+              <div class="small-heading" style="margin-bottom: 8px;">
+                Counterfeit vs. mis-declared goods in global trade
+              </div>
+              <div class="charts-vertical">
+                <div>
+                  <img src="chart-counterfeit-vs-misdeclared.png"
+                       alt="Share of counterfeit goods and mis-declared goods in global trade" />
+                  <p class="chart-source">
+                    Source: Illustrative split based on estimates from OECD, WCO and industry reports (indicative, not
+                    official statistics).
+                  </p>
+                </div>
+                <div>
+                  <img src="chart-customs-loss-by-region.png"
+                       alt="Illustrative chart of customs revenue losses by region due to mis-declaration" />
+                  <p class="chart-source">
+                    Source: Illustrative customs revenue loss ranges adapted from Global Financial Integrity and OECD
+                    trade mis-invoicing studies (indicative only).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT IS SHOWPLLY -->
+      <section id="what" class="section">
+        <div class="section-inner">
+          <div class="two-column-layout">
+            <div>
+              <div class="section-kicker">What is Showplly</div>
+              <h2 class="section-title">Every product becomes a verifiable digital identity.</h2>
+              <p class="section-lead">
+                Showplly is an authenticity infrastructure that links physical goods with NFT-based Digital Product IDs,
+                anchored on Oracle’s enterprise platform. For the user, it still feels like a familiar e-commerce
+                experience.
+              </p>
+              <ul class="check-list">
+                <li>Generates a unique NFT Digital Product ID (DPID) for each uploaded product photo.</li>
+                <li>Stores authenticity &amp; trade data in Oracle Autonomous Database (ADB).</li>
+                <li>Records verification &amp; logistics events on Oracle Blockchain Platform (OBP).</li>
+              </ul>
+              <p class="muted">
+                From brand registration through cross-border shipping to resale, each lifecycle event accumulates on the
+                same product identity — not on fragmented, platform-specific logs.
+              </p>
+            </div>
+            <div>
+              <div class="highlight-card">
+                <div class="pill-row">
+                  <div class="pill-label">
+                    <span class="pill-dot"></span>
+                    <span>Showplly × Oracle</span>
+                  </div>
+                </div>
+                <div style="margin-top: 10px;">
+                  <div class="small-heading">A new global standard for authentic goods</div>
+                  <p class="muted" style="margin-top: 6px;">
+                    Showplly and Oracle together set the foundation to lead. Each uploaded photo instantly generates an
+                    NFT-based Digital Product ID and expands global authenticity data in Oracle ADB, while every
+                    transaction is immutably recorded on Oracle OBP.
+                  </p>
+                </div>
+                <div class="triple-card-row">
+                  <div class="triple-card">
+                    <div class="triple-card-label">NFT Product identity</div>
+                    <div class="triple-card-main">NFT Digital Product ID (DPID)</div>
+                    <p class="triple-card-note">
+                      Each item gets a unique, non-fungible identity that proves authenticity across its lifecycle.
+                    </p>
+                  </div>
+                  <div class="triple-card">
+                    <div class="triple-card-label">Global data hub</div>
+                    <div class="triple-card-main">Oracle ADB data lake</div>
+                    <p class="triple-card-note">
+                      Product, logistics, customs and verification data aggregated in a single global authenticity
+                      datastore.
+                    </p>
+                  </div>
+                  <div class="triple-card">
+                    <div class="triple-card-label">Verifiable events</div>
+                    <div class="triple-card-main">Oracle OBP verification</div>
+                    <p class="triple-card-note">
+                      Immutable logs of authenticity checks, customs clearances, and cross-border transfers.
+                    </p>
+                  </div>
+                </div>
+                <p class="subtle">
+                  Conceptual architecture sketch for a Showplly × Oracle PoC — indicative only, not an official Oracle
+                  system diagram.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY ORACLE -->
+      <section id="oracle" class="section">
+        <div class="section-inner">
+          <div>
+            <div class="section-kicker">Why Oracle</div>
+            <h2 class="section-title">The only place the world’s first authenticity layer can run at global scale.</h2>
+            <p class="section-lead">
+              Showplly was designed from day one to operate at Oracle scale. Oracle provides the infrastructure to make
+              a global authenticity and customs-integrity layer feasible — for brands, logistics partners, customs, and
+              marketplaces.
+            </p>
+          </div>
+
+          <div class="why-oracle-row">
+            <div class="why-oracle-card">
+              <div class="why-oracle-label">Authenticity architecture</div>
+              <div class="why-oracle-title">Patent-backed Digital Product ID model</div>
+              <p class="why-oracle-body">
+                Optimized for physical goods, cross-border trade, and customs integrity, with a data model built on
+                Oracle ADB and OBP.
+              </p>
+            </div>
+            <div class="why-oracle-card">
+              <div class="why-oracle-label">Autonomous Database</div>
+              <div class="why-oracle-title">Global authenticity data lake</div>
+              <p class="why-oracle-body">
+                Product, logistics, warranty, and customs-related data aggregated in Oracle Autonomous Database — the
+                single source of truth for every DPID.
+              </p>
+            </div>
+            <div class="why-oracle-card">
+              <div class="why-oracle-label">Blockchain &amp; AI</div>
+              <div class="why-oracle-title">Verified events + AI-ready logs</div>
+              <p class="why-oracle-body">
+                Oracle OBP provides tamper-evident verification logs; Oracle’s analytics &amp; AI stack unlock pattern
+                detection, risk scoring, and smart customs insights on top.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- USER EXPERIENCE -->
+      <section id="use-cases" class="section">
+        <div class="section-inner">
+          <div>
+            <div class="section-kicker">User experience</div>
+            <h2 class="section-title">Web2 UX, Web3-grade security.</h2>
+            <p class="section-lead">
+              Showplly bridges today’s e-commerce expectations with tomorrow’s decentralized commerce infrastructure —
+              without forcing users to manage wallets or seed phrases.
+            </p>
+          </div>
+
+          <div class="ux-grid">
+            <div class="ux-card">
+              <div class="ux-label">Web2-familiar</div>
+              <div class="ux-title">Browse, buy, and sell like any modern marketplace.</div>
+              <p class="ux-body">
+                Users interact via a familiar e-commerce interface, while the NFT-based Digital Product IDs silently
+                power authenticity in the background.
+              </p>
+            </div>
+            <div class="ux-card">
+              <div class="ux-label">Web2.5 – invisible NFTs</div>
+              <div class="ux-title">NFT Digital Product IDs live entirely in the backend.</div>
+              <p class="ux-body">
+                Buyers and sellers simply see “verified product” signals and authenticity scores. No need to understand
+                wallets or crypto.
+              </p>
+            </div>
+            <div class="ux-card">
+              <div class="ux-label">Web3 – optional ownership</div>
+              <div class="ux-title">On-chain portability when it matters.</div>
+              <p class="ux-body">
+                Power users and partners can move IDs on-chain, connect wallets, and interoperate with other Web3
+                ecosystems when needed — without forcing it on everyone.
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-top: 28px;">
+            <div class="section-kicker">Immediate value</div>
+            <h3 class="section-title" style="font-size: 20px; margin-bottom: 6px;">
+              Where Showplly generates ROI from day one.
+            </h3>
+            <p class="section-lead">
+              Showplly is built to deliver measurable value for customs authorities, marketplaces, and brands — even
+              before full-scale RWA tokenization arrives.
+            </p>
+
+            <div class="roi-grid">
+              <div class="roi-card">
+                <div class="use-case-label">Cross-border e-commerce</div>
+                <div class="use-case-title">Authenticity certificates travel with each shipment.</div>
+                <p class="use-case-body">
+                  Customs and product data stay cryptographically tied to each item, reducing fraud and mis-declared
+                  shipments.
+                </p>
+              </div>
+              <div class="roi-card">
+                <div class="use-case-label">Smart customs &amp; tax integrity</div>
+                <div class="use-case-title">AI-assisted classification and risk scoring.</div>
+                <p class="use-case-body">
+                  Mismatches between declarations and real goods become visible and auditable, enabling smarter
+                  inspections.
+                </p>
+              </div>
+              <div class="roi-card">
+                <div class="use-case-label">Supply-chain traceability</div>
+                <div class="use-case-title">Track items from manufacturer to consumer.</div>
+                <p class="use-case-body">
+                  A single authenticity log follows each item, accessible to multiple stakeholders with appropriate
+                  permissions.
+                </p>
+              </div>
+              <div class="roi-card">
+                <div class="use-case-label">C2C &amp; re-commerce</div>
+                <div class="use-case-title">Pre-owned products can prove origin and history.</div>
+                <p class="use-case-body">
+                  Resale markets benefit from verifiable authenticity and service records, unlocking new opportunities
+                  for brands and platforms.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRE-RWA IDENTIFICATION LAYER -->
+      <section class="section">
+        <div class="section-inner">
+          <div class="pre-rwa-layout">
+            <div>
+              <div class="section-kicker">Pre-RWA identification layer</div>
+              <h2 class="section-title">Before tokenization, the world needs identification.</h2>
+              <p class="section-lead">
+                Showplly is the world’s first “Pre-RWA” identification layer for physical goods. Before any asset —
+                including securities and real estate — can be tokenized as RWA, it must first be uniquely and
+                verifiably identified.
+              </p>
+              <p class="section-lead" style="margin-top: 6px;">
+                The NFT-based Digital Product ID (DPID) provides that missing layer: a universal, non-financial,
+                authenticity-first identifier that can later be linked to financial tokens where regulations allow.
+              </p>
+              <p class="muted">
+                In other words, Showplly’s identification layer becomes the foundation on which future RWA models for
+                products, rights, and even financial instruments can safely stand.
+              </p>
+            </div>
+            <div>
+              <div class="pre-rwa-card">
+                <div class="mini-section-title">From physical identity to future RWA</div>
+                <p class="muted">
+                  Showplly does not itself issue financial instruments. Instead, it provides the world’s first
+                  universal, authenticity-focused identification layer that RWA platforms can build upon.
+                </p>
+                <div class="pre-rwa-stack">
+                  <div class="pre-rwa-pill">Showplly as the Pre-RWA Identification Layer</div>
+                  <div class="pre-rwa-box secondary">
+                    Optional RWA Tokens<br />
+                    <span style="font-size: 11px; font-weight: 400;">(Issued by regulated financial entities)</span>
+                  </div>
+                  <div class="pre-rwa-box">
+                    NFT-based DPID<br />
+                    <span style="font-size: 11px; font-weight: 400;">Proof of real product &amp; transaction history</span>
+                  </div>
+                  <div class="pre-rwa-box secondary">
+                    Physical goods<br />
+                    <span style="font-size: 11px; font-weight: 400;">Authenticated products with verifiable provenance</span>
+                  </div>
+                  <div class="pre-rwa-caption">
+                    Conceptual illustration by Showplly — positioning DPID as a Pre-RWA identification layer for
+                    physical items (non-financial).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INCLUSION & ACCESS -->
+      <section class="section">
+        <div class="section-inner">
+          <div class="inclusion-layout">
+            <div>
+              <div class="section-kicker">Inclusion &amp; access</div>
+              <h2 class="section-title">Lowering barriers to global commerce.</h2>
+              <p class="section-lead">
+                Showplly enables small merchants in developing regions — and economically disadvantaged individuals
+                everywhere — to participate in global trade simply by posting a product photo.
+              </p>
+              <p class="section-lead" style="margin-top: 6px;">
+                No warehouse, no complex paperwork, no gatekeeping by centralized platforms. The NFT-based Digital
+                Product ID and Oracle-backed infrastructure provide the trust layer that individuals alone could never
+                build.
+              </p>
+              <p class="muted">
+                By combining authenticity, smart customs, and open access, Showplly aims to make global commerce fairer
+                — not only for large brands, but also for the smallest and most vulnerable participants in the economy.
+              </p>
+            </div>
+            <div>
+              <div class="inclusion-card">
+                <div class="mini-section-title">Expanding participation in the real economy</div>
+                <p class="muted">
+                  When “uploading a photo” is enough to enter the global marketplace, the internet finally begins to
+                  serve as a truly open economic rail — backed by verifiable, Oracle-grade authenticity data.
+                </p>
+                <div class="inclusion-icons">
+                  <div>
+                    <div class="inclusion-icon">👩‍🌾</div>
+                    <div class="inclusion-label">Small merchants / local individuals</div>
+                  </div>
+                  <div>
+                    <div class="inclusion-icon">🪪</div>
+                    <div class="inclusion-label">Showplly ID</div>
+                  </div>
+                  <div>
+                    <div class="inclusion-icon">🌐</div>
+                    <div class="inclusion-label">Global buyers</div>
+                  </div>
+                </div>
+                <div class="pre-rwa-caption" style="margin-top: 8px;">
+                  Concept visual created by Showplly — inclusive access for small merchants and low-income individuals
+                  to reach global buyers via authenticated products.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECHNOLOGY -->
+      <section id="technology" class="section">
+        <div class="section-inner">
+          <div>
+            <div class="section-kicker">Technology</div>
+            <h2 class="section-title">One product view. Many layers of trust.</h2>
+            <p class="section-lead">
+              Showplly is not just a marketplace — it is a protocol and data infrastructure for authenticated commerce,
+              with each physical item represented as a verifiable NFT-based identity.
+            </p>
+          </div>
+
+          <div class="tech-grid">
+            <div class="tech-card">
+              <div class="tech-label">Digital Product ID (DPID)</div>
+              <div class="tech-title">Patented NFT-based structure for physical goods.</div>
+              <p class="tech-body">
+                Each DPID anchors product metadata, images, logistics logs, customs declarations, and verification
+                events. This creates a single, auditable record of truth for each item.
+              </p>
+            </div>
+            <div class="tech-card">
+              <div class="tech-label">Oracle-native data model</div>
+              <div class="tech-title">Authenticity data lake on Oracle ADB.</div>
+              <p class="tech-body">
+                Verification logs on OBP, and APIs for customs, logistics, and marketplace partners to connect and query
+                DPIDs across the global network.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOUNDER -->
+      <section id="founder" class="section">
+        <div class="section-inner">
+          <div class="founder-grid">
+            <div>
+              <div class="section-kicker">Founder</div>
+              <h2 class="section-title">About the founder.</h2>
+              <p class="section-lead">
+                Showplly is led by a founder with deep experience in global hardware, logistics, and cross-border
+                commerce — including the pain of counterfeit goods, opaque logistics, and fragmented data first-hand.
+              </p>
+              <p class="section-lead" style="margin-top: 6px;">
+                Over 30 years in computer hardware, distribution, and global supply chains, he has seen how counterfeit
+                products and mis-declared shipments damage trust and profitability for honest brands and retailers.
+              </p>
+            </div>
+            <div class="founder-card">
+              <div class="founder-name">Yuzuru Sano — Founder, Showplly</div>
+              <div class="founder-role">Designing the authenticity layer of the internet.</div>
+              <p class="founder-body">
+                Yuzuru designed Showplly as the missing “authenticity layer” of the internet — and aligned the
+                architecture from day one with Oracle’s data and blockchain platforms.
+              </p>
+              <p class="founder-body" style="margin-top: 8px;">
+                The underlying technology has been granted patent protection in Japan, with PCT filed for international
+                coverage. A detailed technical whitepaper and architecture deck are available under NDA.
+              </p>
+              <p class="founder-body" style="margin-top: 8px;">
+                Contact: <a href="mailto:founder@showplly.com">founder@showplly.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
         <div>
-          <div class="pill">
-            <span>Showplly × Oracle</span>
-            <span style="color:var(--text-muted);font-weight:400;">preview concept</span>
+          <div class="footer-title">
+            Let’s build the world’s first authenticity layer of the internet together.
           </div>
-          <h1 class="hero-title">
-            The world’s first NFT-based<br>
-            Digital Product Identity Layer for Global Commerce
-          </h1>
-          <p class="hero-subtitle">
-            Powering authenticity, smart customs, and borderless commerce.
-          </p>
-          <p class="hero-lead">
-            Every physical product receives a unique NFT-based Digital Product ID (DPID) — 
-            the world’s first identification layer that enables provable authenticity, 
-            correct customs duties, and a world where anyone can become a seller simply by posting a photo.
-          </p>
-          <div class="hero-badges">
-            <div class="tag">The world’s first NFT-based Digital Product ID</div>
-            <div class="tag">Oracle ADB + OBP</div>
-            <div class="tag">PCT patent filed</div>
-          </div>
-          <div class="hero-buttons">
-            <a href="mailto:founder@showplly.com?subject=Showplly%20×%20Oracle%20discussion" class="btn btn-primary">
-              Schedule a call
-            </a>
-            <a href="#problem" class="btn btn-outline">
-              See why this matters
-            </a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScPeLB7-hy_Sdb92WSJihvDsMVOqvbVciXMSNehiiR8VqSoVg/viewform?usp=header"
-               target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-              Contact form
-            </a>
-          </div>
-          <div class="hero-meta">
-            Currently in PoC discussions with Oracle Japan (OCI / ADB / OBP). Patent granted in Japan, PCT filed internationally.
-          </div>
-        </div>
-
-        <div class="hero-illustration">
-          <img src="hero-larry-showplly.png" alt="Showplly founder inviting Oracle to build the authenticity layer together" />
-          <p class="chart-source">Conceptual illustration by Showplly (founder × Oracle collaboration motif).</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROBLEM SECTION -->
-  <section id="problem">
-    <div class="section-inner two-col">
-      <div>
-        <div class="section-kicker">Why this layer is missing</div>
-        <h2 class="section-title">The internet was never designed to prove what’s real.</h2>
-        <p class="section-lead">
-          E-commerce made global trade frictionless — and just as frictionless for fraud. No shared, verifiable layer exists to prove that a physical product is genuine, fairly declared at customs, and traded along a clean supply chain.
-        </p>
-        <ul class="check-list">
-          <li>Counterfeit goods cross borders at scale, with little shared intelligence.</li>
-          <li>Under-valuation and false declarations erode customs revenues.</li>
-          <li>Each marketplace keeps its own siloed logs — there is no global authenticity log.</li>
-          <li>Consumers and regulators see only a “front-end store,” not the truth of the product.</li>
-        </ul>
-      </div>
-
-      <!-- DATA & GRAPHS -->
-      <div class="card">
-        <div class="section-kicker" style="margin-bottom:4px;">Why this matters now</div>
-        <div class="small-heading">Global impact of mis-declared and counterfeit goods</div>
-        <p class="muted" style="margin-top:6px;">
-          Customs, tax authorities, and industry bodies estimate hundreds of billions of dollars lost each year to under-invoicing, tariff misclassification, and counterfeit trade. The problem is systemic — not just a few bad actors.
-        </p>
-
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-label">Global counterfeit trade</div>
-            <div class="stat-value">US$500B+</div>
-            <div class="stat-note">Estimated annual value of counterfeit and pirated goods worldwide.</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Customs revenue gap</div>
-            <div class="stat-value">10–20%</div>
-            <div class="stat-note">Share of potential duties lost to mis-declaration in some markets.</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Regulatory pressure</div>
-            <div class="stat-value">Rising</div>
-            <div class="stat-note">Tighter KYC, supply-chain and product-origin rules across the US, EU, and Asia.</div>
-          </div>
-        </div>
-
-        <p class="muted" style="margin-top:10px;margin-bottom:10px;">
-          Showplly’s role is to give each physical item an unforgeable, audit-ready identity that can be shared across logistics, marketplaces, and regulators — without forcing end-users into Web3 complexity.
-        </p>
-
-        <div class="charts-grid">
-          <div>
-            <img src="chart-counterfeit-vs-misdeclared.png"
-                 alt="Share of counterfeit goods and mis-declared goods in global trade" />
-            <p class="chart-source">
-              Source: Illustrative split based on estimates from OECD, WCO and industry reports (indicative, not official statistics).
-            </p>
-          </div>
-          <div>
-            <img src="chart-customs-loss-by-region.png"
-                 alt="Illustrative chart of customs revenue losses by region due to mis-declaration" />
-            <p class="chart-source">
-              Source: Illustrative customs revenue loss ranges adapted from Global Financial Integrity and OECD trade mis-invoicing studies (indicative only).
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHAT IS SHOWPLLY -->
-  <section id="how-it-works">
-    <div class="section-inner two-col">
-      <div>
-        <div class="section-kicker">What is Showplly</div>
-        <h2 class="section-title">Every product becomes a verifiable digital identity.</h2>
-        <p class="section-lead">
-          Showplly is an authenticity infrastructure that links physical goods with NFT-based Digital Product IDs, anchored on Oracle’s enterprise platform. For the user, it still feels like a familiar e-commerce experience.
-        </p>
-        <ul class="check-list">
-          <li>Generates a unique <strong>NFT Digital Product ID (DPID)</strong> for each uploaded product photo.</li>
-          <li>Stores authenticity &amp; trade data in <strong>Oracle Autonomous Database (ADB)</strong>.</li>
-          <li>Records verification &amp; logistics events on <strong>Oracle Blockchain Platform (OBP)</strong>.</li>
-        </ul>
-        <p class="muted" style="margin-top:10px;">
-          From brand registration through cross-border shipping to resale, each lifecycle event accumulates on the same product identity — not on fragmented, platform-specific logs.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="section-kicker" style="margin-bottom:4px;">Showplly × Oracle</div>
-        <div class="small-heading">The world’s first global standard for authentic goods</div>
-        <p class="muted" style="margin:6px 0 14px;">
-          Showplly and Oracle set the foundation to lead. Each uploaded photo instantly generates an NFT-based Digital Product ID and expands global authenticity data in Oracle ADB, while every transaction is immutably recorded on Oracle OBP.
-        </p>
-        <img src="showplly-oracle-3steps.png" alt="Three-step diagram of Showplly × Oracle: NFT ID, global data, and verification" />
-        <p class="chart-source">
-          Conceptual architecture sketch for Showplly × Oracle PoC (for discussion, not an official Oracle system diagram).
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY ORACLE -->
-  <section id="oracle">
-    <div class="section-inner">
-      <div class="section-kicker">Why Oracle</div>
-      <h2 class="section-title">The only place the world’s first authenticity layer can run at global scale.</h2>
-      <p class="section-lead">
-        Showplly was designed from day one to operate at Oracle scale. Oracle provides the infrastructure to make a global authenticity and customs-integrity layer feasible — for brands, logistics partners, customs, and marketplaces.
-      </p>
-
-      <div class="columns-3">
-        <div class="card">
-          <div class="tag" style="margin-bottom:10px;">Authenticity architecture</div>
-          <div class="small-heading">Patent-backed Digital Product ID model</div>
-          <p class="muted">
-            Optimized for physical goods, cross-border trade, and customs integrity, with a data model built on Oracle ADB and OBP.
+          <p class="footer-body">
+            If you are Oracle, an infrastructure partner, a marketplace, a logistics provider, a customs-related
+            organization, or an investor looking for the next fundamental internet layer — we’d be honored to speak.
           </p>
         </div>
-        <div class="card">
-          <div class="tag" style="margin-bottom:10px;">Autonomous Database</div>
-          <div class="small-heading">Global authenticity data lake</div>
-          <p class="muted">
-            Product, logistics, warranty, and customs-related data aggregated in Oracle Autonomous Database — the single source of truth for every DPID.
-          </p>
+        <div class="footer-cta-row">
+          <a href="mailto:founder@showplly.com?subject=Request%20for%20technical%20deck"
+            class="btn btn-secondary btn-sm">Request technical deck</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJJE5NoC8wW7AGkmzj8v9YY6cvj1u3zuf-Kyockh8ndz-wig/viewform"
+            target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Schedule a call</a>
         </div>
-        <div class="card">
-          <div class="tag" style="margin-bottom:10px;">Blockchain &amp; AI</div>
-          <div class="small-heading">Verified events + AI-ready logs</div>
-          <p class="muted">
-            Oracle OBP provides tamper-evident verification logs; Oracle’s analytics &amp; AI stack unlock pattern detection, risk scoring, and smart customs insights on top.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- UX & USE CASES -->
-  <section id="use-cases">
-    <div class="section-inner">
-      <div class="section-kicker">User experience</div>
-      <h2 class="section-title">Web2 UX, Web3-grade security.</h2>
-      <p class="section-lead">
-        Showplly bridges today’s e-commerce expectations with tomorrow’s decentralized commerce infrastructure — without forcing users to manage wallets or seed phrases.
-      </p>
-
-      <div class="columns-3">
-        <div class="card">
-          <div class="small-heading">Web2-familiar</div>
-          <p class="muted">
-            Users browse and buy like any modern marketplace. No wallet setup, no seed phrases, no crypto onboarding required.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">Web2.5 – invisible NFTs</div>
-          <p class="muted">
-            NFT Digital Product IDs live entirely in the backend. Buyers and sellers simply see “verified product” signals and authenticity scores.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">Web3 – optional ownership</div>
-          <p class="muted">
-            Power users and partners can move IDs on-chain, connect wallets, and interoperate with other Web3 ecosystems when needed.
-          </p>
-        </div>
-      </div>
-
-      <div style="height:32px;"></div>
-
-      <div class="section-kicker">Immediate value</div>
-      <h3 class="section-title" style="font-size:20px;">Where Showplly generates ROI from day one.</h3>
-      <div class="columns-2" style="margin-top:16px;">
-        <div class="card">
-          <div class="small-heading">Cross-border e-commerce</div>
-          <p class="muted">
-            Authenticity certificates travel with each shipment. Customs and product data stay cryptographically tied to each item.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">Smart customs &amp; tax integrity</div>
-          <p class="muted">
-            AI-assisted classification and risk scoring. Mismatches between declarations and real goods become visible and auditable.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">Supply-chain traceability</div>
-          <p class="muted">
-            Track items from manufacturer to consumer on a single authenticity log, accessible to multiple stakeholders.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">C2C &amp; re-commerce</div>
-          <p class="muted">
-            Pre-owned products can prove origin, authenticity, and service history — unlocking new business for brands and platforms.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRE-RWA IDENTIFICATION LAYER -->
-  <section id="pre-rwa">
-    <div class="section-inner two-col">
-      <div>
-        <div class="section-kicker">Pre-RWA identification layer</div>
-        <h2 class="section-title">Before tokenization, the world needs identification.</h2>
-        <p class="section-lead">
-          Showplly is the world’s first “Pre-RWA” identification layer for physical goods. Before any asset — including securities and real estate — can be tokenized as RWA, it must first be uniquely and verifiably identified.
-        </p>
-        <p class="muted">
-          The NFT-based Digital Product ID (DPID) provides that missing layer: a universal, non-financial, authenticity-first identifier that can later be linked to financial tokens where regulations allow.
-        </p>
-        <p class="muted" style="margin-top:8px;">
-          In other words, Showplly’s identification layer becomes the foundation on which future RWA models for products, rights, and even financial instruments can safely stand.
-        </p>
-      </div>
-      <div class="card">
-        <div class="small-heading">From physical identity to future RWA</div>
-        <p class="muted" style="margin:6px 0 12px;">
-          Showplly does not itself issue financial instruments. Instead, it provides the world’s first universal, authenticity-focused identification layer that RWA platforms can build upon.
-        </p>
-        <img src="diagram-pre-rwa-layer.png"
-             alt="Diagram of Showplly as a Pre-RWA identification layer enabling future RWA tokenization" />
-        <p class="chart-source">
-          Conceptual illustration by Showplly — positioning DPID as a Pre-RWA identification layer (non-financial).
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- INCLUSION & ACCESS -->
-  <section id="inclusion">
-    <div class="section-inner two-col">
-      <div>
-        <div class="section-kicker">Inclusion &amp; access</div>
-        <h2 class="section-title">Lowering barriers to global commerce.</h2>
-        <p class="section-lead">
-          Showplly enables small merchants in developing regions — and economically disadvantaged individuals everywhere — to participate in global trade simply by posting a product photo.
-        </p>
-        <p class="muted">
-          No warehouse, no complex paperwork, no gatekeeping by centralized platforms. The NFT-based Digital Product ID and Oracle-backed infrastructure provide the trust layer that individuals alone could never build.
-        </p>
-        <p class="muted" style="margin-top:8px;">
-          By combining authenticity, smart customs, and open access, Showplly aims to make global commerce fairer — not only for large brands, but also for the smallest and most vulnerable participants in the economy.
-        </p>
-      </div>
-      <div class="card">
-        <div class="small-heading">Expanding participation in the real economy</div>
-        <p class="muted" style="margin:6px 0 12px;">
-          When “uploading a photo” is enough to enter the global marketplace, the internet finally begins to serve as a truly open economic rail — backed by verifiable, Oracle-grade authenticity data.
-        </p>
-        <img src="diagram-inclusive-commerce.png"
-             alt="Illustration of small merchants and economically disadvantaged individuals joining global commerce via Showplly" />
-        <p class="chart-source">
-          Conceptual illustration by Showplly — inclusive access for small merchants and low-income individuals to reach global buyers.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TECHNOLOGY -->
-  <section id="tech">
-    <div class="section-inner">
-      <div class="section-kicker">Technology</div>
-      <h2 class="section-title">One product view. Many layers of trust.</h2>
-      <p class="section-lead">
-        Showplly is not just a marketplace — it is a protocol and data infrastructure for authenticated commerce, with each physical item represented as a verifiable NFT-based identity.
-      </p>
-
-      <div class="columns-2" style="margin-top:12px;">
-        <div class="card">
-          <div class="small-heading">Digital Product ID (DPID)</div>
-          <p class="muted">
-            Patented NFT-based structure optimized for physical goods and real-world trade. Each DPID anchors product metadata, images, logistics logs, customs declarations, and verification events.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">Oracle-native data model</div>
-          <p class="muted">
-            Authenticity data lake on Oracle ADB, verification logs on OBP, and APIs for customs, logistics, and marketplace partners to connect and query DPIDs across the global network.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOUNDER -->
-  <section id="founder">
-    <div class="section-inner two-col">
-      <div>
-        <div class="section-kicker">Founder</div>
-        <h2 class="section-title">About the founder.</h2>
-        <p class="section-lead">
-          Showplly is led by a founder with deep experience in global hardware, logistics, and cross-border commerce — including the pain of counterfeit goods, opaque logistics, and fragmented data first-hand.
-        </p>
-        <p class="muted">
-          Over 30 years in computer hardware, distribution, and global supply chains, he has seen how counterfeit products and mis-declared shipments damage trust and profitability for honest brands and retailers.
-        </p>
-      </div>
-      <div class="card">
-        <div class="small-heading">Yuzuru Sano — Founder, Showplly</div>
-        <p class="muted" style="margin-top:6px;">
-          Yuzuru designed Showplly as the missing “authenticity layer” of the internet — and aligned the architecture from day one with Oracle’s data and blockchain platforms.
-        </p>
-        <p class="muted" style="margin-top:8px;">
-          The underlying technology has been granted patent protection in Japan, with PCT filed for international coverage. A detailed technical whitepaper and architecture deck are available under NDA.
-        </p>
-        <p class="muted" style="margin-top:8px;font-size:12px;">
-          Contact: <a href="mailto:founder@showplly.com">founder@showplly.com</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER CTA -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-title">
-        Let’s build the world’s first authenticity layer of the internet together.
-      </div>
-      <div class="footer-sub">
-        If you are Oracle, an infrastructure partner, a marketplace, a logistics provider, a customs-related organization, or an investor looking for the next fundamental internet layer — we’d be honored to speak.
-      </div>
-      <div class="footer-cta">
-        <a href="mailto:founder@showplly.com?subject=Showplly%20–%20technical%20deck%20request" class="btn btn-outline">
-          Request technical deck
-        </a>
-        <a href="mailto:founder@showplly.com?subject=Showplly%20×%20Oracle%20intro%20call" class="btn btn-outline">
-          Schedule a call
-        </a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScPeLB7-hy_Sdb92WSJihvDsMVOqvbVciXMSNehiiR8VqSoVg/viewform?usp=header"
-           target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Open contact form
-        </a>
       </div>
       <div class="footer-meta">
-        © Showplly. Patent granted in Japan. PCT filed for international protection.
+        <span>© Showplly. Patent granted in Japan. PCT filed for international protection.</span>
+        <span>
+          Contact: <a href="mailto:founder@showplly.com">founder@showplly.com</a>
+        </span>
       </div>
-    </div>
-  </footer>
-
-</div>
+    </footer>
+  </div>
 </body>
 </html>
