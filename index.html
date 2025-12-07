@@ -76,7 +76,6 @@
       font-weight: 700;
     }
 
-    /* Showplly ロゴを少し目立たせる */
     .nav-left span {
       font-size: 20px;
       letter-spacing: 0.04em;
@@ -266,7 +265,6 @@
       gap: 16px;
     }
 
-    /* 画像ソース表記用 */
     .chart-source {
       font-size: 11px;
       color: var(--text-muted);
@@ -526,9 +524,10 @@
     </div>
   </section>
 
-  <!-- PROBLEM SECTION -->
+  <!-- PROBLEM SECTION（レイアウト修正版） -->
   <section id="problem">
     <div class="section-inner two-col">
+      <!-- 左：テキスト ＋ Why this matters カード -->
       <div>
         <div class="section-kicker">Why this layer is missing</div>
         <h2 class="section-title">The internet was never designed to prove what’s real.</h2>
@@ -541,38 +540,41 @@
           <li>Each marketplace keeps its own siloed logs — there is no global authenticity log.</li>
           <li>Consumers and regulators see only a “front-end store,” not the truth of the product.</li>
         </ul>
+
+        <!-- WHY THIS MATTERS CARD（統計3カード） -->
+        <div class="card" style="margin-top:16px;">
+          <div class="section-kicker" style="margin-bottom:4px;">Why this matters now</div>
+          <div class="small-heading">Global impact of mis-declared and counterfeit goods</div>
+          <p class="muted" style="margin-top:6px;">
+            Customs, tax authorities, and industry bodies estimate hundreds of billions of dollars lost each year to under-invoicing, tariff misclassification, and counterfeit trade. The problem is systemic — not just a few bad actors.
+          </p>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">Global counterfeit trade</div>
+              <div class="stat-value">US$500B+</div>
+              <div class="stat-note">Estimated annual value of counterfeit and pirated goods worldwide.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Customs revenue gap</div>
+              <div class="stat-value">10–20%</div>
+              <div class="stat-note">Share of potential duties lost to mis-declaration in some markets.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Regulatory pressure</div>
+              <div class="stat-value">Rising</div>
+              <div class="stat-note">Tighter KYC, supply-chain and product-origin rules across the US, EU, and Asia.</div>
+            </div>
+          </div>
+
+          <p class="muted" style="margin-top:10px;">
+            Showplly’s role is to give each physical item an unforgeable, audit-ready identity that can be shared across logistics, marketplaces, and regulators — without forcing end-users into Web3 complexity.
+          </p>
+        </div>
       </div>
 
-      <!-- DATA & GRAPHS -->
+      <!-- 右：チャートカード（グラフ2枚のみ） -->
       <div class="card">
-        <div class="section-kicker" style="margin-bottom:4px;">Why this matters now</div>
-        <div class="small-heading">Global impact of mis-declared and counterfeit goods</div>
-        <p class="muted" style="margin-top:6px;">
-          Customs, tax authorities, and industry bodies estimate hundreds of billions of dollars lost each year to under-invoicing, tariff misclassification, and counterfeit trade. The problem is systemic — not just a few bad actors.
-        </p>
-
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-label">Global counterfeit trade</div>
-            <div class="stat-value">US$500B+</div>
-            <div class="stat-note">Estimated annual value of counterfeit and pirated goods worldwide.</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Customs revenue gap</div>
-            <div class="stat-value">10–20%</div>
-            <div class="stat-note">Share of potential duties lost to mis-declaration in some markets.</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Regulatory pressure</div>
-            <div class="stat-value">Rising</div>
-            <div class="stat-note">Tighter KYC, supply-chain and product-origin rules across the US, EU, and Asia.</div>
-          </div>
-        </div>
-
-        <p class="muted" style="margin-top:10px;margin-bottom:10px;">
-          Showplly’s role is to give each physical item an unforgeable, audit-ready identity that can be shared across logistics, marketplaces, and regulators — without forcing end-users into Web3 complexity.
-        </p>
-
         <div class="charts-grid">
           <div>
             <img src="chart-counterfeit-vs-misdeclared.png"
@@ -868,4 +870,3 @@
 </div>
 </body>
 </html>
-
