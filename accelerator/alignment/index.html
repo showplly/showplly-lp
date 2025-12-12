@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Showplly – Accelerator Alignment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --bg-alt: #ffffff;
+      --primary: #1b4de4;
+      --primary-soft: #e4ebff;
+      --text-main: #111827;
+      --text-sub: #4b5563;
+      --border-soft: #d1d5db;
+      --badge-bg: #eef2ff;
+      --badge-text: #3730a3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, #f5f7fb 40%, #ffffff 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      margin-bottom: 12px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--badge-text);
+      margin-right: 6px;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.12;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: 32px 0 12px;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-sub);
+      margin: 0 0 12px;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: var(--text-sub);
+      opacity: 0.9;
+    }
+
+    .hero {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 22px;
+      padding: 24px 24px 20px;
+      box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+      border: 1px solid rgba(209, 213, 219, 0.6);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.2fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-sub);
+      background: #f3f4ff;
+      border: 1px dashed #c7d2fe;
+      margin-top: 4px;
+    }
+
+    .pill span {
+      font-size: 16px;
+      margin-right: 5px;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 20px;
+      padding: 22px 22px 20px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(209, 213, 219, 0.6);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 6px 0 10px;
+      color: var(--text-sub);
+      font-size: 15px;
+    }
+
+    li + li {
+      margin-top: 2px;
+    }
+
+    .layout-two {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 18px;
+    }
+
+    .layout-two > .section {
+      margin-bottom: 0;
+    }
+
+    .stack-figure {
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .stack-figure img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.10);
+    }
+
+    .stack-caption {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-top: 6px;
+    }
+
+    .quote {
+      font-size: 14px;
+      color: var(--text-sub);
+      border-left: 3px solid var(--primary);
+      padding-left: 12px;
+      margin-top: 8px;
+    }
+
+    .highlight {
+      background: #eff6ff;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-top: 6px;
+    }
+
+    .footer {
+      margin-top: 32px;
+      padding-top: 18px;
+      border-top: 1px dashed #d1d5db;
+      font-size: 14px;
+      color: var(--text-sub);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .footer-left {
+      max-width: 420px;
+    }
+
+    .footer-right {
+      text-align: right;
+      min-width: 220px;
+    }
+
+    .footer-right a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .footer-right a:hover {
+      text-decoration: underline;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 24px 16px 40px;
+      }
+      .hero-grid,
+      .layout-two {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-right {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Accelerator alignment draft – for Sota Watanabe
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <h1>The missing identity layer before financialization.</h1>
+          <p class="hero-sub">
+            AI agents and Web3 systems still cannot reliably identify
+            real-world goods without breaking trust. Showplly exists
+            to solve exactly that – as an <strong>identity layer
+            that sits before finance</strong>, not as another
+            marketplace or token.
+          </p>
+          <p class="hero-note">
+            This page is not a pitch deck. It is a framing document to
+            align on the problem space before talking about capital,
+            structure, or token design.
+          </p>
+        </div>
+
+        <div>
+          <div class="section" style="margin-bottom: 0;">
+            <div class="section-label">Context</div>
+            <p>
+              Oracle Japan is currently in early-stage discussions
+              with us to structure a PoC: defining the architecture
+              and receiving a formal budget estimate for commercial
+              deployment on Oracle infrastructure.
+            </p>
+            <p>
+              For this to matter beyond a single enterprise deal,
+              Showplly must plug into a broader Web3 / AI execution
+              environment. This is where your role as an accelerator
+              – not just an investor – becomes critical.
+            </p>
+            <div class="pill">
+              <span>⚡</span>Pre-RWA identity layer · built for agents &amp; chains
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. PROBLEM -->
+    <section class="section">
+      <div class="section-label">1. Why this layer is missing</div>
+      <h2>The bottleneck is not AI or blockchain.</h2>
+      <p>
+        AI development is accelerating. Blockchain infrastructure is maturing.
+        Yet the moment either touches the physical world, everything
+        becomes fuzzy.
+      </p>
+      <ul>
+        <li>What exactly is this object – at a cryptographic level?</li>
+        <li>Who owns it right now, and under which jurisdiction?</li>
+        <li>Can an autonomous agent reference it without legal chaos?</li>
+        <li>Can any value be generated without trust collapse?</li>
+      </ul>
+      <p>
+        Today, there is no native answer to these questions. We try to patch
+        around the gap with terms of service, screenshots, and spreadsheets.
+      </p>
+    </section>
+
+    <!-- 2. OBSERVATION -->
+    <section class="section">
+      <div class="section-label">2. Before RWA, before tokens</div>
+      <h2>Financialization came before identification.</h2>
+      <p>
+        Current Web3 stacks attempt to tokenize value before the object
+        itself is verifiable.
+      </p>
+      <ul>
+        <li>RWA products, NFTs, and marketplaces assume a stable identity.</li>
+        <li>But identity is usually off-chain, opaque, and non-portable.</li>
+        <li>Each project recreates the same primitive in isolation.</li>
+      </ul>
+      <p>
+        <strong>Identification must come before ownership.
+        Ownership must come before finance.</strong>  
+        Showplly is designed to sit exactly in that pre-financial
+        position.
+      </p>
+    </section>
+
+    <!-- 3. WHAT SHOWPLLY IS -->
+    <section class="section">
+      <div class="section-label">3. Definition</div>
+      <h2>What Showplly is — and is not.</h2>
+      <p><strong>Showplly is not:</strong></p>
+      <ul>
+        <li>a consumer marketplace,</li>
+        <li>a trading venue, or</li>
+        <li>a financial product.</li>
+      </ul>
+      <p><strong>Showplly is:</strong></p>
+      <ul>
+        <li>an identity layer anchored to real-world goods,</li>
+        <li>a pre-financial “product identity anchor” for any chain or agent,</li>
+        <li>a native provenance / ownership graph that others can build on.</li>
+      </ul>
+      <p>
+        Think of Showplly as <strong>infrastructure</strong>, not a
+        destination app.
+      </p>
+    </section>
+
+    <!-- 4. AI AGENT ANGLE + DIAGRAM -->
+    <section class="section">
+      <div class="section-label">4. AI agent execution layer</div>
+      <h2>Why AI agents cannot scale responsibly today.</h2>
+      <p>
+        In the next wave, AI agents will:
+      </p>
+      <ul>
+        <li>act autonomously across services and chains,</li>
+        <li>transact and negotiate on behalf of humans and enterprises,</li>
+        <li>coordinate logistics and inventory in real time,</li>
+        <li>interact directly with physical assets.</li>
+      </ul>
+      <p>
+        What they lack is a <strong>trusted, programmable reference
+        to real-world goods</strong> that is safe to own, transfer,
+        and monetize.
+      </p>
+
+      <div class="stack-figure">
+        <!-- 画像パスはリポジトリ内の配置に合わせて変更してください -->
+        <img
+          src="/assets/showplly_identity_layer_stack.png"
+          alt="Showplly as the pre-financial identity layer between AI/Web3 apps and physical goods"
+        />
+        <div class="stack-caption">
+          Showplly as the pre-financial identity layer – sitting between
+          AI/Web3 execution and physical goods.
+        </div>
+      </div>
+
+      <p>
+        Without this anchor:
+      </p>
+      <ul>
+        <li>accountability collapses into “black box” automation,</li>
+        <li>legal boundaries blur across jurisdictions,</li>
+        <li>monetization becomes speculative instead of contractual.</li>
+      </ul>
+      <p>
+        Showplly provides the identity anchor that agents can safely
+        reference, own, and monetize – <strong>without</strong>
+        dictating how finance, tokens, or UX must look.
+      </p>
+    </section>
+
+    <!-- 5. WHY THIS MATTERS TO WEB3 -->
+    <section class="section">
+      <div class="section-label">5. Web3 perspective</div>
+      <h2>Web3 needs an execution layer, not another financial primitive.</h2>
+      <p>
+        Mass adoption will not come from new tokens alone. It will come when:
+      </p>
+      <ul>
+        <li>goods are cryptographically identifiable,</li>
+        <li>provenance is native, not bolted on,</li>
+        <li>trust is programmable at the protocol level.</li>
+      </ul>
+      <p>
+        Showplly sits <strong>before value transfer</strong>. That is why it
+        scales sideways – across chains, agents, and jurisdictions – instead
+        of competing with them.
+      </p>
+      <div class="highlight">
+        In that sense, Showplly is closer to “identity infrastructure”
+        for pre-RWA assets than to a single-chain dApp. It should be
+        boring at the protocol level and powerful at the ecosystem level.
+      </div>
+    </section>
+
+    <!-- 6. ORACLE & ACCELERATOR ROLE -->
+    <section class="layout-two">
+      <article class="section">
+        <div class="section-label">6. Current enterprise track</div>
+        <h2>Where Oracle Japan fits today.</h2>
+        <p>
+          With Oracle Japan, we are in the initial phase of:
+        </p>
+        <ul>
+          <li>aligning on a reference architecture for Showplly as an
+              identity layer on Oracle Cloud, and</li>
+          <li>receiving a PoC budget estimate for a commercial-grade deployment.</li>
+        </ul>
+        <p>
+          This is valuable, but by itself it would remain a
+          <em>closed enterprise deployment</em>.  
+          The opportunity is to turn that PoC into a reusable identity layer
+          that other ecosystems – especially Astar and AI-agent projects –
+          can reference.
+        </p>
+      </article>
+
+      <article class="section">
+        <div class="section-label">7. Accelerator role</div>
+        <h2>This is not a VC-style project.</h2>
+        <p>
+          Some projects mainly need capital. Some need brand and advisors.
+          Showplly needs <strong>acceleration of the right kind</strong>:
+        </p>
+        <ul>
+          <li>pressure-testing the identity model with real agents and chains,</li>
+          <li>designing the minimal surface for token / revenue alignment,</li>
+          <li>ensuring that enterprise PoCs stay compatible with open ecosystems.</li>
+        </ul>
+        <p>
+          The intersection of <strong>Oracle VC Connect</strong> and your
+          own acceleration thesis is where this becomes interesting.
+        </p>
+        <p class="quote">
+          If Showplly is the “pre-RWA identity layer”, the accelerator’s
+          role is to make sure it connects to the right reactors –
+          not to force a specific token shape too early.
+        </p>
+      </article>
+    </section>
+
+    <!-- 8. CLOSING -->
+    <section class="section">
+      <div class="section-label">8. Closing</div>
+      <h2>No deck. No pitch. Just alignment.</h2>
+      <p>
+        If this framing is off, that’s perfectly fine – feedback is more
+        valuable than polite silence.
+      </p>
+      <p>
+        If it feels familiar, then a short conversation (15–20 minutes)
+        would be the fastest way to see whether Showplly deserves a slot
+        in your accelerator bandwidth, especially in relation to Oracle
+        VC Connect and your current AI-agent / RWA roadmap.
+      </p>
+      <p>
+        From there, we can decide together whether to keep Showplly
+        “boring infrastructure” or to let it act as a more explicit
+        pre-RWA primitive.
+      </p>
+    </section>
+
+    <!-- FOOTER / CONTACT -->
+    <footer class="footer">
+      <div class="footer-left">
+        <div class="section-label">Contact</div>
+        <div class="mono">
+          Yuzuru Sano<br />
+          Founder / Showplly<br />
+          <br />
+          📧 founder@showplly.com<br />
+          🌐 <a href="https://www.showplly.com" target="_blank" rel="noreferrer">
+            https://www.showplly.com
+          </a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="section-label">Working title</div>
+        <div>The authenticity layer for the internet.</div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
