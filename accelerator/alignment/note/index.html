@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Showplly – Architecture Note</title>
+  <title>Architecture Note – Showplly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
     :root {
       --bg: #f5f7fb;
@@ -27,11 +28,9 @@
       line-height: 1.6;
     }
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; height: auto; display: block; }
-
     .page { min-height: 100vh; display: flex; flex-direction: column; }
 
-    /* NAV (match existing LP style) */
+    /* NAV (match LP vibe) */
     header {
       background: #ffffffcc;
       backdrop-filter: blur(10px);
@@ -52,10 +51,11 @@
     .nav-left { display: flex; align-items: center; gap: 10px; font-weight: 700; }
     .nav-left span { font-size: 20px; letter-spacing: 0.04em; color: var(--primary); }
     .logo-dot { width: 10px; height: 10px; border-radius: 999px; background: var(--accent); }
-    .nav-links { display: flex; gap: 20px; font-size: 14px; color: var(--text-muted); }
-    .nav-links a:hover { color: var(--primary); }
-    .nav-cta { display: flex; gap: 10px; }
 
+    .nav-links { display: flex; gap: 18px; font-size: 14px; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .nav-cta { display: flex; gap: 10px; }
     .btn {
       border-radius: 999px;
       padding: 8px 16px;
@@ -72,11 +72,10 @@
     .btn-primary { background: var(--primary); color: #fff; box-shadow: var(--shadow-soft); }
     .btn-outline { background: #fff; color: var(--text-main); border-color: var(--border); }
 
-    /* Sections */
-    section { padding: 64px 16px; }
+    /* LAYOUT */
+    section { padding: 56px 16px; }
     .section-inner { max-width: var(--max-width); margin: 0 auto; }
-
-    .section-kicker {
+    .kicker {
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.12em;
@@ -84,26 +83,66 @@
       color: var(--primary);
       margin-bottom: 8px;
     }
-    .section-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
-    .muted { color: var(--text-muted); font-size: 13px; }
-
+    .title { font-size: 26px; font-weight: 800; line-height: 1.25; margin-bottom: 10px; }
+    .subtitle { color: var(--text-muted); font-size: 14px; margin-bottom: 18px; max-width: 820px; }
     .card {
       background: var(--bg-alt);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-soft);
       padding: 24px 24px 22px;
-      border: 1px solid rgba(221, 227, 240, 0.85);
+      border: 1px solid rgba(221, 227, 240, 0.65);
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .lead {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 14px;
+      max-width: 860px;
+    }
+    .note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 10px;
     }
 
-    /* Hero-like top block */
-    .note-hero {
-      background: radial-gradient(circle at top left, #e6f0ff 0, #f5f7fb 40%, #ffffff 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 56px 16px 40px;
+    /* Figure */
+    figure { margin-top: 10px; }
+    figcaption { margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+
+    /* Details (collapsible) */
+    details {
+      margin-top: 14px;
+      border: 1px solid rgba(221, 227, 240, 0.95);
+      border-radius: var(--radius-lg);
+      background: #fff;
+      overflow: hidden;
     }
-    .note-hero-inner { max-width: var(--max-width); margin: 0 auto; }
-    .note-title { font-size: 30px; line-height: 1.25; margin-bottom: 10px; }
-    .note-subtitle { color: var(--text-muted); font-size: 14px; margin-bottom: 12px; max-width: 760px; }
+    summary {
+      cursor: pointer;
+      padding: 14px 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    .summary-hint { font-weight: 500; color: var(--text-muted); font-size: 12px; }
+    .details-body { padding: 2px 16px 16px; }
+    .details-body h3 { font-size: 16px; margin-top: 12px; }
+    .details-body h4 { font-size: 13px; margin-top: 12px; }
+    .details-body p { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+    .details-body ul { margin: 8px 0 0 18px; color: var(--text-muted); font-size: 13px; }
+    .details-body li { margin: 6px 0; }
+
+    /* Badge */
     .pill {
       display: inline-flex;
       align-items: center;
@@ -116,222 +155,181 @@
       margin-bottom: 10px;
       background: #fff;
     }
-    .pill span { font-weight: 600; color: var(--primary); }
-
-    /* Architecture Note block */
-    .arch-note .lead {
-      margin-top: 8px;
-      color: var(--text-muted);
-      font-size: 14px;
-      max-width: 860px;
-    }
-
-    figure.arch-figure {
-      margin-top: 16px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid rgba(221, 227, 240, 0.95);
-      background: #fff;
-      box-shadow: var(--shadow-soft);
-    }
-    figure.arch-figure img { width: 100%; height: auto; display: block; }
-    figure.arch-figure figcaption {
-      padding: 10px 14px 12px;
-      font-size: 12px;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(221, 227, 240, 0.85);
-    }
-
-    details.arch-details {
-      margin-top: 14px;
-      border: 1px solid rgba(221, 227, 240, 0.95);
-      border-radius: var(--radius-lg);
-      background: #fff;
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-    }
-    details.arch-details summary {
-      padding: 14px 16px;
-      cursor: pointer;
-      font-weight: 600;
-      color: var(--text-main);
-      list-style: none;
-      position: relative;
-    }
-    details.arch-details summary::-webkit-details-marker { display: none; }
-    details.arch-details summary:after {
-      content: "▾";
-      position: absolute;
-      right: 16px;
-      top: 14px;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-    details[open].arch-details summary:after { content: "▴"; }
-
-    .details-body {
-      padding: 0 16px 16px;
-      border-top: 1px solid rgba(221, 227, 240, 0.85);
-    }
-    .details-body h3 {
-      font-size: 16px;
-      margin: 14px 0 6px;
-    }
-    .details-body h4 {
-      font-size: 13px;
-      margin: 12px 0 6px;
-    }
-    .details-body p {
-      color: var(--text-muted);
-      font-size: 13px;
-      margin: 0 0 10px;
-      max-width: 920px;
-    }
-    .callout {
-      margin-top: 10px;
-      padding: 12px 14px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(221, 227, 240, 0.95);
-      background: #f8fbff;
-      color: var(--text-muted);
-      font-size: 13px;
-    }
+    .pill strong { color: var(--primary); }
 
     /* Footer */
     footer {
       background: #061225;
       color: #e5ecff;
-      padding: 40px 16px 28px;
+      padding: 36px 16px 24px;
       margin-top: 40px;
     }
     .footer-inner { max-width: var(--max-width); margin: 0 auto; text-align: center; }
-    .footer-title { font-size: 18px; margin-bottom: 10px; }
-    .footer-sub { color: #b8c4e5; font-size: 13px; margin-bottom: 18px; }
+    .footer-title { font-size: 16px; margin-bottom: 8px; }
+    .footer-sub { color: #b8c4e5; font-size: 13px; margin-bottom: 14px; }
     .footer-meta { font-size: 11px; color: #7f8bb1; margin-top: 6px; }
 
     @media (max-width: 960px) {
+      .two-col { grid-template-columns: minmax(0, 1fr); }
       .nav-links { display: none; }
-      .note-title { font-size: 24px; }
-      section { padding: 48px 16px; }
-      .note-hero { padding-top: 40px; }
+      section { padding: 44px 16px; }
+      .title { font-size: 22px; }
     }
   </style>
 </head>
 
 <body>
-<div class="page">
+  <div class="page">
 
-  <!-- HEADER -->
-  <header>
-    <div class="nav">
-      <div class="nav-left">
-        <div class="logo-dot"></div>
-        <span>Showplly</span>
-      </div>
-
-      <nav class="nav-links">
-        <a href="https://showplly.com">Home</a>
-        <a href="https://showplly.com/accelerator/alignment/">Accelerator Alignment</a>
-        <a href="#architecture-note">Architecture Note</a>
-      </nav>
-
-      <div class="nav-cta">
-        <a href="https://showplly.com" class="btn btn-outline">Back to Showplly.com</a>
-        <a href="mailto:founder@showplly.com?subject=Architecture%20Note%20(Showplly)" class="btn btn-primary">Contact</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <div class="note-hero">
-    <div class="note-hero-inner">
-      <div class="pill">
-        <span>Architecture Note</span>
-        <span style="color:var(--text-muted);font-weight:400;">(2–3 minutes)</span>
-      </div>
-      <h1 class="note-title">Showplly as the Pre-Financial Identity Infrastructure</h1>
-      <p class="note-subtitle">
-        Showplly is not a marketplace — it is an identity infrastructure that future marketplaces, RWA platforms,
-        and AI agents will rely on as a common trust foundation.
-      </p>
-      <p class="muted">
-        This page intentionally stays at an architecture level. Certain elements are under priority patent filing and are not disclosed in full technical detail at this stage.
-      </p>
-    </div>
-  </div>
-
-  <!-- NOTE -->
-  <section class="arch-note" id="architecture-note">
-    <div class="section-inner">
-      <div class="section-kicker">Architecture</div>
-      <h2 class="section-title">The Three-Layer Stack</h2>
-
-      <p class="lead">
-        A practical identity layer must sit between the physical world and the autonomous execution layer.
-        Showplly provides that missing middle: an unforgeable, referenceable identity anchor for real-world products —
-        established independently of payment, custody, or token issuance (pre-financial).
-      </p>
-
-      <figure class="arch-figure">
-        <img src="showplly_identity_layer_stack.png" alt="Showplly identity layer stack diagram" />
-        <figcaption>
-          Physical Goods → Showplly Identity Layer (pre-financial) → AI Agents / Web3 Apps (autonomous execution layer).
-        </figcaption>
-      </figure>
-
-      <details class="arch-details">
-        <summary>Read the Architecture Note (2–3 minutes)</summary>
-        <div class="details-body">
-
-          <h3>1) AI Agents / Web3 Applications (Execution Layer)</h3>
-          <p>
-            At the top of the stack reside autonomous agents, decentralized applications, and financial protocols.
-            These systems can execute logic at speed — but they still require trustworthy references to real-world objects.
-            Without a shared identity anchor, “automation” only accelerates ambiguity and fraud.
-          </p>
-
-          <h3>2) Showplly Identity Layer (Pre-Financial Core Layer)</h3>
-          <p>
-            Showplly occupies the missing middle layer. It is not a marketplace. It is identity infrastructure:
-            a product identity anchor, a pre-financial identity anchor, and a native provenance / ownership graph for physical goods.
-            This layer becomes the common reference that marketplaces, RWA platforms, and AI agents can safely depend on.
-          </p>
-          <p>
-            Because the identity layer is established independently of financial settlement, it remains interoperable across
-            platforms and jurisdictions — while still supporting auditability, authenticity verification, and lifecycle accumulation over time.
-          </p>
-
-          <h3>3) Physical Goods Layer (Reality Layer)</h3>
-          <p>
-            At the bottom lies the physical world: manufacturers, logistics, customs processes, resale, repair, and warranty.
-            The key challenge is to bind “what happened in reality” to a durable identity record that can be referenced later —
-            without requiring every participant to adopt Web3 tooling.
-          </p>
-
-          <h3>Patent & Disclosure Boundary</h3>
-          <div class="callout">
-            Certain elements of the identity architecture described here are currently under priority patent filing and are intentionally not disclosed in full technical detail at this stage.
-          </div>
-
+    <!-- HEADER -->
+    <header>
+      <div class="nav">
+        <div class="nav-left">
+          <div class="logo-dot"></div>
+          <span>Showplly</span>
         </div>
-      </details>
 
-    </div>
-  </section>
+        <nav class="nav-links">
+          <a href="#stack">Stack</a>
+          <a href="#note">Note</a>
+          <a href="#disclosure">Disclosure</a>
+        </nav>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-title">Showplly — The authenticity layer of the internet.</div>
-      <div class="footer-sub">
-        If you would like the full architecture deck or PoC discussion, please contact the founder.
+        <div class="nav-cta">
+          <a class="btn btn-outline" href="https://showplly.com/">Back to LP</a>
+          <a class="btn btn-primary" href="mailto:founder@showplly.com?subject=Showplly%20Architecture%20Note%20Inquiry">Contact</a>
+        </div>
       </div>
-      <div class="footer-meta">
-        Contact: <a href="mailto:founder@showplly.com" style="color:#e5ecff;text-decoration:underline;">founder@showplly.com</a>
-      </div>
-    </div>
-  </footer>
+    </header>
 
-</div>
+    <!-- HERO / INTRO -->
+    <section>
+      <div class="section-inner">
+        <div class="pill"><strong>Architecture Note</strong><span>– Pre-Financial Identity Infrastructure</span></div>
+        <div class="kicker">Pre-financial identity layer</div>
+        <h1 class="title">Showplly is not a marketplace. It is identity infrastructure.</h1>
+        <p class="subtitle">
+          Showplly provides a shared, authenticity-first identity layer for physical goods — the trust foundation that future
+          marketplaces, RWA platforms, and AI agents can rely on.
+        </p>
+
+        <div class="card" id="stack">
+          <p class="lead">
+            Before tokenization, automation, or financial settlement, the world needs a consistent way to identify “what is real.”
+            Showplly sits in the missing middle: it anchors product identity, pre-financial identity, and provenance/ownership graphs
+            so higher-level systems can execute safely.
+          </p>
+
+          <figure class="arch-figure" aria-label="Showplly three-layer stack diagram">
+            <!-- Inline SVG (no external image needed) -->
+            <svg viewBox="0 0 980 520" width="100%" height="auto" role="img" aria-label="Three-layer stack: Physical goods → Showplly identity layer (pre-financial) → AI agents / Web3 apps">
+              <defs>
+                <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="rgba(15,35,52,0.10)"/>
+                </filter>
+              </defs>
+
+              <text x="490" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#102034">
+                Showplly in the stack: pre-financial identity layer
+              </text>
+
+              <!-- Top box -->
+              <rect x="90" y="80" rx="18" ry="18" width="800" height="110" fill="#ffffff" stroke="#dde3f0" stroke-width="2" filter="url(#softShadow)"/>
+              <text x="490" y="130" text-anchor="middle" font-size="28" font-weight="800" fill="#102034">AI agents / Web3 apps</text>
+              <text x="490" y="162" text-anchor="middle" font-size="16" fill="#5b6b84">(autonomous execution layer)</text>
+
+              <!-- Arrow 1 -->
+              <line x1="490" y1="200" x2="490" y2="240" stroke="#7f8bb1" stroke-width="4"/>
+              <polygon points="490,255 478,236 502,236" fill="#7f8bb1"/>
+
+              <!-- Middle box -->
+              <rect x="90" y="265" rx="18" ry="18" width="800" height="140" fill="#eef1ff" stroke="#98a6ff" stroke-width="3" filter="url(#softShadow)"/>
+              <text x="490" y="315" text-anchor="middle" font-size="30" font-weight="900" fill="#102034">Showplly identity layer (pre-financial)</text>
+              <text x="490" y="350" text-anchor="middle" font-size="18" fill="#102034">- product identity anchor</text>
+              <text x="490" y="375" text-anchor="middle" font-size="18" fill="#102034">- pre-financial identity anchor</text>
+              <text x="490" y="400" text-anchor="middle" font-size="18" fill="#102034">- native provenance / ownership graph</text>
+
+              <!-- Arrow 2 -->
+              <line x1="490" y1="415" x2="490" y2="455" stroke="#7f8bb1" stroke-width="4"/>
+              <polygon points="490,470 478,451 502,451" fill="#7f8bb1"/>
+
+              <!-- Bottom box -->
+              <rect x="90" y="470" rx="18" ry="18" width="800" height="110" fill="#ffffff" stroke="#dde3f0" stroke-width="2" filter="url(#softShadow)"/>
+              <text x="490" y="520" text-anchor="middle" font-size="30" font-weight="900" fill="#102034">Physical goods layer</text>
+              <text x="490" y="552" text-anchor="middle" font-size="16" fill="#5b6b84">- real-world products / manufacturers / logistics / distribution</text>
+            </svg>
+
+            <figcaption>
+              A three-layer stack: Physical Goods → Showplly Identity Layer (pre-financial) → AI Agents / Web3 Apps.
+              Showplly is positioned as social infrastructure (identity & trust), not a marketplace.
+            </figcaption>
+          </figure>
+
+          <details id="note">
+            <summary>
+              Read the Architecture Note
+              <span class="summary-hint">(2–3 minutes)</span>
+            </summary>
+            <div class="details-body">
+              <h3>The Three-Layer Stack</h3>
+
+              <h4>1) AI Agents / Web3 Applications (Execution Layer)</h4>
+              <p>
+                At the top of the stack are autonomous agents, Web3 applications, and execution systems that act on behalf of users
+                and institutions. These systems can only operate safely when they can verify “what the object is” and “what happened to it”
+                using shared, tamper-evident identity and provenance signals.
+              </p>
+              <ul>
+                <li>Agents need reliable identity to avoid fraud, misrouting, and counterfeit interactions.</li>
+                <li>Protocols need consistent object identity to reason about ownership, rights, and eligibility.</li>
+              </ul>
+
+              <h4>2) Showplly Identity Layer (Pre-Financial Core Layer)</h4>
+              <p>
+                Showplly occupies the missing middle layer. It is not a marketplace and not a payment rail. It is a pre-financial identity
+                infrastructure that anchors product identity, provenance, and ownership graphs in a way that higher layers can reuse across
+                ecosystems.
+              </p>
+              <ul>
+                <li><strong>Product identity anchor</strong>: a stable identity for physical items and their representations.</li>
+                <li><strong>Pre-financial identity anchor</strong>: identity established before settlement/custody/token issuance.</li>
+                <li><strong>Native provenance / ownership graph</strong>: a history of verifications and lifecycle events that can be audited.</li>
+              </ul>
+
+              <h4>3) Physical Goods Layer (Reality Layer)</h4>
+              <p>
+                At the bottom is the real world: factories, logistics, cross-border shipping, and distribution. This is where fraud, mis-declaration,
+                and authenticity disputes occur. Showplly’s role is to provide an identity and provenance foundation that can be shared across
+                stakeholders without forcing end-users into Web3 complexity.
+              </p>
+
+              <h3 id="disclosure">Patent & Disclosure Boundary</h3>
+              <p>
+                Certain elements of the identity architecture described here are currently under priority patent filing and are therefore
+                intentionally not disclosed in full technical detail at this stage.
+              </p>
+
+              <p class="note">
+                Short version: Showplly is social infrastructure — a shared trust and identity layer — that future marketplaces, RWA platforms,
+                and AI agents can build on.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-title">Showplly is building the authenticity layer of the internet.</div>
+        <div class="footer-sub">
+          An identity infrastructure for physical goods — enabling authenticity, provenance, and interoperability before financial settlement.
+        </div>
+        <div class="footer-meta">© Showplly. Patent granted in Japan. PCT filed for international protection.</div>
+      </div>
+    </footer>
+
+  </div>
 </body>
 </html>
