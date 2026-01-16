@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Showplly – Architecture Note</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --bg-alt: #ffffff;
+      --primary: #1b4de4;
+      --accent: #ff5a5f;
+      --text-main: #102034;
+      --text-muted: #5b6b84;
+      --border: #dde3f0;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --shadow-soft: 0 18px 45px rgba(15, 35, 52, 0.08);
+      --max-width: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* NAV (match existing LP style) */
+    header {
+      background: #ffffffcc;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(221, 227, 240, 0.7);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav-left { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+    .nav-left span { font-size: 20px; letter-spacing: 0.04em; color: var(--primary); }
+    .logo-dot { width: 10px; height: 10px; border-radius: 999px; background: var(--accent); }
+    .nav-links { display: flex; gap: 20px; font-size: 14px; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta { display: flex; gap: 10px; }
+
+    .btn {
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--primary); color: #fff; box-shadow: var(--shadow-soft); }
+    .btn-outline { background: #fff; color: var(--text-main); border-color: var(--border); }
+
+    /* Sections */
+    section { padding: 64px 16px; }
+    .section-inner { max-width: var(--max-width); margin: 0 auto; }
+
+    .section-kicker {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .section-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .muted { color: var(--text-muted); font-size: 13px; }
+
+    .card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 24px 24px 22px;
+      border: 1px solid rgba(221, 227, 240, 0.85);
+    }
+
+    /* Hero-like top block */
+    .note-hero {
+      background: radial-gradient(circle at top left, #e6f0ff 0, #f5f7fb 40%, #ffffff 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 16px 40px;
+    }
+    .note-hero-inner { max-width: var(--max-width); margin: 0 auto; }
+    .note-title { font-size: 30px; line-height: 1.25; margin-bottom: 10px; }
+    .note-subtitle { color: var(--text-muted); font-size: 14px; margin-bottom: 12px; max-width: 760px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      background: #fff;
+    }
+    .pill span { font-weight: 600; color: var(--primary); }
+
+    /* Architecture Note block */
+    .arch-note .lead {
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 860px;
+    }
+
+    figure.arch-figure {
+      margin-top: 16px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(221, 227, 240, 0.95);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+    figure.arch-figure img { width: 100%; height: auto; display: block; }
+    figure.arch-figure figcaption {
+      padding: 10px 14px 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(221, 227, 240, 0.85);
+    }
+
+    details.arch-details {
+      margin-top: 14px;
+      border: 1px solid rgba(221, 227, 240, 0.95);
+      border-radius: var(--radius-lg);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+    details.arch-details summary {
+      padding: 14px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text-main);
+      list-style: none;
+      position: relative;
+    }
+    details.arch-details summary::-webkit-details-marker { display: none; }
+    details.arch-details summary:after {
+      content: "▾";
+      position: absolute;
+      right: 16px;
+      top: 14px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    details[open].arch-details summary:after { content: "▴"; }
+
+    .details-body {
+      padding: 0 16px 16px;
+      border-top: 1px solid rgba(221, 227, 240, 0.85);
+    }
+    .details-body h3 {
+      font-size: 16px;
+      margin: 14px 0 6px;
+    }
+    .details-body h4 {
+      font-size: 13px;
+      margin: 12px 0 6px;
+    }
+    .details-body p {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin: 0 0 10px;
+      max-width: 920px;
+    }
+    .callout {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(221, 227, 240, 0.95);
+      background: #f8fbff;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* Footer */
+    footer {
+      background: #061225;
+      color: #e5ecff;
+      padding: 40px 16px 28px;
+      margin-top: 40px;
+    }
+    .footer-inner { max-width: var(--max-width); margin: 0 auto; text-align: center; }
+    .footer-title { font-size: 18px; margin-bottom: 10px; }
+    .footer-sub { color: #b8c4e5; font-size: 13px; margin-bottom: 18px; }
+    .footer-meta { font-size: 11px; color: #7f8bb1; margin-top: 6px; }
+
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .note-title { font-size: 24px; }
+      section { padding: 48px 16px; }
+      .note-hero { padding-top: 40px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="logo-dot"></div>
+        <span>Showplly</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="https://showplly.com">Home</a>
+        <a href="https://showplly.com/accelerator/alignment/">Accelerator Alignment</a>
+        <a href="#architecture-note">Architecture Note</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="https://showplly.com" class="btn btn-outline">Back to Showplly.com</a>
+        <a href="mailto:founder@showplly.com?subject=Architecture%20Note%20(Showplly)" class="btn btn-primary">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="note-hero">
+    <div class="note-hero-inner">
+      <div class="pill">
+        <span>Architecture Note</span>
+        <span style="color:var(--text-muted);font-weight:400;">(2–3 minutes)</span>
+      </div>
+      <h1 class="note-title">Showplly as the Pre-Financial Identity Infrastructure</h1>
+      <p class="note-subtitle">
+        Showplly is not a marketplace — it is an identity infrastructure that future marketplaces, RWA platforms,
+        and AI agents will rely on as a common trust foundation.
+      </p>
+      <p class="muted">
+        This page intentionally stays at an architecture level. Certain elements are under priority patent filing and are not disclosed in full technical detail at this stage.
+      </p>
+    </div>
+  </div>
+
+  <!-- NOTE -->
+  <section class="arch-note" id="architecture-note">
+    <div class="section-inner">
+      <div class="section-kicker">Architecture</div>
+      <h2 class="section-title">The Three-Layer Stack</h2>
+
+      <p class="lead">
+        A practical identity layer must sit between the physical world and the autonomous execution layer.
+        Showplly provides that missing middle: an unforgeable, referenceable identity anchor for real-world products —
+        established independently of payment, custody, or token issuance (pre-financial).
+      </p>
+
+      <figure class="arch-figure">
+        <img src="showplly_identity_layer_stack.png" alt="Showplly identity layer stack diagram" />
+        <figcaption>
+          Physical Goods → Showplly Identity Layer (pre-financial) → AI Agents / Web3 Apps (autonomous execution layer).
+        </figcaption>
+      </figure>
+
+      <details class="arch-details">
+        <summary>Read the Architecture Note (2–3 minutes)</summary>
+        <div class="details-body">
+
+          <h3>1) AI Agents / Web3 Applications (Execution Layer)</h3>
+          <p>
+            At the top of the stack reside autonomous agents, decentralized applications, and financial protocols.
+            These systems can execute logic at speed — but they still require trustworthy references to real-world objects.
+            Without a shared identity anchor, “automation” only accelerates ambiguity and fraud.
+          </p>
+
+          <h3>2) Showplly Identity Layer (Pre-Financial Core Layer)</h3>
+          <p>
+            Showplly occupies the missing middle layer. It is not a marketplace. It is identity infrastructure:
+            a product identity anchor, a pre-financial identity anchor, and a native provenance / ownership graph for physical goods.
+            This layer becomes the common reference that marketplaces, RWA platforms, and AI agents can safely depend on.
+          </p>
+          <p>
+            Because the identity layer is established independently of financial settlement, it remains interoperable across
+            platforms and jurisdictions — while still supporting auditability, authenticity verification, and lifecycle accumulation over time.
+          </p>
+
+          <h3>3) Physical Goods Layer (Reality Layer)</h3>
+          <p>
+            At the bottom lies the physical world: manufacturers, logistics, customs processes, resale, repair, and warranty.
+            The key challenge is to bind “what happened in reality” to a durable identity record that can be referenced later —
+            without requiring every participant to adopt Web3 tooling.
+          </p>
+
+          <h3>Patent & Disclosure Boundary</h3>
+          <div class="callout">
+            Certain elements of the identity architecture described here are currently under priority patent filing and are intentionally not disclosed in full technical detail at this stage.
+          </div>
+
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-title">Showplly — The authenticity layer of the internet.</div>
+      <div class="footer-sub">
+        If you would like the full architecture deck or PoC discussion, please contact the founder.
+      </div>
+      <div class="footer-meta">
+        Contact: <a href="mailto:founder@showplly.com" style="color:#e5ecff;text-decoration:underline;">founder@showplly.com</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
