@@ -114,6 +114,13 @@
     figure { margin-top: 10px; }
     figcaption { margin-top: 8px; font-size: 12px; color: var(--text-muted); }
 
+    /* SVG stability fixes */
+    .arch-figure svg {
+      display: block;              /* remove baseline whitespace that can look like “shift” */
+      width: 100%;
+      height: auto;
+    }
+
     /* Details (collapsible) */
     details {
       margin-top: 14px;
@@ -222,7 +229,8 @@
 
           <figure class="arch-figure" aria-label="Showplly three-layer stack diagram">
             <!-- Inline SVG (no external image needed) -->
-            <svg viewBox="0 0 980 520" width="100%" height="auto" role="img" aria-label="Three-layer stack: Physical goods → Showplly identity layer (pre-financial) → AI agents / Web3 apps">
+            <svg viewBox="0 0 980 610" width="100%" height="auto" preserveAspectRatio="xMidYMid meet"
+                 role="img" aria-label="Three-layer stack: Physical goods → Showplly identity layer (pre-financial) → AI agents / Web3 apps">
               <defs>
                 <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
                   <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="rgba(15,35,52,0.10)"/>
