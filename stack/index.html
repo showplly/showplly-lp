@@ -5,63 +5,163 @@
   <title>Showplly – Pre-Financial Identity Layer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Showplly is a pre-financial identity and authenticity layer for physical and digital assets. Identity before tokenization, finance, and automation." />
+
   <style>
+    :root{
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #111;
+      --muted: #5b6270;
+      --link: #1a4de8;
+      --border: #e5e9f5;
+      --shadow: rgba(0,0,0,0.06);
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f7f9fc;
+      background: var(--bg);
       margin: 0;
       padding: 0;
-      color: #111;
+      color: var(--text);
       line-height: 1.6;
     }
+
     .container {
       max-width: 960px;
       margin: 0 auto;
       padding: 60px 20px;
     }
+
     h1 {
-      font-size: 2.4em;
-      margin-bottom: 0.3em;
+      font-size: 2.2em;
+      margin: 0 0 0.25em;
+      letter-spacing: 0.2px;
     }
+
     h2 {
-      margin-top: 2em;
+      margin-top: 2.2em;
       border-bottom: 1px solid #ddd;
       padding-bottom: 0.3em;
+      font-size: 1.35em;
     }
+
     .tagline {
-      font-size: 1.2em;
-      color: #444;
-      margin-bottom: 2em;
-    }
-    .layer-box {
-      background: #fff;
-      border-radius: 10px;
-      padding: 24px;
-      margin: 20px 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .layer-title {
-      font-weight: bold;
       font-size: 1.1em;
+      color: #444;
+      margin: 0 0 1.8em;
+    }
+
+    p { margin: 0 0 1em; }
+
+    .nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 14px;
+      font-size: 0.95em;
+      margin-bottom: 18px;
+    }
+
+    .nav a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .nav a:hover { text-decoration: underline; }
+
+    .layer-box {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 22px;
+      margin: 18px 0;
+      box-shadow: 0 10px 26px var(--shadow);
+      border: 1px solid #eef1f7;
+    }
+
+    .layer-title {
+      font-weight: 750;
+      font-size: 1.05em;
       margin-bottom: 10px;
     }
+
     footer {
-      margin-top: 60px;
-      font-size: 0.9em;
+      margin-top: 56px;
+      font-size: 0.95em;
       color: #666;
+      padding-top: 16px;
+      border-top: 1px solid #e8ecf6;
     }
-    .nav {
-      text-align: right;
-      font-size: 0.9em;
-      margin-bottom: 20px;
+
+    footer a { color: var(--link); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ---------- Three-layer diagram (restored) ---------- */
+    .stack-diagram{
+      margin: 18px 0 10px;
+      padding: 26px 22px;
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: 0 10px 26px var(--shadow);
+      border: 1px solid #eef1f7;
     }
-    .nav a {
-      color: #1a4de8;
-      text-decoration: none;
-      margin-left: 12px;
+
+    .stack-card{
+      border: 1px solid var(--border);
+      background: #f9fbff;
+      border-radius: 14px;
+      padding: 18px 18px 14px;
+      text-align: center;
+    }
+
+    .stack-card--highlight{
+      border: 2px solid rgba(26,77,232,0.35);
+      background: #ffffff;
+    }
+
+    .stack-main{
+      font-weight: 800;
+      font-size: 1.25em;
+      letter-spacing: 0.1px;
+    }
+
+    .stack-sub{
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.98em;
+    }
+
+    .stack-small{
+      margin-top: 8px;
+      color: #6a7283;
+      font-size: 0.92em;
+    }
+
+    .stack-bullets{
+      list-style: none;
+      padding: 10px 0 0;
+      margin: 0;
+      color: #2b2f36;
+      font-size: 0.95em;
+    }
+
+    .stack-bullets li{ margin: 4px 0; }
+
+    .stack-arrow{
+      text-align: center;
+      font-size: 1.6em;
+      line-height: 1;
+      margin: 10px 0;
+      color: rgba(26,77,232,0.9);
+    }
+
+    .stack-caption{
+      margin-top: 16px;
+      color: #667085;
+      font-size: 0.92em;
+      text-align: center;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
 
@@ -70,70 +170,116 @@
       <a href="../accelerator/alignment/">Accelerator Architecture</a>
     </div>
 
-    <h1>Pre-Financial Identity & Authenticity Layer</h1>
-    <div class="tagline">
-      Identity before tokenization, finance, and autonomous execution.
-    </div>
+    <h1>Pre-Financial Identity &amp; Authenticity Layer</h1>
+    <div class="tagline">Identity before tokenization, finance, and autonomous execution.</div>
 
     <p>
-      Showplly is not a marketplace and not a payment system.  
+      Showplly is not a marketplace and not a payment system.
       It is a <strong>pre-financial identity infrastructure</strong> for physical and digital assets —
       a shared layer that establishes what an asset is, that it is authentic,
       and how its provenance and ownership can be verified,
       before any financialization or automation occurs.
     </p>
 
+    <h2>Showplly in the stack: pre-financial identity layer</h2>
+
+    <!-- Restored diagram (three-layer figure above the text sections) -->
+    <div class="stack-diagram" aria-label="Three-layer stack diagram">
+      <div class="stack-card">
+        <div class="stack-main">AI Agents / Web3 Applications</div>
+        <div class="stack-sub">(autonomous execution layer)</div>
+      </div>
+
+      <div class="stack-arrow" aria-hidden="true">↓</div>
+
+      <div class="stack-card stack-card--highlight">
+        <div class="stack-main">Showplly identity layer (pre-financial)</div>
+        <ul class="stack-bullets">
+          <li>product identity anchor</li>
+          <li>pre-financial identity anchor</li>
+          <li>native provenance / ownership graph</li>
+        </ul>
+      </div>
+
+      <div class="stack-arrow" aria-hidden="true">↓</div>
+
+      <div class="stack-card">
+        <div class="stack-main">Physical goods layer</div>
+        <div class="stack-sub">(reality)</div>
+        <div class="stack-small">manufacturers / logistics / distribution</div>
+      </div>
+
+      <div class="stack-caption">
+        Physical Goods → Showplly Identity Layer (pre-financial) → AI Agents / Web3 Apps.
+        Showplly is positioned as shared identity &amp; trust infrastructure, not a marketplace.
+      </div>
+    </div>
+
     <h2>The Three-Layer Stack</h2>
 
     <div class="layer-box">
-      <div class="layer-title">1. AI Agents / Web3 Applications (Execution Layer)</div>
+      <div class="layer-title">1) AI Agents / Web3 Applications (Execution Layer)</div>
+      <p>
+        At the top of the stack are autonomous agents, Web3 applications, and execution systems
+        that act on behalf of users and institutions. These systems can only operate safely
+        when they can verify “what the object is” and “what happened to it”
+        using shared, tamper-evident identity and provenance signals.
+      </p>
       <ul>
-        <li>Autonomous agents, smart contracts, Web3 applications</li>
-        <li>Require trusted identity, provenance, and ownership signals</li>
-        <li>Can only execute safely when “what is real” is cryptographically anchored</li>
+        <li>Agents need reliable identity to avoid fraud, misrouting, and counterfeit interactions.</li>
+        <li>Protocols need consistent object identity to reason about ownership, rights, and eligibility.</li>
       </ul>
     </div>
 
     <div class="layer-box">
-      <div class="layer-title">2. Showplly Identity Layer (Pre-Financial Core)</div>
+      <div class="layer-title">2) Showplly Identity Layer (Pre-Financial Core Layer)</div>
+      <p>
+        Showplly occupies the missing middle layer. It is not a marketplace and not a payment rail.
+        It is a pre-financial identity infrastructure that anchors product identity, provenance,
+        and ownership graphs in a way that higher layers can reuse across ecosystems.
+      </p>
       <ul>
-        <li>Product Identity Anchor (unique, persistent asset identity)</li>
-        <li>Pre-Financial Identity Anchor (before custody, settlement, or token issuance)</li>
-        <li>Native Provenance & Ownership Graph (verifiable lifecycle history)</li>
-        <li>PCT international patent filed for core identity and provenance structures</li>
+        <li><strong>Product identity anchor:</strong> a stable identity for physical items and their representations.</li>
+        <li><strong>Pre-financial identity anchor:</strong> identity established before settlement/custody/token issuance.</li>
+        <li><strong>Native provenance / ownership graph:</strong> auditable history of verifications and lifecycle events.</li>
+        <li><strong>PCT:</strong> core identity/provenance structures are protected via an international patent application (PCT).</li>
       </ul>
     </div>
 
     <div class="layer-box">
-      <div class="layer-title">3. Physical Goods Layer (Reality Layer)</div>
+      <div class="layer-title">3) Physical Goods Layer (Reality Layer)</div>
+      <p>
+        At the bottom is the real world: factories, logistics, cross-border shipping, and distribution.
+        This is where fraud, mis-declaration, and authenticity disputes occur. Showplly’s role is to
+        provide an identity and provenance foundation that can be shared across stakeholders
+        without forcing end-users into Web3 complexity.
+      </p>
       <ul>
-        <li>Manufacturers, logistics, distribution, customs, compliance</li>
-        <li>Real-world goods, digital twins, and cross-border supply chains</li>
-        <li>Where fraud, mis-declaration, and authenticity disputes originate</li>
+        <li>manufacturers / logistics / distribution</li>
+        <li>customs / compliance / real-world operations</li>
       </ul>
     </div>
 
-    <h2>Positioning</h2>
-    <p>
-      Showplly occupies the missing middle layer:
-      not financial infrastructure, and not application logic,
-      but <strong>identity and authenticity as social infrastructure</strong>.
-    </p>
-
-    <p>
-      This layer is vendor-neutral and chain-agnostic.
-      Enterprise integrations (e.g., Oracle, supply chain systems, customs, RWA platforms)
-      are implementation examples, not the philosophical center.
-    </p>
+    <h2>Patent &amp; Disclosure Boundary</h2>
+    <div class="layer-box">
+      <p>
+        Certain elements of the identity architecture described here are currently under international
+        patent filing (PCT) and are therefore intentionally not disclosed in full technical detail at this stage.
+      </p>
+      <p>
+        Short version: Showplly is social infrastructure — a shared trust and identity layer —
+        that future marketplaces, RWA platforms, and AI agents can build on.
+      </p>
+    </div>
 
     <footer>
-      <p>
-        Showplly – The Pre-Financial Identity & Authenticity Layer for Global Commerce<br/>
-        Founder: Yuzuru Sano / Tokyo, Japan<br/>
-        Website: <a href="https://showplly.com">https://showplly.com</a>
-      </p>
+      Showplly – The Pre-Financial Identity &amp; Authenticity Layer for Global Commerce<br/>
+      Founder: Yuzuru Sano / Tokyo, Japan<br/>
+      Email: founder@showplly.com<br/>
+      Website: <a href="https://showplly.com">https://showplly.com</a>
     </footer>
 
   </div>
 </body>
 </html>
+
