@@ -390,6 +390,43 @@
     .request-block li{
       margin: 6px 0;
     }
+
+    /* ===== Added: VC Accelerator chip + inline link (What we are looking for) ===== */
+    .cta-inline{
+      margin-top: 10px;
+      margin-bottom: 14px;
+    }
+    .cta-chip{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(27, 77, 228, 0.35);
+      background: rgba(27, 77, 228, 0.08); /* soft blue */
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(15, 35, 52, 0.06);
+      white-space: nowrap;
+    }
+    .cta-chip:hover{
+      transform: translateY(-1px);
+      border-color: rgba(27, 77, 228, 0.35);
+    }
+    .cta-chip:focus-visible{
+      outline: 3px solid rgba(27, 77, 228, 0.25);
+      outline-offset: 2px;
+    }
+    .inline-link{
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(27, 77, 228, 0.35);
+    }
+    .inline-link:hover{ opacity: 0.9; }
+    /* ===== /Added ===== */
+
     /* ===== /Added ===== */
 
     /* FOOTER */
@@ -831,11 +868,17 @@
       <!-- ===== Added for VC Connect: What we are looking for ===== -->
       <section class="request-block" aria-label="What we are looking for">
         <h3>What we are looking for</h3>
+        <div class="cta-inline">
+          <a class="cta-chip" href="https://showplly.github.io/showplly-lp/accelerator/alignment/" target="_blank" rel="noopener">
+            VC Accelerator <span aria-hidden="true">↗</span>
+          </a>
+        </div>
         <p>
           Showplly is currently <strong>not seeking fundraising</strong>.
         </p>
         <p>
           At this stage, we are looking for:
+          <a href="https://showplly.github.io/showplly-lp/accelerator/alignment/" target="_blank" rel="noopener" class="inline-link">VC Accelerator</a>
         </p>
         <ul>
           <li><strong>Technical validation</strong> of the pre-financial identity layer architecture</li>
