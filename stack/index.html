@@ -15,6 +15,16 @@
       --link: #1a4de8;
       --border: #e5e9f5;
       --shadow: rgba(0,0,0,0.06);
+
+      /* Added: subtle pastel accents for the three layers */
+      --layer-top-bg: rgba(26, 77, 232, 0.06);     /* soft blue */
+      --layer-top-bd: rgba(26, 77, 232, 0.28);
+
+      --layer-mid-bg: rgba(26, 77, 232, 0.10);     /* slightly stronger blue */
+      --layer-mid-bd: rgba(26, 77, 232, 0.40);
+
+      --layer-bottom-bg: rgba(25, 135, 84, 0.06);  /* soft green */
+      --layer-bottom-bd: rgba(25, 135, 84, 0.24);
     }
 
     body {
@@ -104,17 +114,29 @@
       border: 1px solid #eef1f7;
     }
 
+    /* Updated: make all layer cards framed similarly (2px border) */
     .stack-card{
-      border: 1px solid var(--border);
-      background: #f9fbff;
+      border: 2px solid var(--border);           /* was 1px */
+      background: #ffffff;                       /* base stays clean */
       border-radius: 14px;
       padding: 18px 18px 14px;
       text-align: center;
     }
 
+    /* Updated: layer-specific pastel styling */
+    .stack-card--top{
+      border-color: var(--layer-top-bd);
+      background: var(--layer-top-bg);
+    }
+
     .stack-card--highlight{
-      border: 2px solid rgba(26,77,232,0.35);
-      background: #ffffff;
+      border-color: var(--layer-mid-bd);         /* was rgba(...,0.35) */
+      background: var(--layer-mid-bg);           /* was #ffffff */
+    }
+
+    .stack-card--bottom{
+      border-color: var(--layer-bottom-bd);
+      background: var(--layer-bottom-bg);
     }
 
     .stack-main{
@@ -185,7 +207,7 @@
 
     <!-- Restored diagram (three-layer figure above the text sections) -->
     <div class="stack-diagram" aria-label="Three-layer stack diagram">
-      <div class="stack-card">
+      <div class="stack-card stack-card--top">
         <div class="stack-main">AI Agents / Web3 Applications</div>
         <div class="stack-sub">(autonomous execution layer)</div>
       </div>
@@ -203,7 +225,7 @@
 
       <div class="stack-arrow" aria-hidden="true">↓</div>
 
-      <div class="stack-card">
+      <div class="stack-card stack-card--bottom">
         <div class="stack-main">Physical goods layer</div>
         <div class="stack-sub">(reality)</div>
         <div class="stack-small">manufacturers / logistics / distribution</div>
@@ -282,4 +304,3 @@
   </div>
 </body>
 </html>
-
