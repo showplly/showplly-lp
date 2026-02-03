@@ -149,6 +149,9 @@
     .details-body ul { margin: 8px 0 0 18px; color: var(--text-muted); font-size: 13px; }
     .details-body li { margin: 6px 0; }
 
+    /* ✅ Method B: always open + remove the summary "button" */
+    details > summary { display: none; }
+
     /* Badge */
     .pill {
       display: inline-flex;
@@ -273,7 +276,8 @@
             </figcaption>
           </figure>
 
-          <details id="note">
+          <!-- ✅ Method B applied: open + summary hidden via CSS -->
+          <details id="note" open>
             <summary>
               Read the Architecture Note
               <span class="summary-hint">(2–3 minutes)</span>
