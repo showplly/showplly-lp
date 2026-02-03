@@ -391,10 +391,14 @@
       margin: 6px 0;
     }
 
-    /* ===== Added: VC Accelerator chip + inline link (What we are looking for) ===== */
+    /* ===== Added: VC Accelerator chip + inline link ===== */
     .cta-inline{
       margin-top: 10px;
       margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
     .cta-chip{
       display: inline-flex;
@@ -425,9 +429,75 @@
       border-bottom: 1px solid rgba(27, 77, 228, 0.35);
     }
     .inline-link:hover{ opacity: 0.9; }
-    /* ===== /Added ===== */
 
-    /* ===== /Added ===== */
+    /* ===== Added: Ribbon under HERO buttons ===== */
+    .core-ribbon{
+      margin-top: 12px;
+      position: relative;
+      padding: 12px 14px 16px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(221, 227, 240, 0.95);
+      background: linear-gradient(90deg, rgba(27, 77, 228, 0.06) 0%, rgba(255, 90, 95, 0.05) 100%);
+      box-shadow: var(--shadow-soft);
+      max-width: 640px;
+    }
+    .core-ribbon .ribbon-text{
+      font-size: 13px;
+      color: var(--text-main);
+      font-weight: 600;
+      padding-right: 190px; /* space for bottom-right button */
+      line-height: 1.35;
+    }
+
+    /* ===== ② Color swap: make ribbon button PRIMARY (dark blue) ===== */
+    .core-ribbon .ribbon-btn{
+      position: absolute;
+      right: 12px;
+      bottom: 10px; /* right-bottom */
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .core-ribbon .ribbon-btn:hover{ transform: translateY(-1px); }
+    .core-ribbon .ribbon-btn:focus-visible{
+      outline: 3px solid rgba(27, 77, 228, 0.25);
+      outline-offset: 2px;
+    }
+    /* ===== /Color swap ===== */
+
+    /* ===== Added: Core intent line ===== */
+    .core-intent{
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* ===== ② Color swap: make "Schedule a call" soft/light blue ===== */
+    .btn-soft-primary{
+      background: rgba(27, 77, 228, 0.10);
+      color: var(--primary);
+      border-color: rgba(27, 77, 228, 0.25);
+      box-shadow: 0 10px 25px rgba(15, 35, 52, 0.06);
+    }
+    .btn-soft-primary:hover{
+      transform: translateY(-1px);
+      border-color: rgba(27, 77, 228, 0.32);
+    }
+    .btn-soft-primary:focus-visible{
+      outline: 3px solid rgba(27, 77, 228, 0.25);
+      outline-offset: 2px;
+    }
+    /* ===== /Color swap ===== */
 
     /* FOOTER */
 
@@ -510,6 +580,14 @@
         flex-direction: column;
         align-items: stretch;
       }
+      .core-ribbon .ribbon-text{
+        padding-right: 0;
+        margin-bottom: 10px;
+      }
+      .core-ribbon .ribbon-btn{
+        position: static;
+        align-self: flex-start;
+      }
     }
   </style>
 </head>
@@ -566,21 +644,35 @@
             <div class="tag">Oracle ADB + OBP</div>
             <div class="tag">PCT patent filed</div>
           </div>
+
           <div class="hero-buttons">
-            <a href="mailto:founder@showplly.com?subject=Showplly%20×%20Oracle%20discussion" class="btn btn-primary">
+            <!-- ② Color swap: Schedule a call -> soft/light blue -->
+            <a href="mailto:founder@showplly.com?subject=Showplly%20×%20Oracle%20discussion" class="btn btn-soft-primary">
               Schedule a call
             </a>
             <a href="#problem" class="btn btn-outline">
               See why this matters
             </a>
-            <a href="https://showplly.github.io/showplly-lp/accelerator/alignment/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-              VC Accelerator
-            </a>
+
+            <!-- ① Remove "Core Architecture & Alignment ↗" from here -->
+
             <a href="mailto:founder@showplly.com?subject=Showplly%20LP%20Inquiry"
                target="_blank" rel="noopener noreferrer" class="btn btn-outline">
               Contact form
             </a>
           </div>
+
+          <!-- Ribbon -->
+          <div class="core-ribbon" aria-label="Core concept ribbon">
+            <div class="ribbon-text">
+              This page represents one practical expression of Showplly’s broader architectural vision.
+            </div>
+            <!-- ② Color swap: Read the Core Concept -> dark blue primary -->
+            <a class="ribbon-btn" href="https://showplly.github.io/showplly-lp/accelerator/alignment/" target="_blank" rel="noopener">
+              Read the Core Concept <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
           <div class="hero-meta">
             Currently in PoC discussions with Oracle Japan (OCI / ADB / OBP). Patent granted in Japan, PCT filed internationally.
           </div>
@@ -597,7 +689,6 @@
   <!-- PROBLEM SECTION（レイアウト修正版） -->
   <section id="problem">
     <div class="section-inner two-col">
-      <!-- 左：テキスト ＋ Why this matters カード -->
       <div>
         <div class="section-kicker">Why this layer is missing</div>
         <h2 class="section-title">The internet was never designed to prove what’s real.</h2>
@@ -611,7 +702,6 @@
           <li>Consumers and regulators see only a “front-end store,” not the truth of the product.</li>
         </ul>
 
-        <!-- WHY THIS MATTERS CARD（統計3カード） -->
         <div class="card" style="margin-top:16px;">
           <div class="section-kicker" style="margin-bottom:4px;">Why this matters now</div>
           <div class="small-heading">Global impact of mis-declared and counterfeit goods</div>
@@ -643,7 +733,6 @@
         </div>
       </div>
 
-      <!-- 右：チャートカード（グラフ2枚のみ） -->
       <div class="card">
         <div class="charts-grid">
           <div>
@@ -865,35 +954,46 @@
         Showplly is not just a marketplace — it is a protocol and data infrastructure for authenticated commerce, with each physical item represented as a verifiable NFT-based identity.
       </p>
 
-      <!-- ===== Added for VC Connect: What we are looking for ===== -->
-      <section class="request-block" aria-label="What we are looking for">
-        <h3>What we are looking for</h3>
+      <section class="request-block" aria-label="What We Aim to Validate Together">
+        <h3>What We Aim to Validate Together</h3>
+
         <div class="cta-inline">
           <a class="cta-chip" href="https://showplly.github.io/showplly-lp/accelerator/alignment/" target="_blank" rel="noopener">
-            VC Accelerator <span aria-hidden="true">↗</span>
+            Core Architecture &amp; Alignment <span aria-hidden="true">↗</span>
           </a>
+          <div class="core-intent">Understand the architectural intent before scale.</div>
         </div>
+
         <p>
           Showplly is currently <strong>not seeking fundraising</strong>.
         </p>
+
         <p>
-          At this stage, we are looking for:
-          <a href="https://showplly.github.io/showplly-lp/accelerator/alignment/" target="_blank" rel="noopener" class="inline-link">VC Accelerator</a>
+          At this stage, we are focused on technical and strategic validation — with a practical path to PoC collaboration when mutual alignment is confirmed.
         </p>
+
         <ul>
-          <li><strong>Technical validation</strong> of the pre-financial identity layer architecture</li>
-          <li><strong>Strategic feedback</strong> on enterprise adoption and interoperability</li>
-          <li>Discussion on <strong>PoC collaboration possibilities</strong> with Oracle technologies</li>
+          <li><strong>Technical validation</strong> of the Pre-Financial Identity Layer architecture</li>
+          <li><strong>Strategic alignment</strong> on enterprise interoperability and data integrity</li>
+          <li><strong>Evaluation</strong> of potential PoC collaboration pathways with Oracle technologies</li>
         </ul>
+
         <p>
           Showplly is designed as a foundational identity layer positioned <em>before</em> financial settlement,
           enabling authenticity, provenance, and ownership to be established independently of payment, custody, or token issuance.
         </p>
+
         <p>
           We believe this positioning makes Showplly highly complementary to Oracle’s cloud, data, and enterprise integration strengths.
         </p>
+
+        <p style="margin-top:10px;">
+          <em>
+            If mutual alignment is confirmed, natural next steps may include collaborative PoC design,
+            formation of a focused working group, and exploration of ecosystem-based or non-dilutive funding mechanisms.
+          </em>
+        </p>
       </section>
-      <!-- ===== /Added for VC Connect ===== -->
 
       <div class="columns-2" style="margin-top:12px;">
         <div class="card">
@@ -970,4 +1070,3 @@
 </div>
 </body>
 </html>
-
