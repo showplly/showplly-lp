@@ -49,6 +49,7 @@
       flex-direction: column;
     }
 
+    /* NAV */
     header {
       background: #ffffffcc;
       backdrop-filter: blur(10px);
@@ -129,6 +130,8 @@
       color: var(--text-main);
       border-color: var(--border);
     }
+
+    /* LAYOUT UTILITIES */
 
     section {
       padding: 64px 16px;
@@ -268,6 +271,8 @@
       margin-top: 4px;
     }
 
+    /* HERO */
+
     .hero {
       background: radial-gradient(circle at top left, #e6f0ff 0, #f5f7fb 40%, #ffffff 100%);
       border-bottom: 1px solid var(--border);
@@ -332,6 +337,8 @@
       margin-left: auto;
     }
 
+    /* TABLE GRID SECTIONS */
+
     .columns-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -355,6 +362,7 @@
       font-size: 13px;
     }
 
+    /* ===== Added: Request block under Technology ===== */
     .request-block{
       margin-top: 16px;
       padding: 16px 18px;
@@ -364,29 +372,26 @@
       box-shadow: var(--shadow-soft);
       max-width: 840px;
     }
-
     .request-block h3{
       font-size: 16px;
       margin: 0 0 10px 0;
     }
-
     .request-block p{
       margin: 10px 0;
       color: var(--text-muted);
       font-size: 13px;
     }
-
     .request-block ul{
       margin: 8px 0 10px 18px;
       list-style: disc;
       color: var(--text-muted);
       font-size: 13px;
     }
-
     .request-block li{
       margin: 6px 0;
     }
 
+    /* ===== Added: VC Accelerator chip + inline link ===== */
     .cta-inline{
       margin-top: 10px;
       margin-bottom: 14px;
@@ -395,9 +400,40 @@
       gap: 10px;
       flex-wrap: wrap;
     }
+    .cta-chip{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(27, 77, 228, 0.35);
+      background: rgba(27, 77, 228, 0.08); /* soft blue */
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(15, 35, 52, 0.06);
+      white-space: nowrap;
+    }
+    .cta-chip:hover{
+      transform: translateY(-1px);
+      border-color: rgba(27, 77, 228, 0.35);
+    }
+    .cta-chip:focus-visible{
+      outline: 3px solid rgba(27, 77, 228, 0.25);
+      outline-offset: 2px;
+    }
+    .inline-link{
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(27, 77, 228, 0.35);
+    }
+    .inline-link:hover{ opacity: 0.9; }
 
+    /* ===== Added: Ribbon under HERO buttons ===== */
     .core-ribbon{
       margin-top: 12px;
+      position: relative;
       padding: 12px 14px 16px;
       border-radius: var(--radius-lg);
       border: 1px solid rgba(221, 227, 240, 0.95);
@@ -405,14 +441,40 @@
       box-shadow: var(--shadow-soft);
       max-width: 640px;
     }
-
     .core-ribbon .ribbon-text{
       font-size: 13px;
       color: var(--text-main);
       font-weight: 600;
+      padding-right: 190px; /* space for bottom-right button */
       line-height: 1.35;
     }
 
+    /* ===== ② Color swap: make ribbon button PRIMARY (dark blue) ===== */
+    .core-ribbon .ribbon-btn{
+      position: absolute;
+      right: 12px;
+      bottom: 10px; /* right-bottom */
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .core-ribbon .ribbon-btn:hover{ transform: translateY(-1px); }
+    .core-ribbon .ribbon-btn:focus-visible{
+      outline: 3px solid rgba(27, 77, 228, 0.25);
+      outline-offset: 2px;
+    }
+    /* ===== /Color swap ===== */
+
+    /* ===== Added: Core intent line ===== */
     .core-intent{
       font-size: 12px;
       color: var(--text-muted);
@@ -420,22 +482,24 @@
       margin-top: 2px;
     }
 
+    /* ===== ② Color swap: make "Schedule a call" soft/light blue ===== */
     .btn-soft-primary{
       background: rgba(27, 77, 228, 0.10);
       color: var(--primary);
       border-color: rgba(27, 77, 228, 0.25);
       box-shadow: 0 10px 25px rgba(15, 35, 52, 0.06);
     }
-
     .btn-soft-primary:hover{
       transform: translateY(-1px);
       border-color: rgba(27, 77, 228, 0.32);
     }
-
     .btn-soft-primary:focus-visible{
       outline: 3px solid rgba(27, 77, 228, 0.25);
       outline-offset: 2px;
     }
+    /* ===== /Color swap ===== */
+
+    /* FOOTER */
 
     footer {
       background: #061225;
@@ -474,6 +538,8 @@
       color: #7f8bb1;
       margin-top: 4px;
     }
+
+    /* RESPONSIVE */
 
     @media (max-width: 960px) {
       .hero-grid,
@@ -514,12 +580,21 @@
         flex-direction: column;
         align-items: stretch;
       }
+      .core-ribbon .ribbon-text{
+        padding-right: 0;
+        margin-bottom: 10px;
+      }
+      .core-ribbon .ribbon-btn{
+        position: static;
+        align-self: flex-start;
+      }
     }
   </style>
 </head>
 <body>
 <div class="page">
 
+  <!-- HEADER -->
   <header>
     <div class="nav">
       <div class="nav-left">
@@ -543,6 +618,7 @@
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero-inner">
       <div class="hero-grid">
@@ -552,40 +628,49 @@
             <span style="color:var(--text-muted);font-weight:400;">preview concept</span>
           </div>
           <h1 class="hero-title">
-            The world’s first<br>
+            The world’s first NFT-based<br>
             Digital Product Identity Layer for Global Commerce
           </h1>
           <p class="hero-subtitle">
             Powering authenticity, smart customs, and borderless commerce.
           </p>
           <p class="hero-lead">
-            Every physical product receives a unique Digital Product ID (DPID) — 
+            Every physical product receives a unique NFT-based Digital Product ID (DPID) — 
             the world’s first identification layer that enables provable authenticity, 
             correct customs duties, and a world where anyone can become a seller simply by posting a photo.
           </p>
           <div class="hero-badges">
-            <div class="tag">The world’s first Digital Product ID</div>
+            <div class="tag">The world’s first NFT-based Digital Product ID</div>
             <div class="tag">Oracle ADB + OBP</div>
             <div class="tag">PCT patent filed</div>
           </div>
 
           <div class="hero-buttons">
+            <!-- ② Color swap: Schedule a call -> soft/light blue -->
             <a href="mailto:founder@showplly.com?subject=Showplly%20×%20Oracle%20discussion" class="btn btn-soft-primary">
               Schedule a call
             </a>
             <a href="#problem" class="btn btn-outline">
               See why this matters
             </a>
+
+            <!-- ① Remove "Core Architecture & Alignment ↗" from here -->
+
             <a href="mailto:founder@showplly.com?subject=Showplly%20LP%20Inquiry"
                target="_blank" rel="noopener noreferrer" class="btn btn-outline">
               Contact form
             </a>
           </div>
 
+          <!-- Ribbon -->
           <div class="core-ribbon" aria-label="Core concept ribbon">
             <div class="ribbon-text">
               This page represents one practical expression of Showplly’s broader architectural vision.
             </div>
+            <!-- ② Color swap: Read the Core Concept -> dark blue primary -->
+            <a class="ribbon-btn" href="https://showplly.github.io/showplly-lp/accelerator/alignment/" target="_blank" rel="noopener">
+              Read the Core Concept <span aria-hidden="true">↗</span>
+            </a>
           </div>
 
           <div class="hero-meta">
@@ -594,13 +679,14 @@
         </div>
 
         <div class="hero-illustration">
-          <img src="../hero-larry-showplly.png" alt="Showplly founder inviting Oracle to build the authenticity layer together" />
+          <img src="hero-larry-showplly.png" alt="Showplly founder inviting Oracle to build the authenticity layer together" />
           <p class="chart-source">Conceptual illustration by Showplly (founder × Oracle collaboration motif).</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- PROBLEM SECTION（レイアウト修正版） -->
   <section id="problem">
     <div class="section-inner two-col">
       <div>
@@ -650,14 +736,14 @@
       <div class="card">
         <div class="charts-grid">
           <div>
-            <img src="../chart-counterfeit-vs-misdeclared.png"
+            <img src="chart-counterfeit-vs-misdeclared.png"
                  alt="Share of counterfeit goods and mis-declared goods in global trade" />
             <p class="chart-source">
               Source: Illustrative split based on estimates from OECD, WCO and industry reports (indicative, not official statistics).
             </p>
           </div>
           <div>
-            <img src="../chart-customs-loss-by-region.png"
+            <img src="chart-customs-loss-by-region.png"
                  alt="Illustrative chart of customs revenue losses by region due to mis-declaration" />
             <p class="chart-source">
               Source: Illustrative customs revenue loss ranges adapted from Global Financial Integrity and OECD trade mis-invoicing studies (indicative only).
@@ -668,16 +754,17 @@
     </div>
   </section>
 
+  <!-- WHAT IS SHOWPLLY -->
   <section id="how-it-works">
     <div class="section-inner two-col">
       <div>
         <div class="section-kicker">What is Showplly</div>
         <h2 class="section-title">Every product becomes a verifiable digital identity.</h2>
         <p class="section-lead">
-          Showplly is an authenticity infrastructure that links physical goods with Digital Product IDs, anchored on Oracle’s enterprise platform. For the user, it still feels like a familiar e-commerce experience.
+          Showplly is an authenticity infrastructure that links physical goods with NFT-based Digital Product IDs, anchored on Oracle’s enterprise platform. For the user, it still feels like a familiar e-commerce experience.
         </p>
         <ul class="check-list">
-          <li>Generates a unique <strong>Digital Product ID (DPID)</strong> for each uploaded product photo.</li>
+          <li>Generates a unique <strong>NFT Digital Product ID (DPID)</strong> for each uploaded product photo.</li>
           <li>Stores authenticity &amp; trade data in <strong>Oracle Autonomous Database (ADB)</strong>.</li>
           <li>Records verification &amp; logistics events on <strong>Oracle Blockchain Platform (OBP)</strong>.</li>
         </ul>
@@ -690,9 +777,9 @@
         <div class="section-kicker" style="margin-bottom:4px;">Showplly × Oracle</div>
         <div class="small-heading">The world’s first global standard for authentic goods</div>
         <p class="muted" style="margin:6px 0 14px;">
-          Showplly and Oracle set the foundation to lead. Each uploaded photo instantly generates a Digital Product ID and expands global authenticity data in Oracle ADB, while every transaction is immutably recorded on Oracle OBP.
+          Showplly and Oracle set the foundation to lead. Each uploaded photo instantly generates an NFT-based Digital Product ID and expands global authenticity data in Oracle ADB, while every transaction is immutably recorded on Oracle OBP.
         </p>
-        <img src="../showplly-oracle-3steps.png" alt="Three-step diagram of Showplly × Oracle: NFT ID, global data, and verification" />
+        <img src="showplly-oracle-3steps.png" alt="Three-step diagram of Showplly × Oracle: NFT ID, global data, and verification" />
         <p class="chart-source">
           Conceptual architecture sketch for Showplly × Oracle PoC (for discussion, not an official Oracle system diagram).
         </p>
@@ -700,6 +787,7 @@
     </div>
   </section>
 
+  <!-- WHY ORACLE -->
   <section id="oracle">
     <div class="section-inner">
       <div class="section-kicker">Why Oracle</div>
@@ -734,6 +822,7 @@
     </div>
   </section>
 
+  <!-- UX & USE CASES -->
   <section id="use-cases">
     <div class="section-inner">
       <div class="section-kicker">User experience</div>
@@ -752,7 +841,7 @@
         <div class="card">
           <div class="small-heading">Web2.5 – invisible NFTs</div>
           <p class="muted">
-            Digital Product IDs live entirely in the backend. Buyers and sellers simply see “verified product” signals and authenticity scores.
+            NFT Digital Product IDs live entirely in the backend. Buyers and sellers simply see “verified product” signals and authenticity scores.
           </p>
         </div>
         <div class="card">
@@ -796,16 +885,17 @@
     </div>
   </section>
 
+  <!-- PRE-RWA IDENTIFICATION LAYER -->
   <section id="pre-rwa">
     <div class="section-inner two-col">
       <div>
-        <div class="section-kicker">Next-generation identity layer for physical assets</div>
+        <div class="section-kicker">Pre-RWA identification layer</div>
         <h2 class="section-title">Before tokenization, the world needs identification.</h2>
         <p class="section-lead">
-          Showplly provides a next-generation identity layer for physical goods. Before any asset — including securities and real estate — can be tokenized as RWA, it must first be uniquely and verifiably identified.
+          Showplly is the world’s first “Pre-RWA” identification layer for physical goods. Before any asset — including securities and real estate — can be tokenized as RWA, it must first be uniquely and verifiably identified.
         </p>
         <p class="muted">
-          The Digital Product ID (DPID) provides that missing layer: a universal, non-financial, authenticity-first identifier that can later be linked to financial tokens where regulations allow.
+          The NFT-based Digital Product ID (DPID) provides that missing layer: a universal, non-financial, authenticity-first identifier that can later be linked to financial tokens where regulations allow.
         </p>
         <p class="muted" style="margin-top:8px;">
           In other words, Showplly’s identification layer becomes the foundation on which future RWA models for products, rights, and even financial instruments can safely stand.
@@ -816,15 +906,16 @@
         <p class="muted" style="margin:6px 0 12px;">
           Showplly does not itself issue financial instruments. Instead, it provides the world’s first universal, authenticity-focused identification layer that RWA platforms can build upon.
         </p>
-        <img src="../diagram-pre-rwa-layer.png"
-             alt="Diagram of Showplly as a next-generation identity layer enabling future RWA tokenization" />
+        <img src="diagram-pre-rwa-layer.png"
+             alt="Diagram of Showplly as a Pre-RWA identification layer enabling future RWA tokenization" />
         <p class="chart-source">
-          Conceptual illustration by Showplly — positioning DPID as a next-generation identity layer for physical assets.
+          Conceptual illustration by Showplly — positioning DPID as a Pre-RWA identification layer (non-financial).
         </p>
       </div>
     </div>
   </section>
 
+  <!-- INCLUSION & ACCESS -->
   <section id="inclusion">
     <div class="section-inner two-col">
       <div>
@@ -834,7 +925,7 @@
           Showplly enables small merchants in developing regions — and economically disadvantaged individuals everywhere — to participate in global trade simply by posting a product photo.
         </p>
         <p class="muted">
-          No warehouse, no complex paperwork, no gatekeeping by centralized platforms. The Digital Product ID and Oracle-backed infrastructure provide the trust layer that individuals alone could never build.
+          No warehouse, no complex paperwork, no gatekeeping by centralized platforms. The NFT-based Digital Product ID and Oracle-backed infrastructure provide the trust layer that individuals alone could never build.
         </p>
         <p class="muted" style="margin-top:8px;">
           By combining authenticity, smart customs, and open access, Showplly aims to make global commerce fairer — not only for large brands, but also for the smallest and most vulnerable participants in the economy.
@@ -845,7 +936,7 @@
         <p class="muted" style="margin:6px 0 12px;">
           When “uploading a photo” is enough to enter the global marketplace, the internet finally begins to serve as a truly open economic rail — backed by verifiable, Oracle-grade authenticity data.
         </p>
-        <img src="../diagram-inclusive-commerce.png"
+        <img src="diagram-inclusive-commerce.png"
              alt="Illustration of small merchants and economically disadvantaged individuals joining global commerce via Showplly" />
         <p class="chart-source">
           Conceptual illustration by Showplly — inclusive access for small merchants and low-income individuals to reach global buyers.
@@ -854,18 +945,22 @@
     </div>
   </section>
 
+  <!-- TECHNOLOGY -->
   <section id="tech">
     <div class="section-inner">
       <div class="section-kicker">Technology</div>
       <h2 class="section-title">One product view. Many layers of trust.</h2>
       <p class="section-lead">
-        Showplly is not just a marketplace — it is a protocol and data infrastructure for authenticated commerce, with each physical item represented as a verifiable digital identity.
+        Showplly is not just a marketplace — it is a protocol and data infrastructure for authenticated commerce, with each physical item represented as a verifiable NFT-based identity.
       </p>
 
       <section class="request-block" aria-label="What We Aim to Validate Together">
         <h3>What We Aim to Validate Together</h3>
 
         <div class="cta-inline">
+          <a class="cta-chip" href="https://showplly.github.io/showplly-lp/accelerator/alignment/" target="_blank" rel="noopener">
+            Core Architecture &amp; Alignment <span aria-hidden="true">↗</span>
+          </a>
           <div class="core-intent">Understand the architectural intent before scale.</div>
         </div>
 
@@ -904,7 +999,7 @@
         <div class="card">
           <div class="small-heading">Digital Product ID (DPID)</div>
           <p class="muted">
-            Patented structure optimized for physical goods and real-world trade. Each DPID anchors product metadata, images, logistics logs, customs declarations, and verification events.
+            Patented NFT-based structure optimized for physical goods and real-world trade. Each DPID anchors product metadata, images, logistics logs, customs declarations, and verification events.
           </p>
         </div>
         <div class="card">
@@ -917,6 +1012,7 @@
     </div>
   </section>
 
+  <!-- FOUNDER -->
   <section id="founder">
     <div class="section-inner two-col">
       <div>
@@ -944,6 +1040,7 @@
     </div>
   </section>
 
+  <!-- FOOTER CTA -->
   <footer>
     <div class="footer-inner">
       <div class="footer-title">
