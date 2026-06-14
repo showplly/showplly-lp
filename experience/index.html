@@ -689,14 +689,21 @@ nav {
   margin-top: 24px;
 }
 .final-secondary-link a {
+  display: inline-block;
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.5px;
   color: var(--purple);
-  border-bottom: 1px solid var(--purple-border);
-  padding-bottom: 3px;
-  transition: opacity 0.2s, border-color 0.2s;
+  background: var(--purple-dim);
+  border: 1px solid var(--purple-border);
+  border-radius: 100px;
+  padding: 7px 18px;
+  transition: opacity 0.2s, background 0.2s;
+}
+.final-secondary-link a:hover {
+  opacity: 0.85;
+  background: rgba(176,124,255,0.18);
 }
 .final-secondary-link a:hover { opacity: 0.85; border-color: var(--purple); }
 
