@@ -1,975 +1,1962 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Showplly – The authenticity layer of the internet</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #f5f7fb;
-      --bg-alt: #ffffff;
-      --primary: #1b4de4;
-      --accent: #ff5a5f;
-      --text-main: #102034;
-      --text-muted: #5b6b84;
-      --border: #dde3f0;
-      --radius-lg: 16px;
-      --radius-md: 10px;
-      --shadow-soft: 0 18px 45px rgba(15, 35, 52, 0.08);
-      --max-width: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      background: #ffffffcc;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(221, 227, 240, 0.7);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-
-    .nav {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-    }
-
-    .nav-left span {
-      font-size: 20px;
-      letter-spacing: 0.04em;
-      color: var(--primary);
-    }
-
-    .logo-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .nav-cta {
-      display: flex;
-      gap: 10px;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 8px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      border: 1px solid transparent;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .btn-outline {
-      background: #fff;
-      color: var(--text-main);
-      border-color: var(--border);
-    }
-
-    section {
-      padding: 64px 16px;
-    }
-
-    .section-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .section-kicker {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .section-lead {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 24px;
-      max-width: 640px;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 40px;
-      align-items: center;
-    }
-
-    .card {
-      background: var(--bg-alt);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      padding: 24px 24px 22px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      padding: 4px 10px;
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .pill span {
-      font-weight: 600;
-      color: var(--primary);
-    }
-
-    .tag {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: #e9f0ff;
-      color: var(--primary);
-      display: inline-block;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    ul.check-list li {
-      position: relative;
-      padding-left: 18px;
-      margin-bottom: 6px;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    ul.check-list li::before {
-      content: "•";
-      position: absolute;
-      left: 4px;
-      top: 0;
-      color: var(--accent);
-      font-size: 18px;
-      line-height: 1;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    .stat-card {
-      padding: 14px 14px 12px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      background: #fff;
-    }
-
-    .stat-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .stat-value {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-
-    .stat-note {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .charts-grid {
-      margin-top: 12px;
-      display: grid;
-      gap: 16px;
-    }
-
-    .chart-source {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .hero {
-      background: radial-gradient(circle at top left, #e6f0ff 0, #f5f7fb 40%, #ffffff 100%);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 56px 16px 40px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 40px;
-      align-items: center;
-    }
-
-    .hero-title {
-      font-size: 30px;
-      line-height: 1.25;
-      margin-bottom: 10px;
-    }
-
-    .hero-subtitle {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 10px;
-      max-width: 480px;
-    }
-
-    .hero-lead {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 16px;
-      max-width: 520px;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .hero-meta {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .hero-illustration {
-      max-width: 520px;
-      margin-left: auto;
-    }
-
-    .columns-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .columns-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .small-heading {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .muted {
-      color: var(--text-muted);
-      font-size: 13px;
-    }
-
-    .request-block{
-      margin-top: 16px;
-      padding: 16px 18px;
-      border: 1px solid rgba(221, 227, 240, 0.95);
-      border-radius: var(--radius-lg);
-      background: #fff;
-      box-shadow: var(--shadow-soft);
-      max-width: 840px;
-    }
-
-    .request-block h3{
-      font-size: 16px;
-      margin: 0 0 10px 0;
-    }
-
-    .request-block p{
-      margin: 10px 0;
-      color: var(--text-muted);
-      font-size: 13px;
-    }
-
-    .request-block ul{
-      margin: 8px 0 10px 18px;
-      list-style: disc;
-      color: var(--text-muted);
-      font-size: 13px;
-    }
-
-    .request-block li{
-      margin: 6px 0;
-    }
-
-    .cta-inline{
-      margin-top: 10px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .core-ribbon{
-      margin-top: 12px;
-      padding: 12px 14px 16px;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(221, 227, 240, 0.95);
-      background: linear-gradient(90deg, rgba(27, 77, 228, 0.06) 0%, rgba(255, 90, 95, 0.05) 100%);
-      box-shadow: var(--shadow-soft);
-      max-width: 640px;
-    }
-
-    .core-ribbon .ribbon-text{
-      font-size: 13px;
-      color: var(--text-main);
-      font-weight: 600;
-      line-height: 1.35;
-    }
-
-    .core-intent{
-      font-size: 12px;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-top: 2px;
-    }
-
-    .btn-soft-primary{
-      background: rgba(27, 77, 228, 0.10);
-      color: var(--primary);
-      border-color: rgba(27, 77, 228, 0.25);
-      box-shadow: 0 10px 25px rgba(15, 35, 52, 0.06);
-    }
-
-    .btn-soft-primary:hover{
-      transform: translateY(-1px);
-      border-color: rgba(27, 77, 228, 0.32);
-    }
-
-    .btn-soft-primary:focus-visible{
-      outline: 3px solid rgba(27, 77, 228, 0.25);
-      outline-offset: 2px;
-    }
-
-    footer {
-      background: #061225;
-      color: #e5ecff;
-      padding: 40px 16px 28px;
-      margin-top: 40px;
-    }
-
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .footer-title {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .footer-sub {
-      color: #b8c4e5;
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
-
-    .footer-cta {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    .footer-meta {
-      font-size: 11px;
-      color: #7f8bb1;
-      margin-top: 4px;
-    }
-
-    @media (max-width: 960px) {
-      .hero-grid,
-      .two-col,
-      .columns-3,
-      .columns-2 {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-inner {
-        padding-top: 40px;
-      }
-      .hero-grid {
-        gap: 32px;
-      }
-      .hero-illustration {
-        max-width: 360px;
-        margin: 0 auto;
-      }
-      .nav-links {
-        display: none;
-      }
-      .stats-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .charts-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      section {
-        padding: 48px 16px;
-      }
-      .hero-title {
-        font-size: 24px;
-      }
-      .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Showplly — Post it. Sell it. Trust it.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root {
+  --black:    #0A0A0A;
+  --white:    #F8F6F1;
+  --gray-1:   #111111;
+  --gray-2:   #1C1C1C;
+  --gray-3:   #2A2A2A;
+  --gray-4:   #909090;
+  --gray-5:   #ABABAB;
+  --accent:   #C8FF00;
+  --red:      #FF5C5C;
+  --purple:   #B07CFF;
+  --purple-dim: rgba(176,124,255,0.1);
+  --purple-border: rgba(176,124,255,0.35);
+  --border:   rgba(255,255,255,0.08);
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--white);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-5);
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.nav-links a.nav-how-link-text {
+  color: var(--purple);
+  font-weight: 600;
+}
+.nav-links a.nav-how-link-text:hover {
+  color: var(--purple);
+  opacity: 0.85;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--gray-5);
+  border: 1px solid var(--gray-3);
+}
+
+.btn-ghost:hover {
+  color: var(--white);
+  border-color: var(--gray-4);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--black);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #d4ff1a;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.btn-outline:hover {
+  background: rgba(200,255,0,0.08);
+}
+
+.btn-red {
+  background: var(--red);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.btn-red:hover {
+  background: #f02d30;
+  transform: translateY(-1px);
+}
+
+/* ── SECTIONS ── */
+section { padding: 100px 0; }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.section-sub {
+  font-size: 17px;
+  color: var(--gray-5);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0 48px;
+}
+
+/* ════════════════════════════════════
+   HERO
+════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(200,255,0,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-5);
+  margin-bottom: 32px;
+}
+
+.hero-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+
+.hero-headline .accent { color: var(--accent); }
+.hero-headline .dim { color: var(--gray-4); }
+
+.hero-sub {
+  font-size: 18px;
+  color: var(--gray-5);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 48px;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.hero-secondary-link {
+  margin-bottom: 80px;
+  display: inline-block;
+}
+.hero-secondary-link a {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--purple);
+  background: var(--purple-dim);
+  border: 1px solid var(--purple-border);
+  border-radius: 100px;
+  padding: 7px 16px;
+  transition: opacity 0.2s, border-color 0.2s, background 0.2s;
+}
+.hero-secondary-link a:hover {
+  opacity: 0.9;
+  border-color: var(--purple);
+  background: rgba(176,124,255,0.18);
+}
+
+.hero-cta-note {
+  font-size: 12px;
+  color: var(--gray-4);
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+}
+
+/* ── HERO FLOW DIAGRAM ── */
+.hero-flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--gray-1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.hero-flow-step {
+  flex: 1;
+  padding: 18px 12px;
+  border-right: 1px solid var(--border);
+  position: relative;
+  min-width: 0;
+}
+
+.hero-flow-step:last-child { border-right: none; }
+
+.hfs-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gray-4);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.hfs-icon {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.hfs-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.3px;
+}
+
+.hfs-sub {
+  font-size: 11px;
+  color: var(--gray-5);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.hfs-arrow {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: var(--gray-2);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--accent);
+  z-index: 1;
+}
+
+.hfs-highlight { background: rgba(200,255,0,0.04); }
+.hfs-highlight-strong {
+  background: var(--purple-dim);
+  border-left: 1px solid var(--purple-border) !important;
+  border-right: 1px solid var(--purple-border) !important;
+}
+.hfs-highlight-strong .hfs-label { color: var(--purple); }
+
+.hero-flow-note {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--gray-5);
+  letter-spacing: 0.3px;
+}
+.hero-flow-note a {
+  color: var(--purple);
+  font-weight: 600;
+  border-bottom: 1px solid var(--purple-border);
+}
+
+/* ════════════════════════════════════
+   PROBLEM
+════════════════════════════════════ */
+#problem {
+  background: var(--gray-1);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.problem-statements {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ps-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.ps-item:first-child { padding-top: 0; }
+.ps-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.ps-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray-4);
+  letter-spacing: 1px;
+  padding-top: 3px;
+  flex-shrink: 0;
+}
+
+.ps-text {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.ps-text .highlight { color: var(--red); }
+
+.ps-sub {
+  font-size: 13px;
+  color: var(--gray-5);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* Problem visual */
+.problem-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pv-card {
+  background: var(--gray-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+
+.pv-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-4);
+  margin-bottom: 10px;
+}
+
+.pv-number {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--red);
+  line-height: 1;
+}
+
+.pv-desc {
+  font-size: 13px;
+  color: var(--gray-5);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* ════════════════════════════════════
+   SOLUTION / HOW IT WORKS
+════════════════════════════════════ */
+#how {
+  position: relative;
+}
+
+.how-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 64px;
+}
+
+.how-step {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.how-step:hover { border-color: rgba(200,255,0,0.2); }
+
+.hs-num-col {
+  background: var(--gray-1);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.hs-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--gray-3);
+  line-height: 1;
+}
+
+.hs-num.active { color: var(--accent); }
+.hs-num.purple { color: var(--purple); }
+.how-step.purple-step { border-left: 3px solid var(--purple); }
+.how-step.purple-step .hs-num-col { background: var(--purple-dim); }
+.hs-tag.purple {
+  background: var(--purple-dim);
+  border-color: var(--purple-border);
+  color: var(--purple);
+}
+
+.hs-content {
+  padding: 32px 36px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hs-icon {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.hs-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.hs-body {
+  font-size: 14px;
+  color: var(--gray-5);
+  line-height: 1.6;
+}
+
+.hs-detail {
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hs-detail-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-4);
+  margin-bottom: 12px;
+}
+
+.hs-tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hs-tag {
+  background: var(--gray-2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray-5);
+}
+
+.hs-tag.accent {
+  background: rgba(200,255,0,0.08);
+  border-color: rgba(200,255,0,0.2);
+  color: var(--accent);
+}
+
+/* ════════════════════════════════════
+   EXPERIENCE CTA
+════════════════════════════════════ */
+#experience {
+  background: var(--gray-1);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.exp-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.exp-demo-box {
+  background: var(--black);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.edb-header {
+  background: var(--gray-2);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edb-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.edb-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray-5);
+  letter-spacing: 1px;
+  margin-left: 8px;
+}
+
+.edb-steps {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.edb-step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: var(--gray-1);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.edb-step.active {
+  background: rgba(200,255,0,0.05);
+  border-color: rgba(200,255,0,0.2);
+}
+
+.edb-step-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.edb-step-text {
+  font-size: 13px;
+  color: var(--gray-5);
+}
+
+.edb-step.active .edb-step-text { color: var(--white); }
+
+.edb-step-status {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.status-done { color: var(--accent); }
+.status-active { color: var(--white); }
+.status-wait { color: var(--gray-4); }
+
+.edb-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edb-time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray-4);
+}
+
+/* ════════════════════════════════════
+   WHO THIS IS FOR
+════════════════════════════════════ */
+#who {
+  position: relative;
+}
+
+.who-tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 2px;
+  background: var(--gray-1);
+  border: 1px solid var(--border);
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  padding: 6px;
+}
+
+.who-tab {
+  flex: 1;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-5);
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.3px;
+}
+
+.who-tab:hover { color: var(--white); }
+
+.who-tab.active {
+  background: var(--gray-2);
+  color: var(--white);
+}
+
+.who-panel {
+  display: none;
+  background: var(--gray-1);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 48px;
+}
+
+.who-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+
+.wp-headline {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.wp-sub {
+  font-size: 15px;
+  color: var(--gray-5);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.wp-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.wp-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--gray-5);
+  line-height: 1.4;
+}
+
+.wp-benefit::before {
+  content: '→';
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.wp-visual {
+  background: var(--gray-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wpv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.wpv-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+.wpv-label { color: var(--gray-5); }
+
+.wpv-value {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+.wpv-red { color: var(--red); }
+.wpv-green { color: var(--accent); }
+.wpv-white { color: var(--white); }
+
+/* ════════════════════════════════════
+   THE 100 CLUB
+════════════════════════════════════ */
+#club {
+  background: var(--gray-1);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.club-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.club-progress-box {
+  background: var(--black);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 36px;
+}
+
+.cpb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.cpb-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-5);
+}
+
+.cpb-count {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cpb-count .filled { color: var(--accent); }
+.cpb-count .total { color: var(--gray-4); }
+
+.cpb-narrative {
+  text-align: center;
+  padding: 32px 16px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(200,255,0,0.03);
+}
+.cpb-narrative-number {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.cpb-narrative-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-5);
+  margin-top: 10px;
+}
+.cpb-narrative-highlight {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-top: 6px;
+}
+
+.cpb-status-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-5);
+}
+.cpb-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+.cpb-status-text { color: var(--white); }
+
+.cpb-perks {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.cpb-perk {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--gray-5);
+}
+
+.cpb-perk-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════
+   FIRST TRANSACTION
+════════════════════════════════════ */
+#first-tx {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.ftx-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(200,255,0,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ftx-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200,255,0,0.08);
+  border: 1px solid rgba(200,255,0,0.2);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+
+.ftx-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -1.5px;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.ftx-sub {
+  font-size: 17px;
+  color: var(--gray-5);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 40px;
+}
+
+.ftx-details {
+  display: inline-flex;
+  gap: 40px;
+  background: var(--gray-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px 40px;
+  margin-bottom: 40px;
+}
+
+.ftx-detail {
+  text-align: left;
+}
+
+.ftx-detail-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-4);
+  margin-bottom: 4px;
+}
+
+.ftx-detail-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.ftx-cta-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ════════════════════════════════════
+   TRUST SIGNALS
+════════════════════════════════════ */
+#trust {
+  padding: 64px 0;
+  border-top: 1px solid var(--border);
+}
+
+.trust-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--gray-5);
+}
+
+.trust-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.trust-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+}
+
+/* ════════════════════════════════════
+   FOOTER
+════════════════════════════════════ */
+footer {
+  padding: 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--white);
+}
+
+.footer-links {
+  display: flex;
+  gap: 28px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--gray-5);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--white); }
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray-4);
+  letter-spacing: 0.5px;
+}
+
+/* ════════════════════════════════════
+   ANIMATIONS
+════════════════════════════════════ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════ */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .container { padding: 0 24px; }
+  section { padding: 72px 0; }
+  .problem-grid,
+  .exp-inner,
+  .club-inner,
+  .who-panel.active { grid-template-columns: 1fr; gap: 40px; }
+  .hero-inner { padding: 0 24px; }
+  .how-step { grid-template-columns: 60px 1fr; }
+  .hs-detail { display: none; }
+  .hero-flow { flex-direction: column; }
+  .hero-flow-step { border-right: none; border-bottom: 1px solid var(--border); }
+  .hero-flow-step:last-child { border-bottom: none; }
+  .ftx-details { flex-direction: column; gap: 20px; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .divider { margin: 0 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up { transition: none; }
+  .hero-eyebrow-dot { animation: none; }
+}
+</style>
 </head>
 <body>
-<div class="page">
 
-  <header>
-    <div class="nav">
-      <div class="nav-left">
-        <div class="logo-dot"></div>
-        <span>Showplly</span>
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">SHOWPLLY</div>
+  <ul class="nav-links">
+    <li><a href="#problem">Why now</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#who">Who it's for</a></li>
+    <li><a href="/how/" class="nav-how-link-text">Why this is possible →</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#club" class="btn btn-ghost">The 100 Club</a>
+    <a href="/experience/" class="btn btn-primary">▶ Try it yourself</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════
+     HERO
+════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+
+    <div class="hero-eyebrow fade-up">
+      <span class="hero-eyebrow-dot"></span>
+      Patent Pending &nbsp;·&nbsp; PCT Filed &nbsp;·&nbsp; Architecture Discussions with Oracle Japan
+    </div>
+
+    <h1 class="hero-headline fade-up">
+      The moment<br>
+      you <span class="accent">post,</span><br>
+      you <span class="dim">sell.</span>
+    </h1>
+
+    <p class="hero-sub fade-up">
+      No store. No setup. No marketplace commission.<br>
+      Verified content is the new storefront.
+    </p>
+
+    <div class="hero-cta-group fade-up">
+      <a href="/experience/" class="btn btn-primary" style="font-size:15px;padding:14px 28px;">
+        ▶ Start your experience
+      </a>
+    </div>
+    <p class="hero-secondary-link fade-up">
+      <a href="/how/">Why this is possible →</a>
+    </p>
+
+    <!-- Flow diagram -->
+    <div class="hero-flow fade-up">
+      <div class="hero-flow-step">
+        <div class="hfs-num">01</div>
+        <div class="hfs-icon">📸</div>
+        <div class="hfs-label">POST</div>
+        <div class="hfs-sub">Identity Content<br>on your SNS</div>
+        <div class="hfs-arrow">→</div>
       </div>
-      <nav class="nav-links">
-        <a href="#problem">Why this matters</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#oracle">Why Oracle</a>
-        <a href="#use-cases">Use cases</a>
-        <a href="#tech">Technology</a>
-        <a href="#founder">Founder</a>
-        <a href="mailto:founder@showplly.com?subject=Showplly%20LP%20Inquiry"
-           target="_blank" rel="noopener noreferrer">Contact</a>
-      </nav>
-      <div class="nav-cta">
-        <a href="mailto:founder@showplly.com" class="btn btn-outline">Talk with the founder</a>
-        <a href="mailto:founder@showplly.com?subject=Showplly%20–%20technical%20deck%20request" class="btn btn-primary">Request technical deck</a>
+      <div class="hero-flow-step hfs-highlight">
+        <div class="hfs-num">02</div>
+        <div class="hfs-icon">🔐</div>
+        <div class="hfs-label">VERIFY</div>
+        <div class="hfs-sub">Authenticity<br>confirmed</div>
+        <div class="hfs-arrow">→</div>
+      </div>
+      <div class="hero-flow-step hfs-highlight-strong">
+        <div class="hfs-num">03</div>
+        <div class="hfs-icon">⚡</div>
+        <div class="hfs-label">ACTION</div>
+        <div class="hfs-sub">Proceed, restrict,<br>or stop</div>
+        <div class="hfs-arrow">→</div>
+      </div>
+      <div class="hero-flow-step">
+        <div class="hfs-num">04</div>
+        <div class="hfs-icon">🛒</div>
+        <div class="hfs-label">CHECKOUT</div>
+        <div class="hfs-sub">Shopify<br>seamless</div>
+        <div class="hfs-arrow">→</div>
+      </div>
+      <div class="hero-flow-step">
+        <div class="hfs-num">05</div>
+        <div class="hfs-icon">💰</div>
+        <div class="hfs-label">EARN</div>
+        <div class="hfs-sub">Profit flows<br>to you</div>
+        <div class="hfs-arrow">→</div>
+      </div>
+      <div class="hero-flow-step">
+        <div class="hfs-num">06</div>
+        <div class="hfs-icon">📋</div>
+        <div class="hfs-label">AUDIT</div>
+        <div class="hfs-sub">Every event<br>recorded</div>
       </div>
     </div>
-  </header>
 
-  <section class="hero" id="top">
-    <div class="hero-inner">
-      <div class="hero-grid">
-        <div>
-          <div class="pill">
-            <span>Showplly × Oracle</span>
-            <span style="color:var(--text-muted);font-weight:400;">preview concept</span>
-          </div>
-          <h1 class="hero-title">
-            The world’s first<br>
-            Digital Product Identity Layer for Global Commerce
-          </h1>
-          <p class="hero-subtitle">
-            Powering authenticity, smart customs, and borderless commerce.
-          </p>
-          <p class="hero-lead">
-            Every physical product receives a unique Digital Product ID (DPID) — 
-            the world’s first identification layer that enables provable authenticity, 
-            correct customs duties, and a world where anyone can become a seller simply by posting a photo.
-          </p>
-          <div class="hero-badges">
-            <div class="tag">The world’s first Digital Product ID</div>
-            <div class="tag">Oracle ADB + OBP</div>
-            <div class="tag">PCT patent filed</div>
-          </div>
+    <p class="hero-flow-note fade-up">
+      Verification is not the goal — it's the input.
+    </p>
 
-          <div class="hero-buttons">
-            <a href="mailto:founder@showplly.com?subject=Showplly%20×%20Oracle%20discussion" class="btn btn-soft-primary">
-              Schedule a call
-            </a>
-            <a href="#problem" class="btn btn-outline">
-              See why this matters
-            </a>
-            <a href="mailto:founder@showplly.com?subject=Showplly%20LP%20Inquiry"
-               target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-              Contact form
-            </a>
-          </div>
+  </div>
+</section>
 
-          <div class="core-ribbon" aria-label="Core concept ribbon">
-            <div class="ribbon-text">
-              This page represents one practical expression of Showplly’s broader architectural vision.
-            </div>
-          </div>
+<div class="divider"></div>
 
-          <div class="hero-meta">
-            Currently in PoC discussions with Oracle Japan (OCI / ADB / OBP). Patent granted in Japan, PCT filed internationally.
-          </div>
-        </div>
-
-        <div class="hero-illustration">
-          <img src="hero-larry-showplly.png" alt="Showplly founder inviting Oracle to build the authenticity layer together" />
-          <p class="chart-source">Conceptual illustration by Showplly (founder × Oracle collaboration motif).</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="problem">
-    <div class="section-inner two-col">
+<!-- ════════════════════════════════════
+     PROBLEM
+════════════════════════════════════ -->
+<section id="problem">
+  <div class="container">
+    <div class="problem-grid">
       <div>
-        <div class="section-kicker">Why this layer is missing</div>
-        <h2 class="section-title">The internet was never designed to prove what’s real.</h2>
-        <p class="section-lead">
-          E-commerce made global trade frictionless — and just as frictionless for fraud. No shared, verifiable layer exists to prove that a physical product is genuine, fairly declared at customs, and traded along a clean supply chain.
-        </p>
-        <ul class="check-list">
-          <li>Counterfeit goods cross borders at scale, with little shared intelligence.</li>
-          <li>Under-valuation and false declarations erode customs revenues.</li>
-          <li>Each marketplace keeps its own siloed logs — there is no global authenticity log.</li>
-          <li>Consumers and regulators see only a “front-end store,” not the truth of the product.</li>
-        </ul>
-
-        <div class="card" style="margin-top:16px;">
-          <div class="section-kicker" style="margin-bottom:4px;">Why this matters now</div>
-          <div class="small-heading">Global impact of mis-declared and counterfeit goods</div>
-          <p class="muted" style="margin-top:6px;">
-            Customs, tax authorities, and industry bodies estimate hundreds of billions of dollars lost each year to under-invoicing, tariff misclassification, and counterfeit trade. The problem is systemic — not just a few bad actors.
-          </p>
-
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-label">Global counterfeit trade</div>
-              <div class="stat-value">US$500B+</div>
-              <div class="stat-note">Estimated annual value of counterfeit and pirated goods worldwide.</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Customs revenue gap</div>
-              <div class="stat-value">10–20%</div>
-              <div class="stat-note">Share of potential duties lost to mis-declaration in some markets.</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Regulatory pressure</div>
-              <div class="stat-value">Rising</div>
-              <div class="stat-note">Tighter KYC, supply-chain and product-origin rules across the US, EU, and Asia.</div>
-            </div>
-          </div>
-
-          <p class="muted" style="margin-top:10px;">
-            Showplly’s role is to give each physical item an unforgeable, audit-ready identity that can be shared across logistics, marketplaces, and regulators — without forcing end-users into Web3 complexity.
-          </p>
-        </div>
+        <div class="section-tag">// The broken system</div>
+        <h2 class="section-title">Today's EC<br>works against you.</h2>
+        <p class="section-sub">Every transaction in today's e-commerce extracts value from the people who create it — makers, sellers, and buyers alike.</p>
       </div>
-
-      <div class="card">
-        <div class="charts-grid">
+      <div class="problem-statements">
+        <div class="ps-item fade-up">
+          <span class="ps-num">01</span>
           <div>
-            <img src="chart-counterfeit-vs-misdeclared.png"
-                 alt="Share of counterfeit goods and mis-declared goods in global trade" />
-            <p class="chart-source">
-              Source: Illustrative split based on estimates from OECD, WCO and industry reports (indicative, not official statistics).
-            </p>
+            <div class="ps-text">Makers pay <span class="highlight">30%</span> to platforms.</div>
+            <div class="ps-sub">Amazon, Rakuten, and every major marketplace extracts 15–30% from every sale. The maker's margin disappears into infrastructure that doesn't serve them.</div>
           </div>
+        </div>
+        <div class="ps-item fade-up">
+          <span class="ps-num">02</span>
           <div>
-            <img src="chart-customs-loss-by-region.png"
-                 alt="Illustrative chart of customs revenue losses by region due to mis-declaration" />
-            <p class="chart-source">
-              Source: Illustrative customs revenue loss ranges adapted from Global Financial Integrity and OECD trade mis-invoicing studies (indicative only).
-            </p>
+            <div class="ps-text">Sellers earn <span class="highlight">nothing.</span></div>
+            <div class="ps-sub">Millions of people post product content daily — driving real purchase intent — and receive zero compensation. The platform captures the value they create.</div>
+          </div>
+        </div>
+        <div class="ps-item fade-up">
+          <span class="ps-num">03</span>
+          <div>
+            <div class="ps-text">Buyers trust <span class="highlight">no one.</span></div>
+            <div class="ps-sub">$500B+ in counterfeit goods trade annually. Buyers have no way to know if what they see is genuine — until it arrives and it isn't.</div>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <section id="how-it-works">
-    <div class="section-inner two-col">
-      <div>
-        <div class="section-kicker">What is Showplly</div>
-        <h2 class="section-title">Every product becomes a verifiable digital identity.</h2>
-        <p class="section-lead">
-          Showplly is an authenticity infrastructure that links physical goods with Digital Product IDs, anchored on Oracle’s enterprise platform. For the user, it still feels like a familiar e-commerce experience.
-        </p>
-        <ul class="check-list">
-          <li>Generates a unique <strong>Digital Product ID (DPID)</strong> for each uploaded product photo.</li>
-          <li>Stores authenticity &amp; trade data in <strong>Oracle Autonomous Database (ADB)</strong>.</li>
-          <li>Records verification &amp; logistics events on <strong>Oracle Blockchain Platform (OBP)</strong>.</li>
-        </ul>
-        <p class="muted" style="margin-top:10px;">
-          From brand registration through cross-border shipping to resale, each lifecycle event accumulates on the same product identity — not on fragmented, platform-specific logs.
-        </p>
+    <!-- Stat cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:64px;" class="fade-up">
+      <div class="pv-card">
+        <div class="pv-label">Platform fee</div>
+        <div class="pv-number">30%</div>
+        <div class="pv-desc">Average cut taken by major EC platforms from every maker sale.</div>
       </div>
-
-      <div class="card">
-        <div class="section-kicker" style="margin-bottom:4px;">Showplly × Oracle</div>
-        <div class="small-heading">The world’s first global standard for authentic goods</div>
-        <p class="muted" style="margin:6px 0 14px;">
-          Showplly and Oracle set the foundation to lead. Each uploaded photo instantly generates a Digital Product ID and expands global authenticity data in Oracle ADB, while every transaction is immutably recorded on Oracle OBP.
-        </p>
-        <img src="showplly-oracle-3steps.png" alt="Three-step diagram of Showplly × Oracle: NFT ID, global data, and verification" />
-        <p class="chart-source">
-          Conceptual architecture sketch for Showplly × Oracle PoC (for discussion, not an official Oracle system diagram).
-        </p>
+      <div class="pv-card">
+        <div class="pv-label">Creator compensation</div>
+        <div class="pv-number">$0</div>
+        <div class="pv-desc">What most SNS sellers earn despite driving direct purchase intent.</div>
+      </div>
+      <div class="pv-card">
+        <div class="pv-label">Counterfeit trade</div>
+        <div class="pv-number" style="font-size:32px;">$500B+</div>
+        <div class="pv-desc">Annual value of counterfeit goods — with no global verification layer.</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="oracle">
-    <div class="section-inner">
-      <div class="section-kicker">Why Oracle</div>
-      <h2 class="section-title">The only place the world’s first authenticity layer can run at global scale.</h2>
-      <p class="section-lead">
-        Showplly was designed from day one to operate at Oracle scale. Oracle provides the infrastructure to make a global authenticity and customs-integrity layer feasible — for brands, logistics partners, customs, and marketplaces.
-      </p>
+<div class="divider"></div>
 
-      <div class="columns-3">
-        <div class="card">
-          <div class="tag" style="margin-bottom:10px;">Authenticity architecture</div>
-          <div class="small-heading">Patent-backed Digital Product ID model</div>
-          <p class="muted">
-            Optimized for physical goods, cross-border trade, and customs integrity, with a data model built on Oracle ADB and OBP.
-          </p>
+<!-- ════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════ -->
+<section id="how">
+  <div class="container">
+    <div class="section-tag">// How it works</div>
+    <h2 class="section-title">Content becomes<br>the verified store.</h2>
+    <p class="section-sub">Showplly embeds an identity and verification layer directly into content — before it is posted. The content itself becomes the proof.</p>
+
+    <div class="how-steps">
+
+      <div class="how-step fade-up">
+        <div class="hs-num-col">
+          <div class="hs-num">1</div>
         </div>
-        <div class="card">
-          <div class="tag" style="margin-bottom:10px;">Autonomous Database</div>
-          <div class="small-heading">Global authenticity data lake</div>
-          <p class="muted">
-            Product, logistics, warranty, and customs-related data aggregated in Oracle Autonomous Database — the single source of truth for every DPID.
-          </p>
+        <div class="hs-content">
+          <div class="hs-icon">🏭</div>
+          <div class="hs-title">Product Creation</div>
+          <div class="hs-body">A maker's product is photographed and processed through a content creation partner. Professional, clean, ready for identity embedding.</div>
         </div>
-        <div class="card">
-          <div class="tag" style="margin-bottom:10px;">Blockchain &amp; AI</div>
-          <div class="small-heading">Verified events + AI-ready logs</div>
-          <p class="muted">
-            Oracle OBP provides tamper-evident verification logs; Oracle’s analytics &amp; AI stack unlock pattern detection, risk scoring, and smart customs insights on top.
-          </p>
+        <div class="hs-detail">
+          <div class="hs-detail-label">Inputs</div>
+          <div class="hs-tag-group">
+            <span class="hs-tag">Product Makers</span>
+            <span class="hs-tag">Content Creation Tools</span>
+          </div>
         </div>
       </div>
+
+      <div class="how-step fade-up">
+        <div class="hs-num-col">
+          <div class="hs-num active">2</div>
+        </div>
+        <div class="hs-content">
+          <div class="hs-icon">🔐</div>
+          <div class="hs-title">Identity Layer</div>
+          <div class="hs-body">The patented identity layer embeds product authenticity and commercial authorization into the content. This happens before posting. The content becomes self-verifying.</div>
+        </div>
+        <div class="hs-detail">
+          <div class="hs-detail-label">Technology</div>
+          <div class="hs-tag-group">
+            <span class="hs-tag accent">Patent Pending</span>
+            <span class="hs-tag accent">PCT Filed</span>
+            <span class="hs-tag">Oracle ADB</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-step fade-up">
+        <div class="hs-num-col">
+          <div class="hs-num">3</div>
+        </div>
+        <div class="hs-content">
+          <div class="hs-icon">📱</div>
+          <div class="hs-title">SNS Post</div>
+          <div class="hs-body">The seller posts Identity Content to Instagram, X, or TikTok. No store setup. No registration. No barrier. Just post.</div>
+        </div>
+        <div class="hs-detail">
+          <div class="hs-detail-label">Channels</div>
+          <div class="hs-tag-group">
+            <span class="hs-tag">Instagram</span>
+            <span class="hs-tag">X / Twitter</span>
+            <span class="hs-tag">TikTok</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-step fade-up">
+        <div class="hs-num-col">
+          <div class="hs-num active">4</div>
+        </div>
+        <div class="hs-content">
+          <div class="hs-icon">✅</div>
+          <div class="hs-title">Verification</div>
+          <div class="hs-body">When a buyer accesses the content, verification executes automatically. The content proves itself — both product authenticity and seller authorization — in seconds, without any marketplace in between.</div>
+        </div>
+        <div class="hs-detail">
+          <div class="hs-detail-label">Output</div>
+          <div class="hs-tag-group">
+            <span class="hs-tag accent">VERIFIED ✓</span>
+            <span class="hs-tag">Authentic</span>
+            <span class="hs-tag">Authorized</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-step purple-step fade-up">
+        <div class="hs-num-col">
+          <div class="hs-num purple">5</div>
+        </div>
+        <div class="hs-content">
+          <div class="hs-icon">⚡</div>
+          <div class="hs-title">Action</div>
+          <div class="hs-body">Verification is not the goal — it's the input. Depending on the result, commerce can proceed, be restricted, or be stopped automatically. Only authorized actions are allowed to continue.</div>
+        </div>
+        <div class="hs-detail">
+          <div class="hs-detail-label">Outcomes</div>
+          <div class="hs-tag-group">
+            <span class="hs-tag purple">Proceed</span>
+            <span class="hs-tag purple">Restrict</span>
+            <span class="hs-tag purple">Stop</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-step fade-up">
+        <div class="hs-num-col">
+          <div class="hs-num">6</div>
+        </div>
+        <div class="hs-content">
+          <div class="hs-icon">🛒</div>
+          <div class="hs-title">Checkout → Earn</div>
+          <div class="hs-body">When Action allows, the buyer proceeds to Shopify Checkout. Purchase completes. Profit distributes automatically to maker and seller. Every event is audit-logged.</div>
+        </div>
+        <div class="hs-detail">
+          <div class="hs-detail-label">Infrastructure</div>
+          <div class="hs-tag-group">
+            <span class="hs-tag">Shopify</span>
+            <span class="hs-tag">Stripe Connect</span>
+            <span class="hs-tag accent">Audit</span>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="use-cases">
-    <div class="section-inner">
-      <div class="section-kicker">User experience</div>
-      <h2 class="section-title">Web2 UX, Web3-grade security.</h2>
-      <p class="section-lead">
-        Showplly bridges today’s e-commerce expectations with tomorrow’s decentralized commerce infrastructure — without forcing users to manage wallets or seed phrases.
-      </p>
+<div class="divider"></div>
 
-      <div class="columns-3">
-        <div class="card">
-          <div class="small-heading">Web2-familiar</div>
-          <p class="muted">
-            Users browse and buy like any modern marketplace. No wallet setup, no seed phrases, no crypto onboarding required.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">Web2.5 – invisible NFTs</div>
-          <p class="muted">
-            Digital Product IDs live entirely in the backend. Buyers and sellers simply see “verified product” signals and authenticity scores.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">Web3 – optional ownership</div>
-          <p class="muted">
-            Power users and partners can move IDs on-chain, connect wallets, and interoperate with other Web3 ecosystems when needed.
-          </p>
-        </div>
-      </div>
-
-      <div style="height:32px;"></div>
-
-      <div class="section-kicker">Immediate value</div>
-      <h3 class="section-title" style="font-size:20px;">Where Showplly generates ROI from day one.</h3>
-      <div class="columns-2" style="margin-top:16px;">
-        <div class="card">
-          <div class="small-heading">Cross-border e-commerce</div>
-          <p class="muted">
-            Authenticity certificates travel with each shipment. Customs and product data stay cryptographically tied to each item.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">Smart customs &amp; tax integrity</div>
-          <p class="muted">
-            AI-assisted classification and risk scoring. Mismatches between declarations and real goods become visible and auditable.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">Supply-chain traceability</div>
-          <p class="muted">
-            Track items from manufacturer to consumer on a single authenticity log, accessible to multiple stakeholders.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">C2C &amp; re-commerce</div>
-          <p class="muted">
-            Pre-owned products can prove origin, authenticity, and service history — unlocking new business for brands and platforms.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="pre-rwa">
-    <div class="section-inner two-col">
-      <div>
-        <div class="section-kicker">Next-generation identity layer for physical assets</div>
-        <h2 class="section-title">Before tokenization, the world needs identification.</h2>
-        <p class="section-lead">
-          Showplly provides a next-generation identity layer for physical goods. Before any asset — including securities and real estate — can be tokenized as RWA, it must first be uniquely and verifiably identified.
+<!-- ════════════════════════════════════
+     EXPERIENCE CTA
+════════════════════════════════════ -->
+<section id="experience">
+  <div class="container">
+    <div class="exp-inner">
+      <div class="fade-up">
+        <div class="section-tag">// See it happen</div>
+        <h2 class="section-title">Be both the<br>Seller and<br>the Buyer.</h2>
+        <p class="section-sub" style="margin-bottom:32px;">
+          In 5 minutes, you'll experience the entire flow — from posting Identity Content to verified purchase to profit distribution. No signup. No credit card.
         </p>
-        <p class="muted">
-          The Digital Product ID (DPID) provides that missing layer: a universal, non-financial, authenticity-first identifier that can later be linked to financial tokens where regulations allow.
-        </p>
-        <p class="muted" style="margin-top:8px;">
-          In other words, Showplly’s identification layer becomes the foundation on which future RWA models for products, rights, and even financial instruments can safely stand.
-        </p>
-      </div>
-      <div class="card">
-        <div class="small-heading">From physical identity to future RWA</div>
-        <p class="muted" style="margin:6px 0 12px;">
-          Showplly does not itself issue financial instruments. Instead, it provides the world’s first universal, authenticity-focused identification layer that RWA platforms can build upon.
-        </p>
-        <img src="diagram-pre-rwa-layer.png"
-             alt="Diagram of Showplly as a next-generation identity layer enabling future RWA tokenization" />
-        <p class="chart-source">
-          Conceptual illustration by Showplly — positioning DPID as a next-generation identity layer for physical assets.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="inclusion">
-    <div class="section-inner two-col">
-      <div>
-        <div class="section-kicker">Inclusion &amp; access</div>
-        <h2 class="section-title">Lowering barriers to global commerce.</h2>
-        <p class="section-lead">
-          Showplly enables small merchants in developing regions — and economically disadvantaged individuals everywhere — to participate in global trade simply by posting a product photo.
-        </p>
-        <p class="muted">
-          No warehouse, no complex paperwork, no gatekeeping by centralized platforms. The Digital Product ID and Oracle-backed infrastructure provide the trust layer that individuals alone could never build.
-        </p>
-        <p class="muted" style="margin-top:8px;">
-          By combining authenticity, smart customs, and open access, Showplly aims to make global commerce fairer — not only for large brands, but also for the smallest and most vulnerable participants in the economy.
-        </p>
-      </div>
-      <div class="card">
-        <div class="small-heading">Expanding participation in the real economy</div>
-        <p class="muted" style="margin:6px 0 12px;">
-          When “uploading a photo” is enough to enter the global marketplace, the internet finally begins to serve as a truly open economic rail — backed by verifiable, Oracle-grade authenticity data.
-        </p>
-        <img src="diagram-inclusive-commerce.png"
-             alt="Illustration of small merchants and economically disadvantaged individuals joining global commerce via Showplly" />
-        <p class="chart-source">
-          Conceptual illustration by Showplly — inclusive access for small merchants and low-income individuals to reach global buyers.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="tech">
-    <div class="section-inner">
-      <div class="section-kicker">Technology</div>
-      <h2 class="section-title">One product view. Many layers of trust.</h2>
-      <p class="section-lead">
-        Showplly is not just a marketplace — it is a protocol and data infrastructure for authenticated commerce, with each physical item represented as a verifiable digital identity.
-      </p>
-
-      <section class="request-block" aria-label="What We Aim to Validate Together">
-        <h3>What We Aim to Validate Together</h3>
-
-        <div class="cta-inline">
-          <div class="core-intent">Understand the architectural intent before scale.</div>
-        </div>
-
-        <p>
-          Showplly is currently <strong>not seeking fundraising</strong>.
-        </p>
-
-        <p>
-          At this stage, we are focused on technical and strategic validation — with a practical path to PoC collaboration when mutual alignment is confirmed.
-        </p>
-
-        <ul>
-          <li><strong>Technical validation</strong> of the Pre-Financial Identity Layer architecture</li>
-          <li><strong>Strategic alignment</strong> on enterprise interoperability and data integrity</li>
-          <li><strong>Evaluation</strong> of potential PoC collaboration pathways with Oracle technologies</li>
-        </ul>
-
-        <p>
-          Showplly is designed as a foundational identity layer positioned <em>before</em> financial settlement,
-          enabling authenticity, provenance, and ownership to be established independently of payment, custody, or token issuance.
-        </p>
-
-        <p>
-          We believe this positioning makes Showplly highly complementary to Oracle’s cloud, data, and enterprise integration strengths.
-        </p>
-
-        <p style="margin-top:10px;">
-          <em>
-            If mutual alignment is confirmed, natural next steps may include collaborative PoC design,
-            formation of a focused working group, and exploration of ecosystem-based or non-dilutive funding mechanisms.
-          </em>
-        </p>
-      </section>
-
-      <div class="columns-2" style="margin-top:12px;">
-        <div class="card">
-          <div class="small-heading">Digital Product ID (DPID)</div>
-          <p class="muted">
-            Patented structure optimized for physical goods and real-world trade. Each DPID anchors product metadata, images, logistics logs, customs declarations, and verification events.
-          </p>
-        </div>
-        <div class="card">
-          <div class="small-heading">Oracle-native data model</div>
-          <p class="muted">
-            Authenticity data lake on Oracle ADB, verification logs on OBP, and APIs for customs, logistics, and marketplace partners to connect and query DPIDs across the global network.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="founder">
-    <div class="section-inner two-col">
-      <div>
-        <div class="section-kicker">Founder</div>
-        <h2 class="section-title">About the founder.</h2>
-        <p class="section-lead">
-          Showplly is led by a founder with deep experience in global hardware, logistics, and cross-border commerce — including the pain of counterfeit goods, opaque logistics, and fragmented data first-hand.
-        </p>
-        <p class="muted">
-          Over 30 years in computer hardware, distribution, and global supply chains, he has seen how counterfeit products and mis-declared shipments damage trust and profitability for honest brands and retailers.
-        </p>
-      </div>
-      <div class="card">
-        <div class="small-heading">Yuzuru Sano — Founder, Showplly</div>
-        <p class="muted" style="margin-top:6px;">
-          Yuzuru designed Showplly as the missing “authenticity layer” of the internet — and aligned the architecture from day one with Oracle’s data and blockchain platforms.
-        </p>
-        <p class="muted" style="margin-top:8px;">
-          The underlying technology has been granted patent protection in Japan, with PCT filed for international coverage. A detailed technical whitepaper and architecture deck are available under NDA.
-        </p>
-        <p class="muted" style="margin-top:8px;font-size:12px;">
-          Contact: <a href="mailto:founder@showplly.com">founder@showplly.com</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-title">
-        Let’s build the world’s first authenticity layer of the internet together.
-      </div>
-      <div class="footer-sub">
-        If you are Oracle, an infrastructure partner, a marketplace, a logistics provider, a customs-related organization, or an investor looking for the next fundamental internet layer — we’d be honored to speak.
-      </div>
-      <div class="footer-cta">
-        <a href="mailto:founder@showplly.com?subject=Showplly%20–%20technical%20deck%20request" class="btn btn-outline">
-          Request technical deck
+        <a href="/experience/" class="btn btn-primary" style="font-size:15px;padding:14px 28px;">
+          ▶ Start your experience
         </a>
-        <a href="mailto:founder@showplly.com?subject=Showplly%20×%20Oracle%20intro%20call" class="btn btn-outline">
-          Schedule a call
-        </a>
-        <a href="mailto:founder@showplly.com?subject=Showplly%20Contact%20(Oracle%20LP)"
-           target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Open contact form
-        </a>
+        <p style="margin-top:14px;font-size:12px;color:var(--gray-4);font-family:var(--font-mono);letter-spacing:0.5px;">
+          Takes 5 minutes &nbsp;·&nbsp; No signup required &nbsp;·&nbsp; No credit card
+        </p>
       </div>
-      <div class="footer-meta">
-        © Showplly. Patent granted in Japan. PCT filed for international protection.
+
+      <!-- Demo preview box -->
+      <div class="exp-demo-box fade-up">
+        <div class="edb-header">
+          <div class="edb-dot" style="background:#E8272A;"></div>
+          <div class="edb-dot" style="background:#FFD700;"></div>
+          <div class="edb-dot" style="background:#00A651;"></div>
+          <span class="edb-title">SHOWPLLY EXPERIENCE DEMO</span>
+        </div>
+        <div class="edb-steps">
+          <div class="edb-step" style="opacity:0.5;">
+            <div class="edb-step-icon">📸</div>
+            <div class="edb-step-text">Post Identity Content as Seller</div>
+            <div class="edb-step-status status-wait">WAITING</div>
+          </div>
+          <div class="edb-step active">
+            <div class="edb-step-icon">🔐</div>
+            <div class="edb-step-text">Verification executes</div>
+            <div class="edb-step-status status-active">● LIVE</div>
+          </div>
+          <div class="edb-step" style="opacity:0.5;">
+            <div class="edb-step-icon">✅</div>
+            <div class="edb-step-text">VERIFIED — Product authenticated</div>
+            <div class="edb-step-status status-wait">PENDING</div>
+          </div>
+          <div class="edb-step" style="opacity:0.5;">
+            <div class="edb-step-icon">🛒</div>
+            <div class="edb-step-text">Shopify Checkout as Buyer</div>
+            <div class="edb-step-status status-wait">PENDING</div>
+          </div>
+          <div class="edb-step" style="opacity:0.5;">
+            <div class="edb-step-icon">💰</div>
+            <div class="edb-step-text">Profit distributed to Seller</div>
+            <div class="edb-step-status status-wait">PENDING</div>
+          </div>
+          <div class="edb-step" style="opacity:0.5;">
+            <div class="edb-step-icon">📋</div>
+            <div class="edb-step-text">Full event audit generated</div>
+            <div class="edb-step-status status-wait">PENDING</div>
+          </div>
+        </div>
+        <div class="edb-footer">
+          <span class="edb-time">Typical completion: ~5 min</span>
+          <a href="/experience/" class="btn btn-primary" style="font-size:12px;padding:8px 16px;">Start →</a>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-</div>
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════
+     WHO THIS IS FOR
+════════════════════════════════════ -->
+<section id="who">
+  <div class="container">
+    <div class="section-tag">// Who this is for</div>
+    <h2 class="section-title" style="margin-bottom:48px;">Your role<br>in the revolution.</h2>
+
+    <div class="who-tabs">
+      <button class="who-tab active" onclick="switchTab('makers')">🏭 Product Makers</button>
+      <button class="who-tab" onclick="switchTab('sellers')">📱 Sellers / Instagrammers</button>
+      <button class="who-tab" onclick="switchTab('ec')">🛒 Small EC Shops</button>
+      <button class="who-tab" onclick="switchTab('builders')">⚙️ Engineers</button>
+    </div>
+
+    <!-- MAKERS -->
+    <div class="who-panel active" id="panel-makers">
+      <div>
+        <div class="wp-headline">Stop paying 30%<br>to platforms.</div>
+        <p class="wp-sub">Your product deserves a verified identity. Your fans deserve to become your sales force. The platform tax ends here.</p>
+        <div class="wp-benefits">
+          <div class="wp-benefit">Verified identity embedded in your product content</div>
+          <div class="wp-benefit">Fans and creators become your distributed sales force</div>
+          <div class="wp-benefit">Direct customer relationship — no platform intermediary</div>
+          <div class="wp-benefit">Zero dependency on algorithmic visibility</div>
+          <div class="wp-benefit">Full profit distribution audit trail</div>
+        </div>
+        <a href="#club" class="btn btn-primary">Join as a Founding Maker →</a>
+      </div>
+      <div class="wp-visual">
+        <div class="wpv-row">
+          <span class="wpv-label">Platform fee</span>
+          <span class="wpv-value wpv-red">−30%</span>
+        </div>
+        <div class="wpv-row">
+          <span class="wpv-label">Customer data ownership</span>
+          <span class="wpv-value wpv-red">Platform</span>
+        </div>
+        <div class="wpv-row" style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px;">
+          <span class="wpv-label" style="color:var(--accent);">With Showplly</span>
+          <span></span>
+        </div>
+        <div class="wpv-row">
+          <span class="wpv-label">Platform fee</span>
+          <span class="wpv-value wpv-green">$0</span>
+        </div>
+        <div class="wpv-row">
+          <span class="wpv-label">Customer data</span>
+          <span class="wpv-value wpv-green">Yours</span>
+        </div>
+        <div class="wpv-row">
+          <span class="wpv-label">Sales force</span>
+          <span class="wpv-value wpv-green">Your fans</span>
+        </div>
+        <div class="wpv-row">
+          <span class="wpv-label">Product authenticity</span>
+          <span class="wpv-value wpv-green">Verified ✓</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SELLERS -->
+    <div class="who-panel" id="panel-sellers">
+      <div>
+        <div class="wp-headline">Your post<br>is your store.</div>
+        <p class="wp-sub">You post every day. You drive purchase intent every day. You earn nothing from it. That ends now.</p>
+        <div class="wp-benefits">
+          <div class="wp-benefit">Get verified product content — ready to post</div>
+          <div class="wp-benefit">Post to Instagram, TikTok, or X — nothing else required</div>
+          <div class="wp-benefit">Buyer taps your post → verified → purchased</div>
+          <div class="wp-benefit">Profit flows directly to you — automatically</div>
+          <div class="wp-benefit">No store, no marketplace commission, no registration barrier</div>
+        </div>
+        <a href="#club" class="btn btn-primary">Claim your spot in The 100 Club →</a>
+      </div>
+      <div class="wp-visual">
+        <div class="wpv-row">
+          <div>
+            <div style="font-size:11px;color:var(--gray-4);margin-bottom:4px;font-family:var(--font-mono);">TODAY</div>
+            <div class="wpv-label">You post → Platform earns → You get $0</div>
+          </div>
+        </div>
+        <div class="wpv-row" style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px;">
+          <div>
+            <div style="font-size:11px;color:var(--accent);margin-bottom:4px;font-family:var(--font-mono);">WITH SHOWPLLY</div>
+            <div class="wpv-label" style="color:var(--white);">You post → Buyer verifies → You earn</div>
+          </div>
+        </div>
+        <div class="wpv-row">
+          <span class="wpv-label">Setup required</span>
+          <span class="wpv-value wpv-green">None</span>
+        </div>
+        <div class="wpv-row">
+          <span class="wpv-label">Platform fees</span>
+          <span class="wpv-value wpv-green">$0</span>
+        </div>
+        <div class="wpv-row">
+          <span class="wpv-label">Profit share</span>
+          <span class="wpv-value wpv-green">Direct to you</span>
+        </div>
+        <div class="wpv-row">
+          <span class="wpv-label">Required action</span>
+          <span class="wpv-value wpv-white">Just post</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- EC -->
+    <div class="who-panel" id="panel-ec">
+      <div>
+        <div class="wp-headline">Break free from<br>the platform trap.</div>
+        <p class="wp-sub">You built your store. You grew your catalog. You still pay 30% and get zero customer data. There's a better model.</p>
+        <div class="wp-benefits">
+          <div class="wp-benefit">Content-native trust — no marketplace required</div>
+          <div class="wp-benefit">Your community becomes your distribution network</div>
+          <div class="wp-benefit">Verified products reduce returns and disputes</div>
+          <div class="wp-benefit">Direct buyer relationship from first contact</div>
+          <div class="wp-benefit">Complement your existing store — not replace it</div>
+        </div>
+        <a href="#club" class="btn btn-primary">Partner with us in the PoC →</a>
+      </div>
+      <div class="wp-visual">
+        <div class="wpv-row"><span class="wpv-label">Platform dependency</span><span class="wpv-value wpv-red">High</span></div>
+        <div class="wpv-row"><span class="wpv-label">Customer data</span><span class="wpv-value wpv-red">Platform's</span></div>
+        <div class="wpv-row"><span class="wpv-label">Counterfeit risk</span><span class="wpv-value wpv-red">Unverified</span></div>
+        <div class="wpv-row" style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px;">
+          <span class="wpv-label" style="color:var(--accent);">With Showplly</span><span></span>
+        </div>
+        <div class="wpv-row"><span class="wpv-label">Platform dependency</span><span class="wpv-value wpv-green">None</span></div>
+        <div class="wpv-row"><span class="wpv-label">Customer data</span><span class="wpv-value wpv-green">Yours</span></div>
+        <div class="wpv-row"><span class="wpv-label">Product verification</span><span class="wpv-value wpv-green">Built-in ✓</span></div>
+      </div>
+    </div>
+
+    <!-- BUILDERS -->
+    <div class="who-panel" id="panel-builders">
+      <div>
+        <div class="wp-headline">Build what<br>commerce needs.</div>
+        <p class="wp-sub">The identity layer for verified commerce doesn't exist yet. The PoC needs engineers who want to build something that matters.</p>
+        <div class="wp-benefits">
+          <div class="wp-benefit">Patent pending · Architecture discussions with Oracle Japan · JETRO backed</div>
+          <div class="wp-benefit">Real-world deployment — not a side project</div>
+          <div class="wp-benefit">Equity opportunity available</div>
+          <div class="wp-benefit">PoC scope: achievable and impactful</div>
+          <div class="wp-benefit">Shape the architecture from day one</div>
+        </div>
+        <a href="mailto:founder@showplly.com?subject=Engineer%20Interest%20-%20Showplly%20PoC" class="btn btn-primary">Join the build →</a>
+      </div>
+      <div class="wp-visual">
+        <div class="hs-detail-label" style="margin-bottom:16px;">Tech Stack (PoC)</div>
+        <div class="hs-tag-group" style="gap:8px;">
+          <span class="hs-tag accent">Identity Layer</span>
+          <span class="hs-tag accent">Verification API</span>
+          <span class="hs-tag">Shopify</span>
+          <span class="hs-tag">Oracle ADB</span>
+          <span class="hs-tag">Stripe Connect</span>
+          <span class="hs-tag">SNS Integration</span>
+          <span class="hs-tag">Event Audit</span>
+          <span class="hs-tag">Profit Distribution</span>
+        </div>
+        <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border);">
+          <div class="hs-detail-label" style="margin-bottom:12px;">Architecture brief available under NDA</div>
+          <a href="mailto:founder@showplly.com?subject=NDA%20Request%20-%20Engineer" class="btn btn-outline" style="font-size:12px;padding:8px 16px;">Request NDA Access →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════
+     THE 100 CLUB
+════════════════════════════════════ -->
+<section id="club">
+  <div class="container">
+    <div class="club-inner">
+      <div class="fade-up">
+        <div class="section-tag">// Founding Sellers</div>
+        <h2 class="section-title">The 100 Club.</h2>
+        <p class="section-sub" style="margin-bottom:28px;">
+          One hundred founding sellers. Numbered permanently. These are the people who will take part in The First Participation — and shape the future of commerce.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
+          <div class="wp-benefit" style="display:flex;gap:10px;font-size:14px;color:var(--gray-5);">Permanent numbered membership (#001–#100)</div>
+          <div class="wp-benefit" style="display:flex;gap:10px;font-size:14px;color:var(--gray-5);">Priority access at PoC launch</div>
+          <div class="wp-benefit" style="display:flex;gap:10px;font-size:14px;color:var(--gray-5);">Enhanced profit share rate — Founding members only</div>
+          <div class="wp-benefit" style="display:flex;gap:10px;font-size:14px;color:var(--gray-5);">Direct product feedback access</div>
+          <div class="wp-benefit" style="display:flex;gap:10px;font-size:14px;color:var(--gray-5);">Invitation to The First Participation event</div>
+        </div>
+        <a href="mailto:founder@showplly.com?subject=The%20100%20Club%20-%20Founding%20Seller%20Application" class="btn btn-primary" style="font-size:15px;padding:14px 28px;">
+          Claim your number →
+        </a>
+      </div>
+
+      <!-- Narrative box -->
+      <div class="club-progress-box fade-up">
+        <div class="cpb-header">
+          <span class="cpb-title">Founding Seller Status</span>
+          <span class="cpb-count">
+            <span class="filled" style="font-size:12px;letter-spacing:1px;">Invitation-based</span>
+          </span>
+        </div>
+
+        <div class="cpb-narrative">
+          <div class="cpb-narrative-number">#001</div>
+          <div class="cpb-narrative-text">begins with</div>
+          <div class="cpb-narrative-highlight">The First Participation</div>
+        </div>
+
+        <div class="cpb-status-row">
+          <span class="cpb-status-dot"></span>
+          <span class="cpb-status-text">Opening Soon</span>
+        </div>
+
+        <div class="cpb-perks">
+          <div class="cpb-perk">
+            <span class="cpb-perk-icon">🏅</span>
+            <span>Permanent #XXX membership badge</span>
+          </div>
+          <div class="cpb-perk">
+            <span class="cpb-perk-icon">📅</span>
+            <span>Invited to The First Participation</span>
+          </div>
+          <div class="cpb-perk">
+            <span class="cpb-perk-icon">💰</span>
+            <span>Founding profit share rate</span>
+          </div>
+          <div class="cpb-perk">
+            <span class="cpb-perk-icon">🔒</span>
+            <span>Monthly progress updates</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════
+     THE FIRST TRANSACTION
+════════════════════════════════════ -->
+<section id="first-tx">
+  <div class="ftx-glow"></div>
+  <div class="container" style="text-align:center;">
+
+    <div class="ftx-badge fade-up">
+      <span>●</span> Coming Soon
+    </div>
+
+    <h2 class="ftx-title fade-up">
+      The First<br>Participation.
+    </h2>
+
+    <p class="ftx-sub fade-up">
+      The world's first verified commerce participation through SNS content — from post to verification to action to purchase. In real time. With you in the room.<br><br>
+      <span style="color:var(--gray-5);font-size:14px;">The first transaction is the proof. The first participation is the purpose.</span>
+    </p>
+
+    <div class="ftx-details fade-up">
+      <div class="ftx-detail">
+        <div class="ftx-detail-label">Format</div>
+        <div class="ftx-detail-value">Private Live Event</div>
+      </div>
+      <div class="ftx-detail">
+        <div class="ftx-detail-label">Invited</div>
+        <div class="ftx-detail-value">Investors · Partners · Press</div>
+      </div>
+      <div class="ftx-detail">
+        <div class="ftx-detail-label">What happens</div>
+        <div class="ftx-detail-value">Post → Verify → Action → Earn · Live</div>
+      </div>
+      <div class="ftx-detail">
+        <div class="ftx-detail-label">Date</div>
+        <div class="ftx-detail-value">TBD — Q3 2026</div>
+      </div>
+    </div>
+
+    <div class="ftx-cta-group fade-up">
+      <a href="mailto:founder@showplly.com?subject=First%20Participation%20-%20Invitation%20Request" class="btn btn-primary" style="font-size:15px;padding:14px 28px;">
+        Request an invitation →
+      </a>
+      <a href="/experience/" class="btn btn-ghost" style="font-size:15px;padding:14px 28px;">
+        Experience it now →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════
+     TRUST SIGNALS
+════════════════════════════════════ -->
+<section id="trust">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      Patent Pending
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      PCT Filed — International
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      Architecture Discussions — Oracle Japan
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      JETRO Backed
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">SHOWPLLY</div>
+  <div class="footer-links">
+    <a href="/experience/">Experience Demo</a>
+    <a href="#club">The 100 Club</a>
+    <a href="/how/">Why This Works</a>
+    <a href="mailto:founder@showplly.com?subject=First%20Participation%20Invitation">Request Invitation</a>
+    <a href="mailto:founder@showplly.com">Contact</a>
+  </div>
+  <div class="footer-copy">
+    © Showplly 2026 &nbsp;·&nbsp; Patent Pending &nbsp;·&nbsp; PCT Filed
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script>
+// Tab switching
+function switchTab(id) {
+  document.querySelectorAll('.who-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.who-panel').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  const panel = document.getElementById('panel-' + id);
+  if (panel) {
+    panel.classList.add('active');
+    panel.style.display = 'grid';
+  }
+  event.currentTarget.classList.add('active');
+}
+
+// Initialize panels
+document.querySelectorAll('.who-panel').forEach((p, i) => {
+  if (!p.classList.contains('active')) p.style.display = 'none';
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, idx) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, idx * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Demo step animation
+const steps = document.querySelectorAll('.edb-step');
+let current = 1;
+setInterval(() => {
+  steps.forEach((s, i) => {
+    s.style.opacity = '0.5';
+    s.classList.remove('active');
+    const status = s.querySelector('.edb-step-status');
+    if (status) {
+      status.className = 'edb-step-status status-wait';
+      status.textContent = i < current ? 'DONE ✓' : 'PENDING';
+    }
+  });
+  if (steps[current]) {
+    steps[current].style.opacity = '1';
+    steps[current].classList.add('active');
+    const status = steps[current].querySelector('.edb-step-status');
+    if (status) {
+      status.className = 'edb-step-status status-active';
+      status.textContent = '● LIVE';
+    }
+  }
+  for (let i = 0; i < current; i++) {
+    if (steps[i]) {
+      steps[i].style.opacity = '0.8';
+      const status = steps[i].querySelector('.edb-step-status');
+      if (status) {
+        status.className = 'edb-step-status status-done';
+        status.textContent = 'DONE ✓';
+      }
+    }
+  }
+  current = (current + 1) % steps.length;
+}, 1800);
+</script>
+
 </body>
 </html>
