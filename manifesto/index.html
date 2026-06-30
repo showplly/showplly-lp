@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifesto — Showplly</title>
+<meta name="description" content="Trust Infrastructure Manifesto. Why trust is broken, why it couldn't be fixed before, and why Showplly is different.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#0A0A0A; --white:#F8F6F1; --gray-1:#111111; --gray-2:#1C1C1C; --gray-3:#2A2A2A;
+  --gray-4:#909090; --gray-5:#ABABAB; --accent:#C8FF00; --purple:#B07CFF;
+  --purple-dim:rgba(176,124,255,0.1); --purple-border:rgba(176,124,255,0.35); --border:rgba(255,255,255,0.08);
+  --font-display:'Syne',sans-serif; --font-body:'Inter',sans-serif; --font-mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:2px;}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--gray-5);letter-spacing:0.5px;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-purple-chip{color:var(--purple);font-weight:600;background:var(--purple-dim);border:1px solid var(--purple-border);border-radius:100px;padding:4px 12px;transition:opacity 0.2s,background 0.2s;}
+.nav-purple-chip:hover{opacity:0.85;background:rgba(176,124,255,0.18);}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:0.3px;border-radius:4px;cursor:pointer;transition:all 0.2s;border:none;}
+.btn-ghost{background:transparent;color:var(--gray-5);border:1px solid var(--gray-3);}
+.btn-ghost:hover{color:var(--white);border-color:var(--gray-4);}
+.btn-primary{background:var(--accent);color:var(--black);font-weight:600;}
+.btn-primary:hover{background:#d4ff1a;transform:translateY(-1px);}
+.btn-lg{font-size:15px;padding:14px 28px;}
+.back-link{font-size:13px;font-weight:500;color:var(--gray-5);display:flex;align-items:center;gap:6px;cursor:pointer;transition:color 0.2s;}
+.back-link:hover{color:var(--white);}
+section{padding:100px 0;}
+.container{max-width:1100px;margin:0 auto;padding:0 48px;}
+.divider{height:1px;background:var(--border);margin:0 48px;}
+.page-hero{min-height:46vh;display:flex;flex-direction:column;justify-content:center;padding-top:80px;padding-bottom:64px;position:relative;overflow:hidden;}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.hero-glow{position:absolute;top:10%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(176,124,255,0.07) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{position:relative;max-width:1100px;margin:0 auto;padding:0 48px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-5);margin-bottom:32px;}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--purple);animation:pulse-dot 2s ease-in-out infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+.page-headline{font-family:var(--font-display);font-size:clamp(52px,7vw,96px);font-weight:800;line-height:0.95;letter-spacing:-2px;margin-bottom:28px;}
+.page-headline .accent{color:var(--accent);}
+.hero-sub{font-size:18px;color:var(--gray-5);line-height:1.7;max-width:560px;margin-bottom:40px;}
+.hero-cta-group{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.shift-timeline{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--gray-1);}
+.shift-step{flex:1;padding:24px 14px;text-align:center;border-right:1px solid var(--border);}
+.shift-step:last-child{border-right:none;}
+.shift-decade{font-family:var(--font-mono);font-size:10px;color:var(--gray-4);letter-spacing:1px;margin-bottom:10px;}
+.shift-word{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--gray-5);margin-bottom:8px;}
+.shift-desc{font-size:11px;color:var(--gray-4);line-height:1.5;}
+.shift-step.current{background:rgba(200,255,0,0.04);}
+.shift-step.current .shift-word{color:var(--accent);}
+.shift-step.next{background:var(--purple-dim);}
+.shift-step.next .shift-word{color:var(--purple);}
+.q-block{margin-bottom:64px;}
+.q-block:last-child{margin-bottom:0;}
+.q-num{font-family:var(--font-mono);font-size:12px;color:var(--purple);letter-spacing:1px;margin-bottom:12px;}
+.q-title{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3vw,34px);margin-bottom:24px;letter-spacing:-0.5px;}
+.q-answers{display:flex;flex-direction:column;gap:16px;}
+.q-answer{font-size:15px;color:var(--gray-5);line-height:1.75;padding-left:22px;border-left:2px solid var(--gray-3);max-width:640px;}
+.q-answer strong{color:var(--white);font-weight:600;}
+.big-quote-text{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3.5vw,38px);}
+.big-quote-text .g{color:var(--accent);}
+footer{padding:48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
+.footer-logo{font-family:var(--font-display);font-size:16px;font-weight:800;letter-spacing:2px;}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap;}
+.footer-links a{font-size:13px;color:var(--gray-5);transition:color 0.2s;}
+.footer-links a:hover{color:var(--white);}
+.footer-copy{font-family:var(--font-mono);font-size:11px;color:var(--gray-4);letter-spacing:0.5px;}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+@media (max-width:900px){nav{padding:16px 24px;}.nav-links{display:none;}.container{padding:0 24px;}section{padding:72px 0;}.hero-inner{padding:0 24px;}footer{flex-direction:column;text-align:center;}.footer-links{justify-content:center;}.divider{margin:0 24px;}.shift-timeline{flex-direction:column;}.shift-step{border-right:none;border-bottom:1px solid var(--border);}.shift-step:last-child{border-bottom:none;}}
+@media (prefers-reduced-motion:reduce){.fade-up{transition:none;}.hero-eyebrow-dot{animation:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="back-link">← showplly.com</a>
+  <ul class="nav-links">
+    <li><a href="#shift">The Trust Shift</a></li>
+    <li><a href="/future/">Future →</a></li>
+    <li><a href="/architecture/" class="nav-purple-chip">Why this is possible →</a></li>
+  </ul>
+  <a href="/experience/" class="btn btn-primary">▶ Try it yourself</a>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow fade-up">
+      <span class="hero-eyebrow-dot"></span>
+      Trust Infrastructure Manifesto
+    </div>
+
+    <h1 class="page-headline fade-up">
+      Trust is not the exit.<br><span class="accent">It's the entrance.</span>
+    </h1>
+
+    <p class="hero-sub fade-up">
+      Every commerce system before Showplly added trust on top. We put it underneath.
+    </p>
+  </div>
+</section>
+
+<section id="shift">
+  <div class="container">
+    <div class="shift-timeline fade-up">
+      <div class="shift-step">
+        <div class="shift-decade">1990s</div>
+        <div class="shift-word">Information</div>
+        <div class="shift-desc">Anyone can publish</div>
+      </div>
+      <div class="shift-step">
+        <div class="shift-decade">2000s</div>
+        <div class="shift-word">Search</div>
+        <div class="shift-desc">Anything can be found</div>
+      </div>
+      <div class="shift-step">
+        <div class="shift-decade">2010s</div>
+        <div class="shift-word">Social</div>
+        <div class="shift-desc">Identity is shareable</div>
+      </div>
+      <div class="shift-step current">
+        <div class="shift-decade">2020s</div>
+        <div class="shift-word">AI</div>
+        <div class="shift-desc">Everything is creatable</div>
+      </div>
+      <div class="shift-step next">
+        <div class="shift-decade">Next</div>
+        <div class="shift-word">Trust →<br>Participation</div>
+        <div class="shift-desc">Can we prove it's real?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="background:var(--gray-1);">
+  <div class="container">
+
+    <div class="q-block fade-up">
+      <div class="q-num">Question 01</div>
+      <h2 class="q-title">What is broken?</h2>
+      <div class="q-answers">
+        <p class="q-answer">Every year, <strong>$500 billion+</strong> worth of counterfeit goods circulate globally.</p>
+        <p class="q-answer">Every day, AI generates images, text, and products indistinguishable from human originals.</p>
+        <p class="q-answer">Every platform that built trust on social proof — likes, reviews, followers — has discovered that social proof can be fabricated.</p>
+        <p class="q-answer">The infrastructure of digital commerce was designed to move things fast. It was not designed to prove they are real.</p>
+        <p class="q-answer" style="font-size:13px;color:var(--gray-4);">The same gap extends beyond physical goods — to any asset, digital or real-world, that depends on verifiable provenance.</p>
+      </div>
+    </div>
+
+    <div class="q-block fade-up">
+      <div class="q-num">Question 02</div>
+      <h2 class="q-title">Why couldn't it be fixed before?</h2>
+      <div class="q-answers">
+        <p class="q-answer">Detection tools find fakes after they circulate. The damage is already done.</p>
+        <p class="q-answer">Blockchain systems record that something happened. They don't prove the right thing happened.</p>
+        <p class="q-answer">Content credentials attach metadata to files. They don't survive the platforms that strip metadata.</p>
+        <p class="q-answer">Every existing approach treats trust as a layer added on top of commerce.</p>
+      </div>
+    </div>
+
+    <div class="q-block fade-up">
+      <div class="q-num">Question 03</div>
+      <h2 class="q-title">Why is Showplly different?</h2>
+      <div class="q-answers">
+        <p class="q-answer">Showplly's architecture was defined before the first line of code was written.</p>
+        <p class="q-answer">Every claim the system makes is observable at runtime.</p>
+        <p class="q-answer">Every observation period produces a compliance record — not a marketing assertion.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="text-align:center;">
+  <div class="container">
+    <div class="big-quote-text fade-up">Trust First. <span class="g">Always.</span></div>
+
+    <div class="hero-cta-group fade-up" style="justify-content:center;margin-top:40px;">
+      <a href="/architecture/" class="btn btn-primary btn-lg">See the Architecture →</a>
+      <a href="/future/" class="btn btn-ghost btn-lg">See where this leads →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">SHOWPLLY</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/how/">How it works</a>
+    <a href="/architecture/">Architecture</a>
+    <a href="/investors/">Investors</a>
+    <a href="/future/">Future</a>
+    <a href="/experience/">Experience</a>
+  </div>
+  <div class="footer-copy">© Showplly 2026 &nbsp;·&nbsp; Patent Granted (Japan) &nbsp;·&nbsp; PCT ISR Completed</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, idx) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => { entry.target.classList.add('visible'); }, idx * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
