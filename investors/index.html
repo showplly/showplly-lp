@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investors — Showplly</title>
+<meta name="description" content="Trust Infrastructure for Commerce. Patent granted in Japan, PCT ISR completed, four-layer governance framework, runtime-observable compliance.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#0A0A0A; --white:#F8F6F1; --gray-1:#111111; --gray-2:#1C1C1C; --gray-3:#2A2A2A;
+  --gray-4:#909090; --gray-5:#ABABAB; --accent:#C8FF00; --purple:#B07CFF;
+  --purple-dim:rgba(176,124,255,0.1); --purple-border:rgba(176,124,255,0.35); --border:rgba(255,255,255,0.08);
+  --font-display:'Syne',sans-serif; --font-body:'Inter',sans-serif; --font-mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:2px;}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--gray-5);letter-spacing:0.5px;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-purple-chip{color:var(--purple);font-weight:600;background:var(--purple-dim);border:1px solid var(--purple-border);border-radius:100px;padding:4px 12px;transition:opacity 0.2s,background 0.2s;}
+.nav-purple-chip:hover{opacity:0.85;background:rgba(176,124,255,0.18);}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:0.3px;border-radius:4px;cursor:pointer;transition:all 0.2s;border:none;}
+.btn-ghost{background:transparent;color:var(--gray-5);border:1px solid var(--gray-3);}
+.btn-ghost:hover{color:var(--white);border-color:var(--gray-4);}
+.btn-primary{background:var(--accent);color:var(--black);font-weight:600;}
+.btn-primary:hover{background:#d4ff1a;transform:translateY(-1px);}
+.btn-lg{font-size:15px;padding:14px 28px;}
+.back-link{font-size:13px;font-weight:500;color:var(--gray-5);display:flex;align-items:center;gap:6px;cursor:pointer;transition:color 0.2s;}
+.back-link:hover{color:var(--white);}
+section{padding:100px 0;}
+.container{max-width:1100px;margin:0 auto;padding:0 48px;}
+.divider{height:1px;background:var(--border);margin:0 48px;}
+.section-tag{display:inline-block;font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:24px;}
+.section-title{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.1;letter-spacing:-0.5px;margin-bottom:20px;}
+.section-sub{font-size:17px;color:var(--gray-5);line-height:1.7;max-width:560px;}
+.page-hero{min-height:56vh;display:flex;flex-direction:column;justify-content:center;padding-top:80px;padding-bottom:64px;position:relative;overflow:hidden;}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.hero-glow{position:absolute;top:10%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(200,255,0,0.06) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{position:relative;max-width:1100px;margin:0 auto;padding:0 48px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-5);margin-bottom:32px;}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse-dot 2s ease-in-out infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+.page-headline{font-family:var(--font-display);font-size:clamp(52px,7vw,96px);font-weight:800;line-height:0.95;letter-spacing:-2px;margin-bottom:28px;}
+.page-headline .accent{color:var(--accent);}
+.hero-sub{font-size:18px;color:var(--gray-5);line-height:1.7;max-width:560px;margin-bottom:40px;}
+.hero-cta-group{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.pv-card{background:var(--gray-1);border:1px solid var(--border);border-radius:8px;padding:20px 24px;}
+.pv-label{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-4);margin-bottom:10px;}
+.pv-number{font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--accent);line-height:1;}
+.pv-number.white{color:var(--white);font-size:22px;}
+.pv-desc{font-size:12.5px;color:var(--gray-5);margin-top:8px;line-height:1.5;}
+.doc-list{display:flex;flex-direction:column;gap:2px;margin-top:48px;}
+.doc-row{display:grid;grid-template-columns:140px 1fr;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.doc-row-verb{background:var(--gray-1);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:22px;}
+.doc-verb-text{font-family:var(--font-display);font-weight:800;color:var(--accent);font-size:16px;}
+.doc-row-info{padding:22px 28px;}
+.doc-name{font-family:var(--font-mono);font-size:13px;margin-bottom:6px;}
+.doc-desc{font-size:13px;color:var(--gray-5);line-height:1.6;}
+.support-strip{display:flex;align-items:center;gap:16px;padding:28px 48px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.support-label{font-family:var(--font-mono);font-size:11px;color:var(--gray-4);letter-spacing:2px;text-transform:uppercase;}
+.support-badge{font-size:13px;font-weight:600;padding:7px 18px;border:1px solid var(--gray-3);border-radius:4px;color:var(--gray-5);}
+.dd-box{margin-top:28px;padding:28px 32px;background:rgba(200,255,0,0.03);border:1px solid rgba(200,255,0,0.2);border-radius:8px;}
+.dd-title{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--accent);margin-bottom:16px;}
+.dd-item{display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--gray-5);padding:6px 0;}
+.dd-check{width:16px;height:16px;border-radius:3px;background:rgba(200,255,0,0.15);border:1px solid rgba(200,255,0,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:var(--accent);}
+.dd-item.pending{color:var(--gray-4);}
+.dd-item.pending .dd-check{background:transparent;border-color:var(--gray-3);color:var(--gray-3);}
+.form-block{max-width:480px;margin-top:28px;}
+.form-field{margin-bottom:16px;}
+.form-label{font-size:12.5px;color:var(--gray-5);margin-bottom:6px;display:block;}
+.form-input{width:100%;padding:12px 14px;background:var(--gray-1);border:1px solid var(--border);border-radius:4px;color:var(--white);font-size:13px;font-family:var(--font-body);}
+.form-input:focus{outline:none;border-color:rgba(200,255,0,0.3);}
+.patent-note{margin-top:24px;padding:28px 32px;background:var(--gray-2);border:1px solid var(--border);border-radius:8px;}
+footer{padding:48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
+.footer-logo{font-family:var(--font-display);font-size:16px;font-weight:800;letter-spacing:2px;}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap;}
+.footer-links a{font-size:13px;color:var(--gray-5);transition:color 0.2s;}
+.footer-links a:hover{color:var(--white);}
+.footer-copy{font-family:var(--font-mono);font-size:11px;color:var(--gray-4);letter-spacing:0.5px;}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+@media (max-width:900px){nav{padding:16px 24px;}.nav-links{display:none;}.container{padding:0 24px;}section{padding:72px 0;}.hero-inner{padding:0 24px;}.stat-grid{grid-template-columns:1fr 1fr;}footer{flex-direction:column;text-align:center;}.footer-links{justify-content:center;}.divider{margin:0 24px;}.doc-row{grid-template-columns:1fr;}}
+@media (prefers-reduced-motion:reduce){.fade-up{transition:none;}.hero-eyebrow-dot{animation:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="back-link">← showplly.com</a>
+  <ul class="nav-links">
+    <li><a href="#docs">The documents</a></li>
+    <li><a href="/future/">Future →</a></li>
+    <li><a href="/architecture/" class="nav-purple-chip">Architecture →</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow fade-up">
+      <span class="hero-eyebrow-dot"></span>
+      Oracle VC Connect &nbsp;·&nbsp; Investor Information
+    </div>
+
+    <h1 class="page-headline fade-up">
+      Trust Infrastructure<br>for Commerce.<br><span class="accent">Architecture confirmed,</span> not claimed.
+    </h1>
+
+    <p class="hero-sub fade-up">
+      Showplly defines a runtime-observable governance framework for verifiable
+      seller identity in commerce. Every architectural constraint is specified,
+      proved, demonstrated, and measured — producing compliance records, not
+      marketing assertions.
+    </p>
+
+    <div class="hero-cta-group fade-up">
+      <a href="#dd-request" class="btn btn-primary btn-lg">Request DD Package ↗</a>
+      <a href="/architecture/" class="btn btn-ghost btn-lg">Read the Architecture →</a>
+    </div>
+
+    <div class="fade-up" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);">
+      <p style="font-family:var(--font-mono);font-size:12px;color:var(--gray-4);letter-spacing:0.5px;line-height:2;">
+        Trust is becoming infrastructure.<br>
+        Infrastructure becomes standards.<br>
+        Standards create enduring ecosystems.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:48px 0;">
+  <div class="container">
+    <div class="stat-grid fade-up">
+      <div class="pv-card">
+        <div class="pv-label">Global counterfeit market</div>
+        <div class="pv-number">$500B+</div>
+        <div class="pv-desc">OECD data · structural, not cyclical</div>
+      </div>
+      <div class="pv-card">
+        <div class="pv-label">International patent status</div>
+        <div class="pv-number white">PCT</div>
+        <div class="pv-desc">ISR completed · inventive step confirmed</div>
+      </div>
+      <div class="pv-card">
+        <div class="pv-label">Governance document layers</div>
+        <div class="pv-number white">4</div>
+        <div class="pv-desc">defines · proves · demonstrates · measures</div>
+      </div>
+      <div class="pv-card">
+        <div class="pv-label">Architectural KPI target</div>
+        <div class="pv-number">0</div>
+        <div class="pv-desc">All 6 constraints · per period</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="docs">
+  <div class="container">
+    <div class="section-tag">// Intellectual property</div>
+    <h2 class="section-title fade-up">Patent-protected core.<br>Open governance framework.</h2>
+
+    <div class="stat-grid fade-up" style="margin-top:40px;">
+      <div class="pv-card">
+        <div class="pv-label">Japan — Original Patent</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:6px;">Granted</div>
+        <div class="pv-desc" style="color:var(--accent);">Core technology patented · June 2025</div>
+      </div>
+      <div class="pv-card">
+        <div class="pv-label">Japan — New Filing</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:6px;">Priority-based filing</div>
+        <div class="pv-desc" style="color:var(--accent);">Filed February 2026</div>
+      </div>
+      <div class="pv-card">
+        <div class="pv-label">PCT International</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:6px;">ISR Completed</div>
+        <div class="pv-desc" style="color:var(--accent);">Inventive step confirmed by JPO</div>
+      </div>
+      <div class="pv-card">
+        <div class="pv-label">Japan — Expected Grant</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:6px;">July 2026</div>
+        <div class="pv-desc" style="color:var(--accent);">Based on confirmed inventive step</div>
+      </div>
+    </div>
+
+    <div class="patent-note fade-up">
+      <p style="font-size:13.5px;color:var(--gray-5);line-height:1.8;">
+        The core technology underlying Showplly was patented in Japan in <strong style="color:var(--white)">June 2025</strong>. In <strong style="color:var(--white)">February 2026</strong>, a new application based on priority claim was filed. The PCT international patent application has completed its International Search Report (ISR) — inventive step confirmed — with Japanese registration expected in <strong style="color:var(--white)">July 2026</strong> of the same year.
+      </p>
+    </div>
+
+    <div class="doc-list fade-up">
+      <div class="doc-row">
+        <div class="doc-row-verb"><span class="doc-verb-text">defines</span></div>
+        <div class="doc-row-info">
+          <div class="doc-name">Architecture Guide v1.2</div>
+          <div class="doc-desc">The constitutional standard · 1,528 paragraphs</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-row-verb"><span class="doc-verb-text">proves</span></div>
+        <div class="doc-row-info">
+          <div class="doc-name">Engineering Specifications v1.0</div>
+          <div class="doc-desc">Semantic preservation proof · Constitutional audit: PASS</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-row-verb"><span class="doc-verb-text">demonstrates</span></div>
+        <div class="doc-row-info">
+          <div class="doc-name">Reference Implementation v1.0</div>
+          <div class="doc-desc">One concrete realization · Shopify + Showplly PoC</div>
+        </div>
+      </div>
+      <div class="doc-row" style="border-left:3px solid var(--purple);">
+        <div class="doc-row-verb" style="background:var(--purple-dim);"><span class="doc-verb-text" style="color:var(--purple);">measures</span></div>
+        <div class="doc-row-info">
+          <div class="doc-name">Runtime Evidence Specification v1.0</div>
+          <div class="doc-desc">Predefined falsification conditions · 6 Architectural KPIs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="support-strip">
+  <div class="support-label">Supported by</div>
+  <div class="support-badge">Oracle Japan</div>
+  <div class="support-badge">JETRO</div>
+</div>
+
+<section id="dd-request">
+  <div class="container">
+    <div class="section-tag">// Due diligence</div>
+    <h2 class="section-title fade-up">Request the DD Package</h2>
+    <p class="section-sub fade-up">
+      Architecture Guide · Engineering Specifications · Reference Implementation
+      · Runtime Evidence Specification · Patent summary.
+    </p>
+
+    <div class="dd-box fade-up">
+      <div class="dd-title">Package Contents</div>
+      <div class="dd-item"><div class="dd-check">✓</div>Architecture Guide v1.2 (full document)</div>
+      <div class="dd-item"><div class="dd-check">✓</div>Engineering Specifications v1.0</div>
+      <div class="dd-item"><div class="dd-check">✓</div>Reference Implementation v1.0</div>
+      <div class="dd-item"><div class="dd-check">✓</div>Runtime Evidence Specification v1.0</div>
+      <div class="dd-item"><div class="dd-check">✓</div>PCT patent application summary</div>
+      <div class="dd-item pending"><div class="dd-check">○</div>Architectural Compliance Report #1 (post-PoC)</div>
+    </div>
+
+    <form class="form-block fade-up" action="mailto:founder@showplly.com" method="get">
+      <div class="form-field">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-input" name="name" required>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" name="email" required>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Firm / Organization</label>
+        <input type="text" class="form-input" name="firm">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Request DD Package ↗</button>
+      <p style="font-size:12px;color:var(--gray-4);margin-top:16px;font-family:var(--font-mono);">
+        NDA required for Engineering Specifications
+      </p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">SHOWPLLY</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/how/">How it works</a>
+    <a href="/architecture/">Architecture</a>
+    <a href="/manifesto/">Manifesto</a>
+    <a href="/future/">Future</a>
+    <a href="/experience/">Experience</a>
+  </div>
+  <div class="footer-copy">© Showplly 2026 &nbsp;·&nbsp; Patent Granted (Japan) &nbsp;·&nbsp; PCT ISR Completed</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, idx) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => { entry.target.classList.add('visible'); }, idx * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
