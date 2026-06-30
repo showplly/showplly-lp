@@ -67,6 +67,7 @@ nav {
   display: flex;
   gap: 32px;
   list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
@@ -97,6 +98,7 @@ nav {
 .nav-cta {
   display: flex;
   gap: 12px;
+  align-items: center;
 }
 
 .btn {
@@ -155,6 +157,17 @@ nav {
 .btn-red:hover {
   background: #f02d30;
   transform: translateY(-1px);
+}
+
+.btn-purple-outline {
+  background: transparent;
+  color: var(--purple);
+  border: 1px solid var(--purple-border);
+}
+
+.btn-purple-outline:hover {
+  background: var(--purple-dim);
+  border-color: var(--purple);
 }
 
 /* ── SECTIONS ── */
@@ -1129,6 +1142,7 @@ footer {
 .footer-links {
   display: flex;
   gap: 28px;
+  flex-wrap: wrap;
 }
 
 .footer-links a {
@@ -1200,8 +1214,10 @@ footer {
     <li><a href="#how">How it works</a></li>
     <li><a href="#who">Who it's for</a></li>
     <li><a href="/how/" class="nav-how-link-text">Why this is possible →</a></li>
+    <li><a href="/manifesto/" class="nav-how-link-text">Manifesto →</a></li>
   </ul>
   <div class="nav-cta">
+    <a href="/investors/" class="btn btn-purple-outline" style="font-size:12px;">For Investors</a>
     <a href="#club" class="btn btn-ghost">The 100 Club</a>
     <a href="/experience/" class="btn btn-primary">▶ Try it yourself</a>
   </div>
@@ -1885,6 +1901,10 @@ footer {
     <a href="/experience/">Experience Demo</a>
     <a href="#club">The 100 Club</a>
     <a href="/how/">Why This Works</a>
+    <a href="/manifesto/">Manifesto</a>
+    <a href="/architecture/">Architecture</a>
+    <a href="/investors/">Investors</a>
+    <a href="/future/">Future</a>
     <a href="mailto:founder@showplly.com?subject=First%20Participation%20Invitation">Request Invitation</a>
     <a href="mailto:founder@showplly.com?subject=Contact%20-%20Showplly&body=Dear%20Yuzuru%20Sano%2C%0A%0A">Contact Founder</a>
   </div>
