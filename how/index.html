@@ -1014,7 +1014,7 @@ footer {
   letter-spacing: 2px;
   color: var(--white);
 }
-.footer-links { display: flex; gap: 24px; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
 .footer-links a { font-size: 13px; color: var(--gray-5); transition: color 0.2s; }
 .footer-links a:hover { color: var(--white); }
 .footer-copy { font-family: var(--font-mono); font-size: 10px; color: var(--gray-4); letter-spacing: 0.5px; }
@@ -1041,6 +1041,8 @@ footer {
   .divider { margin: 0 24px; }
 }
 </style>
+<script defer data-domain="showplly.com" src="https://plausible.io/js/script.js"></script>
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 </head>
 <body>
 
@@ -1049,8 +1051,8 @@ footer {
   <a href="/" class="nav-logo">SHOW<span>PLLY</span></a>
   <a href="/" class="nav-back">← Back to showplly.com</a>
   <div class="nav-right">
-    <a href="/experience/" class="btn btn-ghost">Try the demo</a>
-    <a href="mailto:founder@showplly.com?subject=NDA%20Request" class="btn btn-primary">Request NDA Access</a>
+    <a href="/experience/" class="btn btn-ghost" onclick="plausible('How Try Demo')">Try the demo</a>
+    <a href="/investors/" class="btn btn-primary" onclick="plausible('How Request NDA Access')">Request NDA Access</a>
   </div>
 </nav>
 
@@ -1080,7 +1082,7 @@ footer {
         </div>
         <div class="hero-meta-item">
           <div class="hero-meta-dot"></div>
-          Patent pending · PCT filed
+          Patent Granted (Japan) · PCT ISR Completed
         </div>
         <div class="hero-meta-item">
           <div class="hero-meta-dot"></div>
@@ -1214,8 +1216,8 @@ footer {
       <div class="why-card fade-up">
         <div class="why-num">③</div>
         <div class="why-title">The identity layer was invented.</div>
-        <div class="why-body">Patent granted in Japan. PCT filed internationally. The specific mechanism that embeds commercial identity into content — enabling anyone to become a verified seller by posting — now exists and is protected.</div>
-        <span class="why-accent-tag">Patent Granted · PCT Filed</span>
+        <div class="why-body">Patent granted in Japan. PCT filed internationally, ISR completed with inventive step confirmed. The specific mechanism that embeds commercial identity into content — enabling anyone to become a verified seller by posting — now exists and is protected.</div>
+        <span class="why-accent-tag">Patent Granted · PCT ISR Completed</span>
       </div>
     </div>
   </div>
@@ -1340,7 +1342,7 @@ footer {
         </div>
         <div class="fs-body">
           <div class="fs-desc">The patented identity layer embeds two verifiable proofs into the content: product authenticity (this content represents a genuine product) and commercial authorization (this seller has the right to sell). This happens before posting. The content becomes self-verifying.</div>
-          <div class="fs-note">Technology: <span class="hl">Patent pending · PCT filed</span> — details under NDA only</div>
+          <div class="fs-note">Technology: <span class="hl">Patent Granted (Japan) · PCT ISR Completed</span> — details under NDA only</div>
         </div>
       </div>
 
@@ -1496,7 +1498,7 @@ footer {
     <div class="disclosure-box fade-up">
       <div class="db-title">This page shares What and Why — not How.</div>
       <div class="db-body">
-        The specific mechanism of the identity layer is protected by patent (pending) and PCT filing. The technical implementation of verification is available only to qualified partners under NDA. What we've shared on this page is the conceptual architecture — sufficient to understand the vision and validate the approach, but not sufficient to replicate the invention.
+        The specific mechanism of the identity layer is protected by granted patent (Japan) and PCT filing (ISR completed, inventive step confirmed). The technical implementation of verification is available only to qualified partners under NDA. What we've shared on this page is the conceptual architecture — sufficient to understand the vision and validate the approach, but not sufficient to replicate the invention.
       </div>
 
       <div class="db-table">
@@ -1546,7 +1548,7 @@ footer {
       <div class="partner-card fade-up">
         <div class="pc-role">Intellectual Property</div>
         <div class="pc-name">Patents &amp; PCT</div>
-        <div class="pc-desc">Core concepts are protected through granted patents in Japan and international PCT filings. Additional applications are under examination. Technical details are disclosed only under NDA.</div>
+        <div class="pc-desc">Core concepts are protected through a granted patent in Japan and an international PCT filing with ISR completed and inventive step confirmed. Additional applications are under examination. Technical details are disclosed only under NDA.</div>
       </div>
     </div>
   </div>
@@ -1585,6 +1587,10 @@ footer {
       When identity and verification become actionable, <strong>anyone can participate</strong> — not only makers, not only marketplaces, but creators, sellers, buyers, and fulfillment networks together.
       <br><br>
       Verification-based commerce is not about transactions. <strong>It is about participation.</strong> The First Participation is coming — and everyone in this flow has a seat at the table.
+    </p>
+
+    <p class="final-secondary-link" style="margin-top:32px;">
+      <a href="/future/" style="display:inline-block;font-family:var(--font-mono);font-size:14px;font-weight:600;letter-spacing:0.5px;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:100px;padding:8px 20px;">See where this leads: Future →</a>
     </p>
   </div>
 </section>
@@ -1643,7 +1649,7 @@ footer {
         <div class="nc-title">Join The 100 Club</div>
         <div class="nc-desc">Founding Seller spots are invitation-based. If you post product content and want to be among the first 100 verified sellers when the PoC launches — apply now.</div>
         <div class="nc-cta">
-          <a href="mailto:founder@showplly.com?subject=The%20100%20Club%20Application" class="btn btn-outline" style="font-size:13px;padding:10px 20px;">Claim your number →</a>
+          <a href="mailto:founder@showplly.com?subject=The%20100%20Club%20Application" class="btn btn-outline" style="font-size:13px;padding:10px 20px;" onclick="plausible('Claim Founding Seller Number')">Claim your number →</a>
         </div>
       </div>
       <div class="next-card fade-up">
@@ -1651,7 +1657,7 @@ footer {
         <div class="nc-title">Request NDA Access</div>
         <div class="nc-desc">For investors, strategic partners, and press. Access the full technical architecture, patent summary, PoC design, and investment materials — under a standard mutual NDA.</div>
         <div class="nc-cta">
-          <a href="mailto:founder@showplly.com?subject=NDA%20Access%20Request%20-%20showplly.com/how" class="btn btn-outline" style="font-size:13px;padding:10px 20px;">Request access →</a>
+          <a href="/investors/" class="btn btn-outline" style="font-size:13px;padding:10px 20px;" onclick="plausible('How Request NDA Access')">Request access →</a>
         </div>
       </div>
     </div>
@@ -1662,10 +1668,10 @@ footer {
         The missing layer finally exists.
       </div>
       <p style="font-size:15px;color:var(--gray-5);line-height:1.75;max-width:640px;margin:0 auto 28px;">
-        Before Showplly, the internet had no way to turn a verification result into a commerce decision. That layer now exists. It is patented. It is being built. The first transaction is the proof — the First Participation is the purpose, and it is coming.
+        Before Showplly, the internet had no way to turn a verification result into a commerce decision. That layer now exists. It is protected by a granted patent and international filing. It is being built. The first transaction is the proof — the First Participation is the purpose, and it is coming.
       </p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <a href="mailto:founder@showplly.com?subject=First%20Participation%20Invitation%20Request" class="btn btn-primary" style="font-size:14px;padding:12px 24px;">
+        <a href="mailto:founder@showplly.com?subject=First%20Participation%20Invitation%20Request" class="btn btn-primary" style="font-size:14px;padding:12px 24px;" onclick="plausible('First Participation Invitation Request')">
           Request invitation to The First Participation →
         </a>
         <a href="/" class="btn btn-ghost" style="font-size:14px;padding:12px 24px;">
@@ -1681,12 +1687,16 @@ footer {
   <div class="footer-logo">SHOWPLLY</div>
   <div class="footer-links">
     <a href="/">Home</a>
+    <a href="/manifesto/">Manifesto</a>
+    <a href="/architecture/">Architecture</a>
+    <a href="/investors/">Investors</a>
+    <a href="/future/">Future</a>
     <a href="/experience/">Experience Demo</a>
     <a href="/#club">The 100 Club</a>
     <a href="mailto:founder@showplly.com?subject=First%20Participation%20Invitation">Request Invitation</a>
     <a href="mailto:founder@showplly.com?subject=Contact%20-%20Showplly&body=Dear%20Yuzuru%20Sano%2C%0A%0A">Contact Founder</a>
   </div>
-  <div class="footer-copy">© Showplly 2026 · Patent Pending · PCT Filed · Founder: Yuzuru Sano</div>
+  <div class="footer-copy">© Showplly 2026 · Patent Granted (Japan) · PCT ISR Completed · Founder: Yuzuru Sano</div>
 </footer>
 
 <script>
