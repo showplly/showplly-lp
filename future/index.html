@@ -24,6 +24,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .nav-links a:hover{color:var(--white);}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:0.3px;border-radius:4px;cursor:pointer;transition:all 0.2s;border:none;}
 .btn-ghost{background:transparent;color:var(--gray-5);border:1px solid var(--gray-3);}
+.btn-purple-outline{background:transparent;color:var(--purple);border:1px solid var(--purple-border);}
+.btn-purple-outline:hover{background:var(--purple-dim);border-color:var(--purple);}
 .btn-ghost:hover{color:var(--white);border-color:var(--gray-4);}
 .btn-primary{background:var(--accent);color:var(--black);font-weight:600;}
 .btn-primary:hover{background:#d4ff1a;transform:translateY(-1px);}
@@ -87,7 +89,34 @@ footer{padding:48px;border-top:1px solid var(--border);display:flex;justify-cont
 .footer-copy{font-family:var(--font-mono);font-size:11px;color:var(--gray-4);letter-spacing:0.5px;}
 @media (max-width:900px){nav{padding:16px 24px;}.nav-links{display:none;}.container{padding:0 24px;}section{padding:72px 0;}.hero-inner{padding:0 24px;}footer{flex-direction:column;text-align:center;}.footer-links{justify-content:center;}.divider{margin:0 24px;}.flow{flex-direction:column;gap:24px;}.flow-arrow{transform:rotate(90deg);padding:0;}}
 @media (prefers-reduced-motion:reduce){.fade-up{transition:none;}.hero-eyebrow-dot{animation:none;}}
+
+/* Join Showplly */
+.join-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;}
+.join-card{
+  background:var(--gray-1);border:1px solid var(--border);
+  padding:40px 28px;text-align:center;transition:all 0.25s;
+  display:flex;flex-direction:column;align-items:center;
+}
+.join-card:hover{border-color:var(--accent-border,rgba(200,255,0,0.3));transform:translateY(-2px);}
+.join-card.build:hover{border-color:rgba(176,124,255,0.4);}
+.join-card.validate:hover{border-color:rgba(200,255,0,0.3);}
+.join-card.support:hover{border-color:rgba(176,124,255,0.4);}
+.join-icon{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:800;font-size:18px;
+  margin-bottom:20px;border:1px solid var(--border);
+}
+.join-card.build .join-icon{color:var(--purple);border-color:var(--purple-border);background:var(--purple-dim);}
+.join-card.validate .join-icon{color:var(--accent);border-color:rgba(200,255,0,0.3);background:rgba(200,255,0,0.06);}
+.join-card.support .join-icon{color:var(--purple);border-color:var(--purple-border);background:var(--purple-dim);}
+.join-label{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-4);margin-bottom:10px;}
+.join-title{font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:14px;}
+.join-desc{font-size:13px;color:var(--gray-5);line-height:1.65;margin-bottom:24px;flex-grow:1;}
+@media (max-width:900px){.join-grid{grid-template-columns:1fr;}}
 </style>
+<script defer data-domain="showplly.com" src="https://plausible.io/js/script.js"></script>
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 </head>
 <body>
 
@@ -212,6 +241,64 @@ footer{padding:48px;border-top:1px solid var(--border);display:flex;justify-cont
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:40px;" class="fade-up">
       <a href="/experience/" class="btn btn-primary btn-lg">▶ Start your experience</a>
       <a href="/manifesto/" class="btn btn-ghost btn-lg">Read the Manifesto →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="background:var(--gray-1);">
+  <div class="container">
+    <div class="section-eyebrow fade-up" style="text-align:center;">Join Showplly</div>
+    <h2 class="section-title fade-up" style="text-align:center; margin:0 auto 12px; max-width:600px;">
+      There is more than one way to participate.
+    </h2>
+    <p class="fade-up" style="text-align:center; font-size:14px; color:var(--gray-5); max-width:520px; margin:0 auto;">
+      The architecture is defined. The governance framework is complete.
+      The first observation period is being prepared. We are now looking
+      for the partners who want to build what comes next.
+    </p>
+
+    <div class="join-grid fade-up">
+      <div class="join-card build">
+        <div class="join-icon">B</div>
+        <div class="join-label">Build</div>
+        <div class="join-title">Founding Engineer</div>
+        <p style="font-family:var(--font-mono); font-size:11px; color:var(--purple); letter-spacing:0.5px; margin-bottom:14px;">Build the first implementation.</p>
+        <div class="join-desc">
+          This is not a contract role. It is an opportunity to help build
+          the first implementation of a trust infrastructure architecture
+          from the beginning. Founding equity is available for the right
+          technical partner.
+        </div>
+        <a href="mailto:founder@showplly.com?subject=Founding%20Engineer%20-%20Showplly" class="btn btn-purple-outline" style="width:100%;justify-content:center;" onclick="plausible('Founding Engineer Inquiry')">Inquire →</a>
+      </div>
+
+      <div class="join-card validate">
+        <div class="join-icon">V</div>
+        <div class="join-label">Validate</div>
+        <div class="join-title">The 100 Club</div>
+        <p style="font-family:var(--font-mono); font-size:11px; color:var(--accent); letter-spacing:0.5px; margin-bottom:14px;">Generate the first evidence.</p>
+        <div class="join-desc">
+          Join the first observation period. One hundred founding sellers,
+          numbered permanently — the people who take part in the first
+          verified commerce participation.
+        </div>
+        <a href="/#club" class="btn btn-ghost" style="width:100%;justify-content:center;" onclick="plausible('Join the 100 Club')">Join the 100 Club →</a>
+      </div>
+
+      <div class="join-card support">
+        <div class="join-icon">S</div>
+        <div class="join-label">Support</div>
+        <div class="join-title">Strategic Investor</div>
+        <p style="font-family:var(--font-mono); font-size:11px; color:var(--purple); letter-spacing:0.5px; margin-bottom:14px;">Enable the first production deployment.</p>
+        <div class="join-desc">
+          Help establish the first trust infrastructure for commerce.
+          Strategic capital enables the transition from architectural
+          validation to production.
+        </div>
+        <a href="/investors/" class="btn btn-purple-outline" style="width:100%;justify-content:center;" onclick="plausible('Read Investment Case')">Read the Investment Case →</a>
+      </div>
     </div>
   </div>
 </section>
