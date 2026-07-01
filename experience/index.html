@@ -108,7 +108,6 @@ nav {
   border-color: var(--purple);
   background: rgba(176,124,255,0.18);
 }
-}
 @media (max-width: 640px) {
   .nav-how-link { display: none; }
 }
@@ -744,6 +743,8 @@ nav {
   .scenario-btn { max-width: none; }
 }
 </style>
+<script defer data-domain="showplly.com" src="https://plausible.io/js/script.js"></script>
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 </head>
 <body>
 
@@ -1073,10 +1074,11 @@ nav {
     </div>
 
     <div class="cta-group">
-      <a href="mailto:founder@showplly.com?subject=First%20Participation%20-%20Invitation%20Request" class="btn btn-primary">Request invitation to The First Participation →</a>
+      <a href="mailto:founder@showplly.com?subject=First%20Participation%20-%20Invitation%20Request" class="btn btn-primary" onclick="plausible('First Participation Invitation Request')">Request invitation to The First Participation →</a>
     </div>
     <p class="final-secondary-link">
       <a href="/how/">Why this is possible →</a>
+      <a href="/future/" style="margin-left:10px;">See where this leads →</a>
     </p>
     <p class="final-tertiary-link">
       <button class="link-button" onclick="restart()">Walk through again</button>
