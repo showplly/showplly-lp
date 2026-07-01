@@ -88,6 +88,8 @@ footer{padding:48px;border-top:1px solid var(--border);display:flex;justify-cont
 @media (max-width:900px){nav{padding:16px 24px;}.nav-links{display:none;}.container{padding:0 24px;}section{padding:72px 0;}.hero-inner{padding:0 24px;}.stat-grid{grid-template-columns:1fr 1fr;}footer{flex-direction:column;text-align:center;}.footer-links{justify-content:center;}.divider{margin:0 24px;}.doc-row{grid-template-columns:1fr;}}
 @media (prefers-reduced-motion:reduce){.fade-up{transition:none;}.hero-eyebrow-dot{animation:none;}}
 </style>
+<script defer data-domain="showplly.com" src="https://plausible.io/js/script.js"></script>
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 </head>
 <body>
 
@@ -125,7 +127,16 @@ footer{padding:48px;border-top:1px solid var(--border);display:flex;justify-cont
       <a href="/architecture/" class="btn btn-ghost btn-lg">Read the Architecture →</a>
     </div>
 
-    <div class="fade-up" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);">
+    <div class="fade-up" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border); max-width:560px;">
+      <p style="font-family:var(--font-mono); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--purple); margin-bottom:14px;">Why now</p>
+      <p style="font-size:14.5px; color:var(--gray-5); line-height:1.8;">
+        The architecture is defined. The governance framework is complete.
+        The first observation period is being prepared. We are now looking
+        for the partners who want to build what comes next.
+      </p>
+    </div>
+
+    <div class="fade-up" style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border);">
       <p style="font-family:var(--font-mono);font-size:12px;color:var(--gray-4);letter-spacing:0.5px;line-height:2;">
         Trust is becoming infrastructure.<br>
         Infrastructure becomes standards.<br>
@@ -161,6 +172,12 @@ footer{padding:48px;border-top:1px solid var(--border);display:flex;justify-cont
         <div class="pv-desc">All 6 constraints · per period</div>
       </div>
     </div>
+
+    <p class="fade-up" style="font-family:var(--font-mono); font-size:13px; color:var(--gray-4); letter-spacing:0.3px; margin-top:24px; line-height:1.9;">
+      Planned first observation period —<br>
+      One product category. Approximately 100 verified participants.<br>
+      Real commerce. Observable evidence.
+    </p>
   </div>
 </section>
 
@@ -273,7 +290,7 @@ footer{padding:48px;border-top:1px solid var(--border);display:flex;justify-cont
         <label class="form-label">Firm / Organization</label>
         <input type="text" class="form-input" name="firm">
       </div>
-      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Request DD Package ↗</button>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="plausible('DD Package Request')">Request DD Package ↗</button>
       <p style="font-size:12px;color:var(--gray-4);margin-top:16px;font-family:var(--font-mono);">
         NDA required for Engineering Specifications
       </p>
@@ -290,7 +307,7 @@ footer{padding:48px;border-top:1px solid var(--border);display:flex;justify-cont
     <a href="/manifesto/">Manifesto</a>
     <a href="/future/">Future</a>
     <a href="/experience/">Experience</a>
-    <a href="mailto:founder@showplly.com?subject=Contact%20-%20Showplly&body=Dear%20Yuzuru%20Sano%2C%0A%0A">Contact Founder</a>
+    <a href="mailto:founder@showplly.com?subject=Contact%20-%20Showplly&body=Dear%20Yuzuru%20Sano%2C%0A%0A" onclick="plausible('Contact Founder')">Contact Founder</a>
   </div>
   <div class="footer-copy">© Showplly 2026 &nbsp;·&nbsp; Patent Granted (Japan) &nbsp;·&nbsp; PCT ISR Completed</div>
 </footer>
