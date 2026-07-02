@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Showplly — Analytics Exclusion</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:    #0A0A0A;
+  --white:    #F8F6F1;
+  --gray-1:   #111111;
+  --gray-2:   #1C1C1C;
+  --gray-3:   #2A2A2A;
+  --gray-4:   #909090;
+  --gray-5:   #ABABAB;
+  --accent:   #C8FF00;
+  --red:      #FF5C5C;
+  --purple:   #B07CFF;
+  --purple-dim: rgba(176,124,255,0.1);
+  --purple-border: rgba(176,124,255,0.35);
+  --border:   rgba(255,255,255,0.08);
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.bg-glow {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(200,255,0,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 460px;
+  background: var(--gray-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 44px 40px;
+  text-align: center;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-5);
+  margin-bottom: 20px;
+}
+
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gray-4);
+  transition: background 0.3s;
+}
+
+.eyebrow-dot.on {
+  background: var(--accent);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.sub {
+  font-size: 14px;
+  color: var(--gray-5);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.status-box {
+  background: var(--black);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.status-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.status-label.excluded { color: var(--accent); }
+.status-label.tracked { color: var(--gray-5); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 24px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--black);
+}
+.btn-primary:hover {
+  background: #d4ff1a;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--red);
+  border: 1px solid rgba(255,92,92,0.35);
+}
+.btn-outline:hover {
+  background: rgba(255,92,92,0.08);
+}
+
+.note {
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray-4);
+  letter-spacing: 0.3px;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+
+<div class="card">
+  <div class="logo">SHOWPLLY</div>
+
+  <div class="eyebrow">
+    <span class="eyebrow-dot" id="eyebrowDot"></span>
+    <span id="eyebrowText">Checking status…</span>
+  </div>
+
+  <h1 class="title">Analytics Exclusion</h1>
+  <p class="sub">Toggle whether this browser's visits are counted in Showplly's Plausible Analytics.</p>
+
+  <div class="status-box">
+    <span class="status-label" id="statusLabel">Checking…</span>
+  </div>
+
+  <button class="btn btn-primary" id="toggleBtn" onclick="toggleExclusion()">Loading…</button>
+
+  <p class="note">Applies to this browser and this domain only.<br>Setting persists until cleared or site data is deleted.</p>
+</div>
+
+<script>
+function render() {
+  const excluded = localStorage.getItem('plausible_ignore') === 'true';
+  const dot = document.getElementById('eyebrowDot');
+  const eyebrowText = document.getElementById('eyebrowText');
+  const label = document.getElementById('statusLabel');
+  const btn = document.getElementById('toggleBtn');
+
+  if (excluded) {
+    dot.classList.add('on');
+    eyebrowText.textContent = 'Exclusion Active';
+    label.textContent = '✓ This browser is excluded';
+    label.className = 'status-label excluded';
+    btn.textContent = 'Stop excluding this browser';
+    btn.className = 'btn btn-outline';
+  } else {
+    dot.classList.remove('on');
+    eyebrowText.textContent = 'Currently Tracked';
+    label.textContent = 'This browser is being counted';
+    label.className = 'status-label tracked';
+    btn.textContent = 'Exclude this browser';
+    btn.className = 'btn btn-primary';
+  }
+}
+
+function toggleExclusion() {
+  const excluded = localStorage.getItem('plausible_ignore') === 'true';
+  if (excluded) {
+    localStorage.removeItem('plausible_ignore');
+  } else {
+    localStorage.setItem('plausible_ignore', 'true');
+  }
+  render();
+}
+
+render();
+</script>
+
+</body>
+</html>
