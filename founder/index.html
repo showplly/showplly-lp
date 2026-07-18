@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>佐野 譲 (Yuzuru Sano) — Founder &amp; CEO, Showplly</title>
+<meta name="description" content="佐野 譲（Yuzuru Sano / Sano Yuzuru）— Showplly（ショープリー）創業者・CEO。1991年にGREEN HOUSE CO., LTD.を共同創業し34年間経営。デジタル情報の真正性を照合可能とする技術で、EC・RWA・関税など幅広い社会課題の解決を目指す。">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#0A0A0A; --white:#F8F6F1; --gray-1:#111111; --gray-2:#1C1C1C; --gray-3:#2A2A2A;
+  --gray-4:#909090; --gray-5:#ABABAB; --accent:#C8FF00; --purple:#B07CFF;
+  --purple-dim:rgba(176,124,255,0.1); --purple-border:rgba(176,124,255,0.35); --border:rgba(255,255,255,0.08);
+  --font-display:'Syne',sans-serif; --font-body:'Inter',sans-serif; --font-mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--gray-5);letter-spacing:0.5px;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-purple-chip{color:var(--purple);font-weight:600;background:var(--purple-dim);border:1px solid var(--purple-border);border-radius:100px;padding:4px 12px;transition:opacity 0.2s,background 0.2s;}
+.nav-purple-chip:hover{opacity:0.85;background:rgba(176,124,255,0.18);}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:0.3px;border-radius:4px;cursor:pointer;transition:all 0.2s;border:none;}
+.btn-ghost{background:transparent;color:var(--gray-5);border:1px solid var(--gray-3);}
+.btn-ghost:hover{color:var(--white);border-color:var(--gray-4);}
+.btn-primary{background:var(--accent);color:var(--black);font-weight:600;}
+.btn-primary:hover{background:#d4ff1a;transform:translateY(-1px);}
+.btn-lg{font-size:15px;padding:14px 28px;}
+.back-link{font-size:13px;font-weight:500;color:var(--gray-5);display:flex;align-items:center;gap:6px;cursor:pointer;transition:color 0.2s;}
+.back-link:hover{color:var(--white);}
+section{padding:100px 0;}
+.container{max-width:1100px;margin:0 auto;padding:0 48px;}
+.divider{height:1px;background:var(--border);margin:0 48px;}
+.section-tag{display:inline-block;font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:24px;}
+.section-title{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.1;letter-spacing:-0.5px;margin-bottom:20px;}
+.section-sub{font-size:17px;color:var(--gray-5);line-height:1.7;max-width:560px;}
+.page-hero{min-height:52vh;display:flex;flex-direction:column;justify-content:center;padding-top:80px;padding-bottom:64px;position:relative;overflow:hidden;}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.hero-glow{position:absolute;top:10%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(200,255,0,0.06) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{position:relative;max-width:1100px;margin:0 auto;padding:0 48px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-5);margin-bottom:32px;}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse-dot 2s ease-in-out infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+.founder-name-ja{font-family:var(--font-display);font-size:clamp(20px,2.6vw,28px);font-weight:800;line-height:1.2;letter-spacing:2px;margin-bottom:10px;}
+.founder-name-en{font-family:var(--font-mono);font-size:clamp(16px,2vw,22px);color:var(--accent);letter-spacing:3px;margin-bottom:28px;}
+.founder-title{font-size:18px;color:var(--gray-5);line-height:1.7;max-width:600px;}
+.founder-title strong{color:var(--white);font-weight:600;}
+.profile-grid{display:grid;grid-template-columns:320px 1fr;gap:64px;align-items:start;}
+.photo-frame{position:relative;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--gray-1);}
+.photo-frame img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+.photo-fallback{display:none;width:100%;aspect-ratio:1/1;align-items:center;justify-content:center;font-family:var(--font-display);font-size:72px;font-weight:800;color:var(--gray-3);}
+.photo-caption{padding:14px 18px;border-top:1px solid var(--border);font-family:var(--font-mono);font-size:11px;color:var(--gray-4);letter-spacing:0.5px;line-height:1.6;}
+.bio-block p{font-size:15px;color:var(--gray-5);line-height:1.85;margin-bottom:20px;max-width:640px;}
+.bio-block p strong{color:var(--white);font-weight:600;}
+.bio-lang-label{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-4);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);max-width:640px;}
+.bio-ja{margin-top:40px;}
+.timeline{display:flex;flex-direction:column;gap:2px;margin-top:56px;}
+.tl-row{display:grid;grid-template-columns:160px 1fr;border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:border-color 0.2s;}
+.tl-row:hover{border-color:rgba(200,255,0,0.2);}
+.tl-year{background:var(--gray-1);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:24px 16px;font-family:var(--font-mono);font-size:14px;font-weight:500;color:var(--accent);letter-spacing:1px;}
+.tl-body{padding:24px 28px;}
+.tl-title{font-family:var(--font-display);font-size:17px;font-weight:700;margin-bottom:6px;}
+.tl-desc{font-size:13.5px;color:var(--gray-5);line-height:1.65;}
+.tl-row.highlight{border-left:3px solid var(--accent);}
+.tl-row.purple{border-left:3px solid var(--purple);}
+.tl-row.purple .tl-year{color:var(--purple);background:var(--purple-dim);}
+.links-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;}
+.link-card{background:var(--gray-1);border:1px solid var(--border);padding:28px 24px;transition:all 0.25s;display:flex;flex-direction:column;gap:10px;}
+.link-card:hover{border-color:var(--purple-border);transform:translateY(-2px);}
+.link-card-label{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-4);}
+.link-card-title{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--purple);}
+.link-card-desc{font-size:12.5px;color:var(--gray-5);line-height:1.6;}
+footer{padding:48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
+.footer-logo{font-family:var(--font-display);font-size:16px;font-weight:800;letter-spacing:2px;}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap;}
+.footer-links a{font-size:13px;color:var(--gray-5);transition:color 0.2s;}
+.footer-links a:hover{color:var(--white);}
+.footer-copy{font-family:var(--font-mono);font-size:11px;color:var(--gray-4);letter-spacing:0.5px;}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+@media (max-width:900px){
+  nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .container{padding:0 24px;}
+  section{padding:72px 0;}
+  .hero-inner{padding:0 24px;}
+  .profile-grid{grid-template-columns:1fr;gap:40px;}
+  .photo-frame{max-width:320px;}
+  .tl-row{grid-template-columns:1fr;}
+  .tl-year{justify-content:flex-start;padding:14px 24px;border-right:none;border-bottom:1px solid var(--border);}
+  .links-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;text-align:center;}
+  .footer-links{justify-content:center;}
+  .divider{margin:0 24px;}
+}
+@media (prefers-reduced-motion:reduce){.fade-up{transition:none;}.hero-eyebrow-dot{animation:none;}}
+</style>
+<script defer data-domain="showplly.com" src="https://plausible.io/js/script.js"></script>
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "https://www.showplly.com/founder/",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "佐野 譲",
+    "alternateName": ["Yuzuru Sano", "Sano Yuzuru", "佐野譲", "さの ゆずる"],
+    "jobTitle": "Founder & CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Showplly",
+      "url": "https://www.showplly.com/"
+    },
+    "image": "https://www.showplly.com/founder/photo.jpg",
+    "url": "https://www.showplly.com/founder/",
+    "description": "Founder & CEO of Showplly. Co-founded GREEN HOUSE CO., LTD. in 1991 and led it for 34 years, growing it to US$100M+ annual revenue. His decades in OEM/ODM manufacturing across Taiwan and China — witnessing counterfeit goods circulate globally — became the origin of Showplly's authenticity verification layer for commerce.",
+    "knowsAbout": ["Authenticity verification", "Trust infrastructure", "SNS-native commerce", "OEM/ODM manufacturing", "Computer peripherals"],
+    "sameAs": [
+      "https://www.linkedin.com/in/yuzuru-sano/",
+      "https://youtrust.jp/users/yuzuru-sano"
+    ]
+  }
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="back-link">← showplly.com</a>
+  <ul class="nav-links">
+    <li><a href="#career">Career</a></li>
+    <li><a href="/manifesto/">Manifesto →</a></li>
+    <li><a href="/architecture/" class="nav-purple-chip">Architecture →</a></li>
+  </ul>
+  <a href="mailto:founder@showplly.com?subject=Contact%20-%20Showplly&body=Dear%20Yuzuru%20Sano%2C%0A%0A" class="btn btn-primary">Contact</a>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow fade-up">
+      <span class="hero-eyebrow-dot"></span>
+      Founder Profile &nbsp;·&nbsp; 創業者プロフィール
+    </div>
+
+    <h1 class="founder-name-ja fade-up">佐野 譲</h1>
+    <div class="founder-name-en fade-up">YUZURU SANO</div>
+
+    <p class="founder-title fade-up">
+      <strong>Founder &amp; CEO, Showplly.</strong><br>
+      34 years in manufacturing. One conclusion:<br>
+      commerce needs a trust layer — underneath, not on top.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="about">
+  <div class="container">
+    <div class="profile-grid">
+
+      <div class="fade-up">
+        <div class="photo-frame">
+          <img src="/founder/photo.jpg" alt="佐野 譲 (Yuzuru Sano), Founder &amp; CEO of Showplly" onerror="this.style.display='none';document.getElementById('photo-fallback').style.display='flex';">
+          <div class="photo-fallback" id="photo-fallback">YS</div>
+          <div class="photo-caption">佐野 譲 · Yuzuru Sano<br>Founder &amp; CEO, Showplly · Tokyo</div>
+        </div>
+      </div>
+
+      <div class="bio-block fade-up">
+        <div class="bio-lang-label">Biography — English</div>
+        <p><strong>Yuzuru Sano</strong> (佐野 譲) is the Founder &amp; CEO of <strong>Showplly</strong>, a Japan-based company building a patent-backed authenticity verification layer for SNS-native commerce.</p>
+        <p>In 1991, he co-founded <strong>GREEN HOUSE CO., LTD.</strong>, a Tokyo-based computer peripherals company, and led it for 34 years — growing it to approximately 200 employees and over US$100 million in annual revenue.</p>
+        <p>Those decades were spent deep in OEM/ODM manufacturing across Taiwan and China. There, he witnessed firsthand how counterfeit and substandard products circulate globally — and how no infrastructure existed to stop them at the source. That experience is the origin of Showplly: not verification as a report, but verification as an input to action.</p>
+        <p>At its core, Showplly is a technology for verifying the authenticity of <strong>digital information itself</strong>. Its applications extend well beyond product authenticity in e-commerce — to real-world assets (RWA) and the verification of customs and tariff authenticity. It was developed to address these broader social challenges.</p>
+        <p>Showplly's core technology was patented in Japan in June 2025, with a PCT international application in progress. The company maintains institutional relationships with Oracle Japan and JETRO.</p>
+
+        <div class="bio-lang-label bio-ja">プロフィール — 日本語</div>
+        <p><strong>佐野 譲</strong>（さの ゆずる / Yuzuru Sano）は、SNSネイティブコマースのための特許取得済み真正性検証レイヤーを開発する <strong>Showplly（ショープリー）</strong>の創業者・CEO。</p>
+        <p>1991年、東京のコンピュータ周辺機器メーカー <strong>GREEN HOUSE CO., LTD.</strong> を共同創業。34年間にわたり経営に携わり、従業員約200名・年商100億円超の企業に成長させた。</p>
+        <p>その34年間、台湾・中国でのOEM/ODM製造の現場に身を置き、偽造品・粗悪品が世界中に流通していく実態を目の当たりにしてきた。「検証は目的ではなく、アクションへの入力である」— Showpllyの原点は、この製造業の現場での実体験にある。</p>
+        <p>Showpllyは、<strong>デジタル情報の真正性を照合可能とする技術</strong>である。その応用範囲は広く、ECにおける商品の真正性に留まらず、RWA（実物資産）や関税の真正性の照合をも可能とする。このような社会課題を解決する目的で開発された。</p>
+        <p>Showpllyのコア技術は2025年6月に日本で特許を取得。PCT国際出願が進行中であり、日本オラクル・JETROとの関係を構築している。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="career" style="background:var(--gray-1);">
+  <div class="container">
+    <div class="section-tag">// Career</div>
+    <h2 class="section-title fade-up">34 years of making things.<br>Then, making trust.</h2>
+
+    <div class="timeline">
+      <div class="tl-row fade-up">
+        <div class="tl-year">1991</div>
+        <div class="tl-body">
+          <div class="tl-title">Co-founded GREEN HOUSE CO., LTD.</div>
+          <div class="tl-desc">Tokyo-based computer peripherals manufacturer. Started with two people and a simple thesis: Japanese quality standards applied to global manufacturing. — 東京にてコンピュータ周辺機器メーカーを共同創業。</div>
+        </div>
+      </div>
+      <div class="tl-row fade-up">
+        <div class="tl-year">1991–2025</div>
+        <div class="tl-body">
+          <div class="tl-title">34 years in OEM/ODM manufacturing</div>
+          <div class="tl-desc">Deep operational experience across Taiwan and China. Grew the company to ~200 employees and US$100M+ annual revenue with 34 consecutive profitable years. — 台湾・中国でのOEM/ODM製造に34年間従事。従業員約200名・年商100億円超へ。</div>
+        </div>
+      </div>
+      <div class="tl-row highlight fade-up">
+        <div class="tl-year">June 2025</div>
+        <div class="tl-body">
+          <div class="tl-title">Japanese patent granted</div>
+          <div class="tl-desc">Core Showplly technology patented in Japan. — Showpllyのコア技術が日本で特許査定。</div>
+        </div>
+      </div>
+      <div class="tl-row highlight fade-up">
+        <div class="tl-year">2025</div>
+        <div class="tl-body">
+          <div class="tl-title">Founded Showplly</div>
+          <div class="tl-desc">The authenticity verification layer for SNS-native commerce. Trust as infrastructure — underneath commerce, not on top of it. — SNSネイティブコマースのための真正性検証レイヤー、Showpllyを創業。</div>
+        </div>
+      </div>
+      <div class="tl-row purple fade-up">
+        <div class="tl-year">2026</div>
+        <div class="tl-body">
+          <div class="tl-title">PCT international filing · ISR completed</div>
+          <div class="tl-desc">Priority-claim filing (February 2026), International Search Report completed with inventive step confirmed. — 優先権主張に基づくPCT国際出願、ISR完了・進歩性確認。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="links">
+  <div class="container">
+    <div class="section-tag">// Profiles &amp; Media</div>
+    <h2 class="section-title fade-up">Elsewhere.</h2>
+
+    <div class="links-grid fade-up">
+      <a href="https://www.linkedin.com/in/yuzuru-sano/" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card-label">Professional</div>
+        <div class="link-card-title">LinkedIn →</div>
+        <div class="link-card-desc">Global professional profile and Showplly updates in English.</div>
+      </a>
+      <a href="https://youtrust.jp/users/yuzuru-sano" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card-label">Career · Japan</div>
+        <div class="link-card-title">YOUTRUST →</div>
+        <div class="link-card-desc">日本語のキャリアプロフィール・採用情報。</div>
+      </a>
+      <a href="https://www.weeklybcn.com/journal/distribution/detail/20061023_56040.html" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card-label">Media</div>
+        <div class="link-card-title">週刊BCN →</div>
+        <div class="link-card-desc">IT業界紙による掲載記事（GREEN HOUSE時代）。</div>
+      </a>
+    </div>
+
+    <div class="fade-up" style="margin-top:48px;">
+      <a href="mailto:founder@showplly.com?subject=Contact%20-%20Showplly&body=Dear%20Yuzuru%20Sano%2C%0A%0A" class="btn btn-primary btn-lg">Contact the Founder →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">SHOWPLLY</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/how/">How it works</a>
+    <a href="/architecture/">Architecture</a>
+    <a href="/manifesto/">Manifesto</a>
+    <a href="/investors/">Investors</a>
+    <a href="/future/">Future</a>
+    <a href="/experience/">Experience</a>
+  </div>
+  <div class="footer-copy">© Showplly 2026 &nbsp;·&nbsp; Patent Granted (Japan) &nbsp;·&nbsp; PCT ISR Completed</div>
+  <div style="width:100%;margin-top:8px;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+    <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);letter-spacing:0.5px;">Founder &amp; CEO: 佐野 譲 (Yuzuru Sano)</span>
+    <span style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
+      <a href="https://www.linkedin.com/in/yuzuru-sano/" target="_blank" rel="noopener" style="font-size:12px;color:var(--purple);">LinkedIn</a>
+      <a href="https://youtrust.jp/users/yuzuru-sano" target="_blank" rel="noopener" style="font-size:12px;color:var(--purple);">YOUTRUST</a>
+      <a href="https://www.weeklybcn.com/journal/distribution/detail/20061023_56040.html" target="_blank" rel="noopener" style="font-size:12px;color:var(--gray-4);">Media: BCN</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, idx) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => { entry.target.classList.add('visible'); }, idx * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
